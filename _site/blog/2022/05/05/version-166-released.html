@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta name="charset" content="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The Nim programming language is a concise, fast programming language that compiles to C, C++ and JavaScript.">
+  <meta charset="utf-8">
+  <link rel="icon" type="image/png" href="/assets/img/logo_bw.png" />
+
+  
+  <title>Version 1.6.6 released - Nim Blog</title>
+  
+  <link rel="stylesheet" href="/assets/css/pure.min.css">
+  <link rel="stylesheet" href="/assets/css/pure-grids-responsive.min.css">
+  <link href="https://use.fontawesome.com/releases/v5.0.2/css/all.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+  
+  <link rel="stylesheet" href="/assets/css/highlight/github.css">
+  
+
+  <link rel="stylesheet" href="/assets/css/google-fonts.css">
+  <link rel="stylesheet" href="/assets/css/main.css?t=1721738524015683587">
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-48159761-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+  <script defer data-domain="nim-lang.org" src="https://plausible.io/js/plausible.js"></script>
+
+  <meta name="twitter:title" content="Version 1.6.6 released">
+
+  
+  <meta name="twitter:description" content="The Nim team is happy to announce version 1.6.6, our third patch release for Nim 1.6.">
+  <meta property="og:description" content="The Nim team is happy to announce version 1.6.6, our third patch release for Nim 1.6.">
+  
+
+  <meta name="twitter:site" content="@nim_lang">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://nim-lang.org/assets/img/twitter_banner.png">
+
+  <meta property="og:title" content="Version 1.6.6 released" />
+  <meta property="og:site_name" content="Nim Programming Language" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://nim-lang.org/assets/img/twitter_banner.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1000" />
+  <meta property="og:image:height" content="500" />
+  <meta property="og:image:alt" content="Nim Programming Language" />
+</head>
+
+  <body class="site">
+    <header>
+  <nav class="pure-menu pure-menu-horizontal pure-menu-scrollable">
+    <div class="nav-content">
+      <a href="/" class="pure-menu-heading pure-menu-link site-logo-container">
+        <img class="site-logo" src="/assets/img/logo.svg" height="28" alt="Nim">
+      </a>
+      <ul class="pure-menu-list">
+        
+        <li class="pure-menu-item">
+          <a href="/blog.html"
+             class="pure-menu-link current">
+            Blog
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/features.html"
+             class="pure-menu-link ">
+            Features
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/install.html"
+             class="pure-menu-link ">
+            Download
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/documentation.html"
+             class="pure-menu-link ">
+            Documentation
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="https://forum.nim-lang.org"
+             class="pure-menu-link ">
+            Forum
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/donate.html"
+             class="pure-menu-link ">
+            Donate
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://github.com/nim-lang/Nim">Source</a>
+        </li>
+      </ul>
+    </div>
+    <div class="menu-fade"></div>
+  </nav>
+</header>
+
+    <div class="site-content post-page">
+      <div class="content">
+        <div class="width-reduced">
+          <h1 class="post-title">
+            Version 1.6.6 released
+          </h1>
+          <h3 class="post-meta">
+            <span>
+              <i class="far fa-calendar-alt" aria-hidden="true"></i>
+              05 May 2022
+            </span>
+            
+            <span>
+              <i class="fa fa-user-circle" aria-hidden="true"></i>
+              The Nim Team
+            </span>
+            
+          </h3>
+          <p>The Nim team is happy to announce version 1.6.6, our third patch release for
+Nim 1.6.</p>
+
+<p>Version 1.6.6 is a result of three months of hard work, and it contains
+<a href="https://github.com/nim-lang/Nim/compare/v1.6.4...v1.6.6">55 commits</a>,
+bringing some general improvements over 1.6.4.</p>
+
+<p>Besides all the bugfixes (you can see the list of them at the bottom of this post),
+we have focused on having the standard library use consistent styles for
+variable names so it can be used in projects which force a consistent style
+with <code class="language-plaintext highlighter-rouge">--styleCheck:usages</code> option.
+Also, ARC/ORC are now considerably faster at method dispatching,
+bringing its performance back on the level of the <code class="language-plaintext highlighter-rouge">refc</code> memory management.</p>
+
+<p>We would recommend to all of our users to upgrade and use version 1.6.6.</p>
+
+<h1 id="installing-nim-16">Installing Nim 1.6</h1>
+
+<h2 id="new-users">New users</h2>
+
+<p>Check out if the package manager of your OS already ships version 1.6.6 or
+install it as described <a href="https://nim-lang.org/install.html">here</a>.</p>
+
+<h2 id="existing-users">Existing users</h2>
+
+<p>If you have installed a previous version of Nim using <code class="language-plaintext highlighter-rouge">choosenim</code>,
+getting Nim 1.6.6 is as easy as:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>choosenim update stable
+</code></pre></div></div>
+
+<p>Alternatively, you can download Nim 1.6.6 from
+<a href="https://github.com/nim-lang/nightlies/releases/tag/2022-05-05-version-1-6-0565a70eab02122ce278b98181c7d1170870865c">our nightlies builds</a>.</p>
+
+<h1 id="donating-to-nim">Donating to Nim</h1>
+
+<p>We would like to encourage you to donate to Nim.
+The donated money will be used to further improve Nim by creating bounties
+for the most important bugfixes and features.</p>
+
+<p>You can donate via:</p>
+
+<ul>
+  <li><a href="https://opencollective.com/nim">Open Collective</a></li>
+  <li><a href="https://www.patreon.com/araq">Patreon</a></li>
+  <li><a href="https://salt.bountysource.com/teams/nim">BountySource</a></li>
+  <li><a href="https://www.paypal.com/donate/?hosted_button_id=KYXH3BLJBHZTA">PayPal</a></li>
+  <li>Bitcoin: <code class="language-plaintext highlighter-rouge">1BXfuKM2uvoD6mbx4g5xM3eQhLzkCK77tJ</code></li>
+</ul>
+
+<p>If you are a company, we also offer commercial support.</p>
+
+<h1 id="bugfixes">Bugfixes</h1>
+
+<p>These reported issues were fixed:</p>
+
+<ul>
+  <li>Fixed “std.streams fails to compile with TCC compiler on Windows and –cpu:amd64”
+(<a href="https://github.com/nim-lang/Nim/issues/16326">#16326</a>)</li>
+  <li>Fixed “Compiler version 1.6.0 does not work on Windows XP”
+(<a href="https://github.com/nim-lang/Nim/issues/19038">#19038</a>)</li>
+  <li>Fixed “<code class="language-plaintext highlighter-rouge">os.putEnv</code> does not compile on cpp backend on Windows”
+(<a href="https://github.com/nim-lang/Nim/issues/19292">#19292</a>)</li>
+  <li>Fixed “JS target defines gcc”
+(<a href="https://github.com/nim-lang/Nim/issues/19059">#19059</a>)</li>
+  <li>Fixed “<code class="language-plaintext highlighter-rouge">static int __tcc_cas(</code> function in <em>JavaScript</em> output when having CC = tcc”
+(<a href="https://github.com/nim-lang/Nim/issues/19330">#19330</a>)</li>
+  <li>Fixed “CPU detection for i386”
+(<a href="https://github.com/nim-lang/Nim/issues/19577">#19577</a>)</li>
+  <li>Fixed “not flushing stdout in <code class="language-plaintext highlighter-rouge">MSYS</code>”
+(<a href="https://github.com/nim-lang/Nim/issues/19584">#19584</a>)</li>
+  <li>Fixed “Nim-1.6 segfault”
+(<a href="https://github.com/nim-lang/Nim/issues/19569">#19569</a>)</li>
+  <li>Fixed “Nim compiler crashing when using control flow statements inside try-catch block on a closure iterator”
+(<a href="https://github.com/nim-lang/Nim/issues/19575">#19575</a>)</li>
+  <li>Fixed “Remove deprecated typo poDemon”
+(<a href="https://github.com/nim-lang/Nim/issues/19631">#19631</a>)</li>
+  <li>Fixed “useless <code class="language-plaintext highlighter-rouge">overflowChecks</code> runtime check generated even when one of <code class="language-plaintext highlighter-rouge">a div b</code> constant”
+(<a href="https://github.com/nim-lang/Nim/issues/19615">#19615</a>)</li>
+  <li>Fixed “{.byref,exportc.} types are not output into –header file”
+(<a href="https://github.com/nim-lang/Nim/issues/19445">#19445</a>)</li>
+  <li>Fixed “<code class="language-plaintext highlighter-rouge">nim check</code> reports incorrect errors for nimscript”
+(<a href="https://github.com/nim-lang/Nim/issues/19440">#19440</a>)</li>
+  <li>Fixed “Is there proper way to syntax check .nims file?”
+(<a href="https://github.com/nim-lang/Nim/issues/3858">#3858</a>)</li>
+  <li>Fixed “dial ignoring buffered parameter”
+(<a href="https://github.com/nim-lang/Nim/issues/19650">#19650</a>)</li>
+  <li>Fixed “<code class="language-plaintext highlighter-rouge">nim dump</code> and other information obtaining commands execute top-level <code class="language-plaintext highlighter-rouge">exec</code> statements in nims files”
+(<a href="https://github.com/nim-lang/Nim/issues/8219">#8219</a>)</li>
+  <li>Fixed “Bug using nested loops in closure iterators”
+(<a href="https://github.com/nim-lang/Nim/issues/18474">#18474</a>)</li>
+  <li>Fixed “Import/except doesn’t work on devel”
+(<a href="https://github.com/nim-lang/Nim/issues/18986">#18986</a>)</li>
+  <li>Fixed “Can’t check if stderr is static”
+(<a href="https://github.com/nim-lang/Nim/issues/19680">#19680</a>)</li>
+  <li>Fixed “View of seq[T] when T has <code class="language-plaintext highlighter-rouge">seq</code> attribute won’t iter with ARC/ORC, but <code class="language-plaintext highlighter-rouge">len</code> returns correct number of elements”
+(<a href="https://github.com/nim-lang/Nim/issues/19435">#19435</a>)</li>
+  <li>Fixed “StringStream created from string segfaults on write when when using arc”
+(<a href="https://github.com/nim-lang/Nim/issues/19707">#19707</a>)</li>
+  <li>Fixed “minor NimNode comment repr() regression 1.0.10 to 1.2.9”
+(<a href="https://github.com/nim-lang/Nim/issues/16307">#16307</a>)</li>
+  <li>Fixed “Method dispatch is slow”
+(<a href="https://github.com/nim-lang/Nim/issues/18612">#18612</a>)</li>
+  <li>Fixed “Possibly spurious no tuple type for constructor error”
+(<a href="https://github.com/nim-lang/Nim/issues/18409">#18409</a>)</li>
+  <li>Fixed “Error with anonymous tuples passed to concept function arguments.”
+(<a href="https://github.com/nim-lang/Nim/issues/19730">#19730</a>)</li>
+</ul>
+
+<p>The complete list of changes is available
+<a href="https://github.com/nim-lang/Nim/compare/v1.6.4...v1.6.6">here</a>.</p>
+
+        </div>
+      </div>
+    </div>
+    <footer>
+  <section class="content">
+    <div class="pure-g">
+      <div class="copyright pure-u-2-3">
+        <p>
+          Unless otherwise stated, the content of this page is
+          licensed under the
+          <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0</a>
+          license.
+          Code displayed on this website is MIT licensed.
+        </p>
+        <p>
+          This website is available on
+          <a href="https://github.com/nim-lang/website">GitHub</a>
+          and contributions are welcome.
+          Original website design by
+          <a href="https://github.com/dom96">Dominik Picheta</a> and
+          <a href="https://github.com/Calinou">Hugo Locurcio</a>.
+          Logo by <a href="https://github.com/josephwecker">Joseph Wecker</a>.
+        </p>
+      </div>
+      <div class="pure-u-1-3 right-center">
+        <a href="https://m.do.co/c/637ab907c7f4"><img src="/assets/img/do.png"/></a>
+      </div>
+    </div>
+  </section>
+
+</footer>
+<script>
+    (function(){
+      function setTracking(a) {
+        var url = a.href;
+        a.onclick = function() {
+          if (typeof(ga) !== "undefined") {
+            ga('send', 'event', 'outbound', 'click', url, {
+              'transport': 'beacon',
+              'hitCallback': function(){document.location = url;}
+            });
+          }
+        };
+      }
+
+      var a = document.getElementsByTagName("a");
+      for (var i = 0; i < a.length; ++i) {
+        if (a[i].hostname != location.hostname &&
+            a[i].getAttribute("target") !== "_blank"
+        ) {
+          setTracking(a[i])
+        }
+      }
+    })();
+</script>
+
+  </div>
+  </body>
+</html>

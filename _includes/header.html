@@ -1,16 +1,23 @@
-    <!-- Intro Header -->
-    <header class="intro">
-        <div class="intro-body">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <img src="img/qlibs_logo_v2.png" />
-                        <p class="intro-text">{{ site.description }}<br>
-                        <a href="#about" class="btn btn-circle page-scroll">
-                            <i class="fa fa-angle-double-down animated"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+<header>
+  <nav class="pure-menu pure-menu-horizontal pure-menu-scrollable">
+    <div class="nav-content">
+      <a href="{{ site.baseurl }}/" class="pure-menu-heading pure-menu-link site-logo-container">
+        <img class="site-logo" src="{{ site.baseurl }}/assets/img/logo.svg" height="28" alt="Nim">
+      </a>
+      <ul class="pure-menu-list">
+        {% for item in site.navigation %}
+        <li class="pure-menu-item">
+          <a href="{{ site.baseurl }}{{ item.url }}"
+             class="pure-menu-link {% if page.current == item.title or layout.current == item.title or page.title == item.title %}current{% endif %}">
+            {{ item.title }}
+          </a>
+        </li>
+        {% endfor %}
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://github.com/nim-lang/Nim">Source</a>
+        </li>
+      </ul>
+    </div>
+    <div class="menu-fade"></div>
+  </nav>
+</header>

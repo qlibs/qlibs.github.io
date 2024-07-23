@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta name="charset" content="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The Nim programming language is a concise, fast programming language that compiles to C, C++ and JavaScript.">
+  <meta charset="utf-8">
+  <link rel="icon" type="image/png" href="/assets/img/logo_bw.png" />
+
+  
+  <title>Version 1.6.12 released - Nim Blog</title>
+  
+  <link rel="stylesheet" href="/assets/css/pure.min.css">
+  <link rel="stylesheet" href="/assets/css/pure-grids-responsive.min.css">
+  <link href="https://use.fontawesome.com/releases/v5.0.2/css/all.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+  
+  <link rel="stylesheet" href="/assets/css/highlight/github.css">
+  
+
+  <link rel="stylesheet" href="/assets/css/google-fonts.css">
+  <link rel="stylesheet" href="/assets/css/main.css?t=1721738524015683587">
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-48159761-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+  <script defer data-domain="nim-lang.org" src="https://plausible.io/js/plausible.js"></script>
+
+  <meta name="twitter:title" content="Version 1.6.12 released">
+
+  
+  <meta name="twitter:description" content="The Nim team is happy to announce version 1.6.12, our sixth patch release for Nim 1.6.">
+  <meta property="og:description" content="The Nim team is happy to announce version 1.6.12, our sixth patch release for Nim 1.6.">
+  
+
+  <meta name="twitter:site" content="@nim_lang">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://nim-lang.org/assets/img/twitter_banner.png">
+
+  <meta property="og:title" content="Version 1.6.12 released" />
+  <meta property="og:site_name" content="Nim Programming Language" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://nim-lang.org/assets/img/twitter_banner.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1000" />
+  <meta property="og:image:height" content="500" />
+  <meta property="og:image:alt" content="Nim Programming Language" />
+</head>
+
+  <body class="site">
+    <header>
+  <nav class="pure-menu pure-menu-horizontal pure-menu-scrollable">
+    <div class="nav-content">
+      <a href="/" class="pure-menu-heading pure-menu-link site-logo-container">
+        <img class="site-logo" src="/assets/img/logo.svg" height="28" alt="Nim">
+      </a>
+      <ul class="pure-menu-list">
+        
+        <li class="pure-menu-item">
+          <a href="/blog.html"
+             class="pure-menu-link current">
+            Blog
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/features.html"
+             class="pure-menu-link ">
+            Features
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/install.html"
+             class="pure-menu-link ">
+            Download
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/documentation.html"
+             class="pure-menu-link ">
+            Documentation
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="https://forum.nim-lang.org"
+             class="pure-menu-link ">
+            Forum
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/donate.html"
+             class="pure-menu-link ">
+            Donate
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://github.com/nim-lang/Nim">Source</a>
+        </li>
+      </ul>
+    </div>
+    <div class="menu-fade"></div>
+  </nav>
+</header>
+
+    <div class="site-content post-page">
+      <div class="content">
+        <div class="width-reduced">
+          <h1 class="post-title">
+            Version 1.6.12 released
+          </h1>
+          <h3 class="post-meta">
+            <span>
+              <i class="far fa-calendar-alt" aria-hidden="true"></i>
+              10 March 2023
+            </span>
+            
+            <span>
+              <i class="fa fa-user-circle" aria-hidden="true"></i>
+              The Nim Team
+            </span>
+            
+          </h3>
+          <p>The Nim team is happy to announce version 1.6.12, our sixth patch release for
+Nim 1.6.</p>
+
+<p>Version 1.6.12 is a result of almost four months of hard work, and it contains
+<a href="https://github.com/nim-lang/Nim/compare/v1.6.10...v1.6.12">51 commits</a>,
+bringing some general improvements over 1.6.10.</p>
+
+<p>We would recommend to all of our users to upgrade and use version 1.6.12.</p>
+
+<h1 id="installing-nim-16">Installing Nim 1.6</h1>
+
+<h2 id="new-users">New users</h2>
+
+<p>Check out if the package manager of your OS already ships version 1.6.12 or
+install it as described <a href="https://nim-lang.org/install.html">here</a>.</p>
+
+<h2 id="existing-users">Existing users</h2>
+
+<p>If you have installed a previous version of Nim using <code class="language-plaintext highlighter-rouge">choosenim</code>,
+getting Nim 1.6.12 is as easy as:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>choosenim update stable
+</code></pre></div></div>
+
+<p>Alternatively, you can download Nim 1.6.12 from
+<a href="https://github.com/nim-lang/nightlies/releases/tag/2023-03-10-version-1-6-1aa9273640c0c51486cf3a7b67282fe58f360e91">our nightlies builds</a>.</p>
+
+<h1 id="donating-to-nim">Donating to Nim</h1>
+
+<p>We would like to encourage you to donate to Nim.
+The donated money will be used to further improve Nim by creating bounties
+for the most important bugfixes and features.</p>
+
+<p>You can donate via:</p>
+
+<ul>
+  <li><a href="https://opencollective.com/nim">Open Collective</a></li>
+  <li><a href="https://www.patreon.com/araq">Patreon</a></li>
+  <li><a href="https://salt.bountysource.com/teams/nim">BountySource</a></li>
+  <li><a href="https://www.paypal.com/donate/?hosted_button_id=KYXH3BLJBHZTA">PayPal</a></li>
+  <li>Bitcoin: <code class="language-plaintext highlighter-rouge">1BXfuKM2uvoD6mbx4g5xM3eQhLzkCK77tJ</code></li>
+</ul>
+
+<p>If you are a company, we also offer commercial support.</p>
+
+<h1 id="bugfixes">Bugfixes</h1>
+
+<p>These reported issues were fixed:</p>
+
+<ul>
+  <li>Fixed “sizeof object containing a <code class="language-plaintext highlighter-rouge">set</code> is wrong”
+(<a href="https://github.com/nim-lang/Nim/issues/20914">#20914</a>)</li>
+  <li>Fixed “Missing bounds check for <code class="language-plaintext highlighter-rouge">len(toOpenArray..)</code>”
+(<a href="https://github.com/nim-lang/Nim/issues/20954">#20954</a>)</li>
+  <li>Fixed “Add warning for bare <code class="language-plaintext highlighter-rouge">except:</code> clause”
+(<a href="https://github.com/nim-lang/Nim/issues/19580">#19580</a>)</li>
+  <li>Fixed “Little Copyright notice inconsistency”
+(<a href="https://github.com/nim-lang/Nim/issues/20906">#20906</a>)</li>
+  <li>Fixed “std/deques: wrong result after calling shrink”
+(<a href="https://github.com/nim-lang/Nim/issues/21278">#21278</a>)</li>
+  <li>Fixed “<code class="language-plaintext highlighter-rouge">io.readLine</code> adds ‘\00’ char to the end”
+(<a href="https://github.com/nim-lang/Nim/issues/21273">#21273</a>)</li>
+  <li>Fixed “New JS mdoe issue: return + ref ints.”
+(<a href="https://github.com/nim-lang/Nim/issues/21317">#21317</a>)</li>
+  <li>Fixed “Bad codegen for passed var seq to proc returning array[] converted to seq with @”
+(<a href="https://github.com/nim-lang/Nim/issues/21333">#21333</a>)</li>
+  <li>Fixed “Templates allowed to use ambiguous identifier”
+(<a href="https://github.com/nim-lang/Nim/issues/1027">#1027</a>)</li>
+  <li>Fixed “Mutating a var parameter through a mutable view triggers SIGSEGV”
+(<a href="https://github.com/nim-lang/Nim/issues/20422">#20422</a>)</li>
+  <li>Fixed “macOS use SecRandomCopyBytes instead of getentropy”
+(<a href="https://github.com/nim-lang/Nim/issues/20466">#20466</a>)</li>
+  <li>Fixed “gcc error when constructing an object that has the same name in the same file name in 2 different directories”
+(<a href="https://github.com/nim-lang/Nim/issues/20139">#20139</a>)</li>
+</ul>
+
+<p>The complete list of changes is available
+<a href="https://github.com/nim-lang/Nim/compare/v1.6.10...v1.6.12">here</a>.</p>
+
+
+        </div>
+      </div>
+    </div>
+    <footer>
+  <section class="content">
+    <div class="pure-g">
+      <div class="copyright pure-u-2-3">
+        <p>
+          Unless otherwise stated, the content of this page is
+          licensed under the
+          <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0</a>
+          license.
+          Code displayed on this website is MIT licensed.
+        </p>
+        <p>
+          This website is available on
+          <a href="https://github.com/nim-lang/website">GitHub</a>
+          and contributions are welcome.
+          Original website design by
+          <a href="https://github.com/dom96">Dominik Picheta</a> and
+          <a href="https://github.com/Calinou">Hugo Locurcio</a>.
+          Logo by <a href="https://github.com/josephwecker">Joseph Wecker</a>.
+        </p>
+      </div>
+      <div class="pure-u-1-3 right-center">
+        <a href="https://m.do.co/c/637ab907c7f4"><img src="/assets/img/do.png"/></a>
+      </div>
+    </div>
+  </section>
+
+</footer>
+<script>
+    (function(){
+      function setTracking(a) {
+        var url = a.href;
+        a.onclick = function() {
+          if (typeof(ga) !== "undefined") {
+            ga('send', 'event', 'outbound', 'click', url, {
+              'transport': 'beacon',
+              'hitCallback': function(){document.location = url;}
+            });
+          }
+        };
+      }
+
+      var a = document.getElementsByTagName("a");
+      for (var i = 0; i < a.length; ++i) {
+        if (a[i].hostname != location.hostname &&
+            a[i].getAttribute("target") !== "_blank"
+        ) {
+          setTracking(a[i])
+        }
+      }
+    })();
+</script>
+
+  </div>
+  </body>
+</html>

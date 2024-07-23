@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta name="charset" content="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The Nim programming language is a concise, fast programming language that compiles to C, C++ and JavaScript.">
+  <meta charset="utf-8">
+  <link rel="icon" type="image/png" href="/assets/img/logo_bw.png" />
+
+  
+  <title>This Month with Nim: July and August 2023 - Nim Blog</title>
+  
+  <link rel="stylesheet" href="/assets/css/pure.min.css">
+  <link rel="stylesheet" href="/assets/css/pure-grids-responsive.min.css">
+  <link href="https://use.fontawesome.com/releases/v5.0.2/css/all.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+  
+  <link rel="stylesheet" href="/assets/css/highlight/github.css">
+  
+
+  <link rel="stylesheet" href="/assets/css/google-fonts.css">
+  <link rel="stylesheet" href="/assets/css/main.css?t=1721738524015683587">
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-48159761-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+  <script defer data-domain="nim-lang.org" src="https://plausible.io/js/plausible.js"></script>
+
+  <meta name="twitter:title" content="This Month with Nim: July and August 2023">
+
+  
+  <meta name="twitter:description" content="Webdev, webdev, webdev, and a backup program!">
+  <meta property="og:description" content="Webdev, webdev, webdev, and a backup program!">
+  
+
+  <meta name="twitter:site" content="@nim_lang">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://nim-lang.org/assets/img/twitter_banner.png">
+
+  <meta property="og:title" content="This Month with Nim: July and August 2023" />
+  <meta property="og:site_name" content="Nim Programming Language" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://nim-lang.org/assets/img/twitter_banner.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1000" />
+  <meta property="og:image:height" content="500" />
+  <meta property="og:image:alt" content="Nim Programming Language" />
+</head>
+
+  <body class="site">
+    <header>
+  <nav class="pure-menu pure-menu-horizontal pure-menu-scrollable">
+    <div class="nav-content">
+      <a href="/" class="pure-menu-heading pure-menu-link site-logo-container">
+        <img class="site-logo" src="/assets/img/logo.svg" height="28" alt="Nim">
+      </a>
+      <ul class="pure-menu-list">
+        
+        <li class="pure-menu-item">
+          <a href="/blog.html"
+             class="pure-menu-link current">
+            Blog
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/features.html"
+             class="pure-menu-link ">
+            Features
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/install.html"
+             class="pure-menu-link ">
+            Download
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/documentation.html"
+             class="pure-menu-link ">
+            Documentation
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="https://forum.nim-lang.org"
+             class="pure-menu-link ">
+            Forum
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/donate.html"
+             class="pure-menu-link ">
+            Donate
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://github.com/nim-lang/Nim">Source</a>
+        </li>
+      </ul>
+    </div>
+    <div class="menu-fade"></div>
+  </nav>
+</header>
+
+    <div class="site-content post-page">
+      <div class="content">
+        <div class="width-reduced">
+          <h1 class="post-title">
+            This Month with Nim: July and August 2023
+          </h1>
+          <h3 class="post-meta">
+            <span>
+              <i class="far fa-calendar-alt" aria-hidden="true"></i>
+              01 September 2023
+            </span>
+            
+            <span>
+              <i class="fa fa-user-circle" aria-hidden="true"></i>
+              The Nim Community
+            </span>
+            
+          </h3>
+          <h2 id="happyx"><a href="https://github.com/HapticX/HappyX">HappyX</a></h2>
+
+<h4 id="author-ethosa">Author: <a href="https://github.com/Ethosa">ethosa</a></h4>
+
+<p>HappyX is a macro-oriented full-stack web framework that combines frontend and backend features.</p>
+
+<p>With HappyX you can write single page applications (SPA),
+static site generation (SSG),
+and server side rendering (SSR) web applications.</p>
+
+<p>It provides the same syntax for all of these solutions:</p>
+
+<div class="language-nim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="n">happyx</span>
+
+<span class="n">serve</span><span class="p">(</span><span class="s">"127.0.0.1"</span><span class="p">,</span> <span class="mi">5000</span><span class="p">):</span>
+  <span class="s">"/"</span><span class="p">:</span>
+    <span class="s">"Hello, world!"</span>
+</code></pre></div></div>
+
+<p>or:</p>
+
+<div class="language-nim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="n">happyx</span>
+
+<span class="n">appRoutes</span><span class="p">(</span><span class="s">"app"</span><span class="p">):</span>
+  <span class="s">"/"</span><span class="p">:</span>
+    <span class="s">"Hello, world!"</span>
+</code></pre></div></div>
+
+<p>Included is a command line interface <code class="language-plaintext highlighter-rouge">hpx</code>.
+This enables easy creation of projects for Nim and Python.</p>
+
+<p>A non exhaustive list of features is as follows:</p>
+<ul>
+  <li>Multiple server options (built-in asynchttpserver, microasynchttpserver, httpbeast and httpx)</li>
+  <li>Hot code reloading (now only for SPA)</li>
+  <li>Debug logging with -d:debug</li>
+  <li>Powerful routing that includes path params with validation and mounting</li>
+  <li>Request models (see pydantic with fastapi from Python)</li>
+  <li>Components (fully supported only in SPA)</li>
+  <li>Event handlers (supported only in SPA)</li>
+  <li>buildHtml, buildStyle and buildJs macros</li>
+  <li>Automatically generated RestAPI Documentation</li>
+  <li>.hpx files to writing components imperative/declarative</li>
+  <li>VS Code extension to write projects more effectively</li>
+  <li>Python bindings</li>
+</ul>
+
+<h2 id="sauer"><a href="https://github.com/moigagoo/sauer">Sauer</a></h2>
+
+<h4 id="author-moigagoo">Author: <a href="https://github.com/moigagoo">moigagoo</a></h4>
+
+<p>Sauer is a command-line tool that helps set up Karax projects and add new pages and routes to them.</p>
+
+<p>Sauer uses <a href="https://github.com/moigagoo/kraut">Kraut</a> for routing and offers a sane default app structure where each page is a separate module.
+The routes are defined in <code class="language-plaintext highlighter-rouge">routes.nim</code> and the global state is just a module name <code class="language-plaintext highlighter-rouge">state.nim</code>.
+Simple as that.
+It automatically adds the necessary dependencies and useful tasks to your nimble file and even ships with a simple static server to serve your app locally for development.</p>
+
+<p>Install Sauer with <code class="language-plaintext highlighter-rouge">nimble install sauer</code> and run <code class="language-plaintext highlighter-rouge">sauer --help</code> to see the available commands.
+Sauer is powered by <a href="https://github.com/moigagoo/climate">Climate</a>.</p>
+
+<h2 id="ez-bkup"><a href="https://ezbkup.app">EZ Bkup</a></h2>
+
+<h4 id="author-itwrx">Author: ITwrx</h4>
+
+<h3 id="the-easiest-backup-program-on-earth">The easiest backup program on earth!</h3>
+
+<p>EZ Bkup is a data backup program for the desktop, striving to be as quick and easy to use, as possible.
+EZ Bkup is a graphical frontend for <a href="https://rsync.samba.org/">Rsync</a>,
+built with <a href="https://github.com/can-lehmann/owlkettle">Owlkettle</a> and <a href="https://www.gtk.org/">GTK</a>,
+written in Nim.
+EZ Bkup currently runs on Linux distributions,
+and expects rsync (3.2.4+) and polkit to be installed.</p>
+
+<h3 id="respects-your-time">Respects Your Time</h3>
+<ul>
+  <li>Zero configuration/settings required.</li>
+  <li>Zero Rsync knowledge required.</li>
+  <li>Create Backup Routine(s) and run on-demand.</li>
+  <li>Fast: Only copies what has changed since last time.</li>
+</ul>
+
+<h3 id="respects-your-freedom">Respects your Freedom</h3>
+<ul>
+  <li>EZ Bkup source code is released under the <a href="https://www.gnu.org/licenses/gpl-3.0.en.html">GPLv3</a>.</li>
+  <li>No <a href="https://www.gnu.org/proprietary/proprietary-drm.en.html">DRM</a>.</li>
+</ul>
+
+<h3 id="respects-your-privacy">Respects your Privacy</h3>
+<ul>
+  <li>No <a href="https://www.gnu.org/proprietary/proprietary-surveillance.en.html">Telemetry</a>.</li>
+  <li>Does not beam your data back to the mothership.</li>
+</ul>
+
+<p>If you’ve been reluctant to backup your data on a regular basis, or at all,
+because you didn’t want to learn/configure a backup program,
+read a man page and use a command line program, or deal with the slow and tedious process of copying and pasting disparate folders/directories,
+we understand.
+That’s why we created EZ Bkup for ourselves,
+and are happy to share it with you!
+Thank You for supporting the development of ethical software!</p>
+
+<p>A special thanks to Nim for rekindling the fun of programming, and making it easier to create programs that are more correct and efficient!</p>
+
+<h2 id="karkas"><a href="https://github.com/moigagoo/karkas">Karkas</a></h2>
+
+<h4 id="author-moigagoo-1">Author: <a href="https://github.com/moigagoo">moigagoo</a></h4>
+
+<p>Karkas is a library that makes creating web sites with Karax a bit more pleasant.
+It offers a bunch of styles to build layouts and some syntactic sugar to save you typing.</p>
+
+<p>Karkas allows you to create complex layouts by combining basic primitives.
+It also offers a clean syntax for style combination,
+which lets you write clear code and be obvious about your intentions as a programmer.</p>
+
+<p>For example,
+you can write something like this: <code class="language-plaintext highlighter-rouge">tdiv(style = hStack() &lt;- box(2) &lt;- {border: "solid"})</code>.
+Which means there’s a vertical stack which is in turn a box of size 2 inside another container,
+with a solid border.</p>
+
+<p>Find the official tutorial at <a href="https://karkas.nim.town">https://karkas.nim.town</a>.</p>
+
+<hr />
+
+<h2 id="want-to-see-your-project-here-next-month">Want to see your project here next month?</h2>
+
+<p><a href="https://github.com/beef331/website#adding-your-project-to-month-with-nim">Follow this</a>
+to add your project to the next month’s blog post.</p>
+
+        </div>
+      </div>
+    </div>
+    <footer>
+  <section class="content">
+    <div class="pure-g">
+      <div class="copyright pure-u-2-3">
+        <p>
+          Unless otherwise stated, the content of this page is
+          licensed under the
+          <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0</a>
+          license.
+          Code displayed on this website is MIT licensed.
+        </p>
+        <p>
+          This website is available on
+          <a href="https://github.com/nim-lang/website">GitHub</a>
+          and contributions are welcome.
+          Original website design by
+          <a href="https://github.com/dom96">Dominik Picheta</a> and
+          <a href="https://github.com/Calinou">Hugo Locurcio</a>.
+          Logo by <a href="https://github.com/josephwecker">Joseph Wecker</a>.
+        </p>
+      </div>
+      <div class="pure-u-1-3 right-center">
+        <a href="https://m.do.co/c/637ab907c7f4"><img src="/assets/img/do.png"/></a>
+      </div>
+    </div>
+  </section>
+
+</footer>
+<script>
+    (function(){
+      function setTracking(a) {
+        var url = a.href;
+        a.onclick = function() {
+          if (typeof(ga) !== "undefined") {
+            ga('send', 'event', 'outbound', 'click', url, {
+              'transport': 'beacon',
+              'hitCallback': function(){document.location = url;}
+            });
+          }
+        };
+      }
+
+      var a = document.getElementsByTagName("a");
+      for (var i = 0; i < a.length; ++i) {
+        if (a[i].hostname != location.hostname &&
+            a[i].getAttribute("target") !== "_blank"
+        ) {
+          setTracking(a[i])
+        }
+      }
+    })();
+</script>
+
+  </div>
+  </body>
+</html>

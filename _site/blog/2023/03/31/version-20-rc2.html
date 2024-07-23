@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta name="charset" content="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The Nim programming language is a concise, fast programming language that compiles to C, C++ and JavaScript.">
+  <meta charset="utf-8">
+  <link rel="icon" type="image/png" href="/assets/img/logo_bw.png" />
+
+  
+  <title>Version 2.0.0 RC2 - Nim Blog</title>
+  
+  <link rel="stylesheet" href="/assets/css/pure.min.css">
+  <link rel="stylesheet" href="/assets/css/pure-grids-responsive.min.css">
+  <link href="https://use.fontawesome.com/releases/v5.0.2/css/all.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+  
+  <link rel="stylesheet" href="/assets/css/highlight/github.css">
+  
+
+  <link rel="stylesheet" href="/assets/css/google-fonts.css">
+  <link rel="stylesheet" href="/assets/css/main.css?t=1721738524015683587">
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-48159761-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+  <script defer data-domain="nim-lang.org" src="https://plausible.io/js/plausible.js"></script>
+
+  <meta name="twitter:title" content="Version 2.0.0 RC2">
+
+  
+  <meta name="twitter:description" content="The second release candidate (RC2) for Nim version 2.0 is ready for testing.">
+  <meta property="og:description" content="The second release candidate (RC2) for Nim version 2.0 is ready for testing.">
+  
+
+  <meta name="twitter:site" content="@nim_lang">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://nim-lang.org/assets/img/twitter_banner.png">
+
+  <meta property="og:title" content="Version 2.0.0 RC2" />
+  <meta property="og:site_name" content="Nim Programming Language" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://nim-lang.org/assets/img/twitter_banner.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1000" />
+  <meta property="og:image:height" content="500" />
+  <meta property="og:image:alt" content="Nim Programming Language" />
+</head>
+
+  <body class="site">
+    <header>
+  <nav class="pure-menu pure-menu-horizontal pure-menu-scrollable">
+    <div class="nav-content">
+      <a href="/" class="pure-menu-heading pure-menu-link site-logo-container">
+        <img class="site-logo" src="/assets/img/logo.svg" height="28" alt="Nim">
+      </a>
+      <ul class="pure-menu-list">
+        
+        <li class="pure-menu-item">
+          <a href="/blog.html"
+             class="pure-menu-link current">
+            Blog
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/features.html"
+             class="pure-menu-link ">
+            Features
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/install.html"
+             class="pure-menu-link ">
+            Download
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/documentation.html"
+             class="pure-menu-link ">
+            Documentation
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="https://forum.nim-lang.org"
+             class="pure-menu-link ">
+            Forum
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/donate.html"
+             class="pure-menu-link ">
+            Donate
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://github.com/nim-lang/Nim">Source</a>
+        </li>
+      </ul>
+    </div>
+    <div class="menu-fade"></div>
+  </nav>
+</header>
+
+    <div class="site-content post-page">
+      <div class="content">
+        <div class="width-reduced">
+          <h1 class="post-title">
+            Version 2.0.0 RC2
+          </h1>
+          <h3 class="post-meta">
+            <span>
+              <i class="far fa-calendar-alt" aria-hidden="true"></i>
+              31 March 2023
+            </span>
+            
+            <span>
+              <i class="fa fa-user-circle" aria-hidden="true"></i>
+              The Nim Team
+            </span>
+            
+          </h3>
+          <p>The second release candidate (RC2) for Nim version 2.0 is ready for testing.</p>
+
+<p>Don’t panic! One of our design goals was to make it easy to write code that works with Nim version 1 and 2.
+Many important packages already work with version 2 and as usual many innovations are behind switches
+that can be enabled or disabled on a per module level thanks to the <code class="language-plaintext highlighter-rouge">.experimental</code> pragma.</p>
+
+<p>Version 2 is based on the same codebase as version 1, it’s an evolution, not a revolution.</p>
+
+<p>Compared to the RC1, we have many ORC-related bugfixes,
+but the most crucial difference for ordinary users
+are the vastly improved error messages:</p>
+
+<div class="language-nim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">proc </span><span class="nf">foo</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="kt">string</span><span class="p">)</span> <span class="o">=</span> <span class="k">discard</span>
+<span class="k">proc </span><span class="nf">foo</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="kt">int</span><span class="p">)</span> <span class="o">=</span> <span class="k">discard</span>
+<span class="k">proc </span><span class="nf">foo</span><span class="p">(</span><span class="n">c</span><span class="p">:</span> <span class="kt">char</span><span class="p">)</span> <span class="o">=</span> <span class="k">discard</span>
+
+<span class="n">foo</span> <span class="mi">4</span>
+</code></pre></div></div>
+
+<p>produces:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>temp3.nim(11, 1) Error: type mismatch
+Expression: foo 4
+  [1] 4: int literal(4)
+
+Expected one of (first mismatch at [position]):
+[1] proc foo(c: char)
+[1] proc foo(s: string)
+[2] proc foo(x, y: int)
+</code></pre></div></div>
+
+<p>For the complete list of new features and bug fixes in Nim 2.0 compared to Nim 1.x,
+please check our <a href="https://nim-lang.org/blog/2022/12/21/version-20-rc.html">Nim v2.0.0 RC1 article</a>.</p>
+
+<h1 id="installing-nim-20-rc2">Installing Nim 2.0 RC2</h1>
+
+<h2 id="building-from-source">Building from source</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/nim-lang/Nim
+<span class="nb">cd </span>Nim
+git checkout version-2-0
+sh build_all.sh
+</code></pre></div></div>
+<p>The last command can be re-run after pulling new commits.</p>
+
+<h2 id="using-nightlies-build">Using nightlies build</h2>
+
+<p>Download a <a href="https://github.com/nim-lang/nightlies/releases/tag/2023-03-31-version-2-0-2e4ba4ad93c6d9021b6de975cf7ac78e67acba26">nightly build</a>.</p>
+
+<h1 id="bugfixes">Bugfixes</h1>
+
+<p>These reported issues were fixed, on top of <a href="https://nim-lang.org/blog/2022/12/21/version-20-rc.html#bugfixes">all bugfixes already in RC1</a>:</p>
+
+<ul>
+  <li>Fixed “SIGSEGV possibly caused by literal type”
+(<a href="https://github.com/nim-lang/Nim/issues/16541">#16541</a>)</li>
+  <li>Fixed “strutils.nim(954, 13) Warning: target type is larger than source type [CastSizes]”
+(<a href="https://github.com/nim-lang/Nim/issues/20244">#20244</a>)</li>
+  <li>Fixed “Bad C++ codegen on distinct generics C++ types (Atomics here).”
+(<a href="https://github.com/nim-lang/Nim/issues/12946">#12946</a>)</li>
+  <li>Fixed “{.compileTime.} tuple destructuring - crash on 0.20, bad codegen on 0.19”
+(<a href="https://github.com/nim-lang/Nim/issues/11634">#11634</a>)</li>
+  <li>Fixed “calling <code class="language-plaintext highlighter-rouge">system.card[T](x: set[T])</code> with <code class="language-plaintext highlighter-rouge">T</code> of <code class="language-plaintext highlighter-rouge">int8</code> or <code class="language-plaintext highlighter-rouge">uint8</code> uses mismatched C array sizes”
+(<a href="https://github.com/nim-lang/Nim/issues/20997">#20997</a>)</li>
+  <li>Fixed “Visual Studio(VCC) 2019 cannot compile empty tuple generated by Nim”
+(<a href="https://github.com/nim-lang/Nim/issues/14667">#14667</a>)</li>
+  <li>Fixed “Fatal memory overwrite bug with <code class="language-plaintext highlighter-rouge">acyclic</code> pragmas”
+(<a href="https://github.com/nim-lang/Nim/issues/21171">#21171</a>)</li>
+  <li>Fixed “The changelog.md file is missing in the release tarball”
+(<a href="https://github.com/nim-lang/Nim/issues/19997">#19997</a>)</li>
+  <li>Fixed “line number missing from stacktrace “
+(<a href="https://github.com/nim-lang/Nim/issues/14444">#14444</a>)</li>
+  <li>Fixed “panicoverride / patching fatal, doesn’t work for assertions in Nim 2.0 RC1”
+(<a href="https://github.com/nim-lang/Nim/issues/21195">#21195</a>)</li>
+  <li>Fixed “Incorrect codegen for VCC compiler”
+(<a href="https://github.com/nim-lang/Nim/issues/15117">#15117</a>)</li>
+  <li>Fixed “Little Copyright notice inconsistency”
+(<a href="https://github.com/nim-lang/Nim/issues/20906">#20906</a>)</li>
+  <li>Fixed “Keys in enum are case-sensitive on OSX and case-insensitive on linux”
+(<a href="https://github.com/nim-lang/Nim/issues/21207">#21207</a>)</li>
+  <li>Fixed “Nimsuggest:  Importing std/times with the JS backend reports bogus compile error”
+(<a href="https://github.com/nim-lang/Nim/issues/21209">#21209</a>)</li>
+  <li>Fixed “highlite.getNextToken() returns gtEof if only ‘/’ in C.”
+(<a href="https://github.com/nim-lang/Nim/issues/21232">#21232</a>)</li>
+  <li>Fixed “<code class="language-plaintext highlighter-rouge">{.requiresInit.}</code> has several bugs”
+(<a href="https://github.com/nim-lang/Nim/issues/20253">#20253</a>)</li>
+  <li>Fixed “New concepts based on RFCs#168 doesn’t resolve correctly”
+(<a href="https://github.com/nim-lang/Nim/issues/21263">#21263</a>)</li>
+  <li>Fixed “Compiler crash on recursive object in sum type [regression]”
+(<a href="https://github.com/nim-lang/Nim/issues/21260">#21260</a>)</li>
+  <li>Fixed “Source download from Nim releases doesn’t have build_all.sh”
+(<a href="https://github.com/nim-lang/Nim/issues/21243">#21243</a>)</li>
+  <li>Fixed “Overloaded enum with {.pure.} causes nim check to segfault”
+(<a href="https://github.com/nim-lang/Nim/issues/21257">#21257</a>)</li>
+  <li>Fixed “getImpl for closure iterator works unreliably”
+(<a href="https://github.com/nim-lang/Nim/issues/19818">#19818</a>)</li>
+  <li>Fixed “std/deques: wrong result after calling shrink”
+(<a href="https://github.com/nim-lang/Nim/issues/21278">#21278</a>)</li>
+  <li>Fixed “std/xmltree: adds indentation incorrectly to text nodes”
+(<a href="https://github.com/nim-lang/Nim/issues/21290">#21290</a>)</li>
+  <li>Fixed “<code class="language-plaintext highlighter-rouge">nim doc</code> is not executing runnableExamples in version 1.9.1 [regression]”
+(<a href="https://github.com/nim-lang/Nim/issues/21261">#21261</a>)</li>
+  <li>Fixed “<code class="language-plaintext highlighter-rouge">io.readLine</code> adds ‘\00’ char to the end”
+(<a href="https://github.com/nim-lang/Nim/issues/21273">#21273</a>)</li>
+  <li>Fixed “&amp;”{1.236:&lt;.2}” doesn’t work in VM.”
+(<a href="https://github.com/nim-lang/Nim/issues/18134">#18134</a>)</li>
+  <li>Fixed “Should Nim VM callbacks be a table instead of a sequence?”
+(<a href="https://github.com/nim-lang/Nim/issues/14409">#14409</a>)</li>
+  <li>Fixed “C++ Atomics: operator= is implicitly deleted because the default definition would be ill-formed”
+(<a href="https://github.com/nim-lang/Nim/issues/13093">#13093</a>)</li>
+  <li>Fixed “<code class="language-plaintext highlighter-rouge">for ai in a</code> has quadratic complexity in VM when <code class="language-plaintext highlighter-rouge">a</code> is const”
+(<a href="https://github.com/nim-lang/Nim/issues/16790">#16790</a>)</li>
+  <li>Fixed “New JS mdoe issue: return + ref ints.”
+(<a href="https://github.com/nim-lang/Nim/issues/21317">#21317</a>)</li>
+  <li>Fixed “nim doc documents unexported fields of exported types”
+(<a href="https://github.com/nim-lang/Nim/issues/19396">#19396</a>)</li>
+  <li>Fixed “Bad codegen for passed var seq to proc returning array[] converted to seq with @”
+(<a href="https://github.com/nim-lang/Nim/issues/21333">#21333</a>)</li>
+  <li>Fixed “[vcc] There is no way to set the compiler toolset version “
+(<a href="https://github.com/nim-lang/Nim/issues/21335">#21335</a>)</li>
+  <li>Fixed “<code class="language-plaintext highlighter-rouge">Error: internal error: cannot map the empty seq type to a C type</code> with <code class="language-plaintext highlighter-rouge">@[]</code>”
+(<a href="https://github.com/nim-lang/Nim/issues/21360">#21360</a>)</li>
+  <li>Fixed “dotcall mismatch”
+(<a href="https://github.com/nim-lang/Nim/issues/1072">#1072</a>)</li>
+  <li>Fixed “iterator declaration zeros variable on ARC/ORC”
+(<a href="https://github.com/nim-lang/Nim/issues/19795">#19795</a>)</li>
+  <li>Fixed “IntSet mutates inside func”
+(<a href="https://github.com/nim-lang/Nim/issues/21393">#21393</a>)</li>
+  <li>Fixed “Can not use nim 2’s new default instantiation with any object type with a <code class="language-plaintext highlighter-rouge">distinct DateTime</code> field”
+(<a href="https://github.com/nim-lang/Nim/issues/20695">#20695</a>)</li>
+  <li>Fixed “SIGSEGV from typed macros”
+(<a href="https://github.com/nim-lang/Nim/issues/17864">#17864</a>)</li>
+  <li>Fixed “JS backend: Can’t iterate over openArray in proc that’s returned by another proc”
+(<a href="https://github.com/nim-lang/Nim/issues/21439">#21439</a>)</li>
+  <li>Fixed “enable norm in the important packages”
+(<a href="https://github.com/nim-lang/Nim/issues/21452">#21452</a>)</li>
+  <li>Fixed “C++ backend: Nim memsetting imported classes to 0 breaks semantics established by default constructor of imported classes”
+(<a href="https://github.com/nim-lang/Nim/issues/21279">#21279</a>)</li>
+  <li>Fixed “[vm] Set/string/seq inside loop not initialized properly”
+(<a href="https://github.com/nim-lang/Nim/issues/10938">#10938</a>)</li>
+  <li>Fixed “Orc compiler crash when not making object from <code class="language-plaintext highlighter-rouge">lineInfoObj</code> into a literal”
+(<a href="https://github.com/nim-lang/Nim/issues/21326">#21326</a>)</li>
+  <li>Fixed “=sink .error is not respected”
+(<a href="https://github.com/nim-lang/Nim/issues/19291">#19291</a>)</li>
+  <li>Fixed “Mutating a var parameter through a mutable view triggers SIGSEGV”
+(<a href="https://github.com/nim-lang/Nim/issues/20422">#20422</a>)</li>
+  <li>Fixed “gcc error when constructing an object that has the same name in the same file name in 2 different directories”
+(<a href="https://github.com/nim-lang/Nim/issues/20139">#20139</a>)</li>
+  <li>Fixed “Move nim-gdb.py and add nim-lldb.py”
+(<a href="https://github.com/nim-lang/Nim/issues/21461">#21461</a>)</li>
+  <li>Fixed “small issue in documentation with osproc.waitForExit”
+(<a href="https://github.com/nim-lang/Nim/issues/21449">#21449</a>)</li>
+  <li>Fixed “[Codegen] function call is not emitted”
+(<a href="https://github.com/nim-lang/Nim/issues/21272">#21272</a>)</li>
+  <li>Fixed “return type inference broken for generic closures”
+(<a href="https://github.com/nim-lang/Nim/issues/16654">#16654</a>)</li>
+  <li>Fixed “Invalid C code can be generated when using std/sugar arrow syntax without specifying types”
+(<a href="https://github.com/nim-lang/Nim/issues/20704">#20704</a>)</li>
+  <li>Fixed “ICE returning <code class="language-plaintext highlighter-rouge">@[]</code> as <code class="language-plaintext highlighter-rouge">seq[int]</code>”
+(<a href="https://github.com/nim-lang/Nim/issues/21377">#21377</a>)</li>
+  <li>Fixed “Incorrect number of types needed to call a proc with an argument being a sum of generics”
+(<a href="https://github.com/nim-lang/Nim/issues/6231">#6231</a>)</li>
+  <li>Fixed “Compiler hangs when using generics”
+(<a href="https://github.com/nim-lang/Nim/issues/8295">#8295</a>)</li>
+  <li>Fixed “Segfault when mixing seqs, orc, variants and futures”
+(<a href="https://github.com/nim-lang/Nim/issues/21023">#21023</a>)</li>
+  <li>Fixed “Segfault compiling async-related code”
+(<a href="https://github.com/nim-lang/Nim/issues/21306">#21306</a>)</li>
+  <li>Fixed “Ambiguous calls compiles when module name are equal”
+(<a href="https://github.com/nim-lang/Nim/issues/21496">#21496</a>)</li>
+  <li>Fixed “Exception raised in closure may be “skipped” (<code class="language-plaintext highlighter-rouge">--exceptions:goto</code>)”
+(<a href="https://github.com/nim-lang/Nim/issues/19857">#19857</a>)</li>
+  <li>Fixed “Change branch of an object variant is allowed”
+(<a href="https://github.com/nim-lang/Nim/issues/18977">#18977</a>)</li>
+  <li>Fixed “Inconsistent behavior with certain procs when XML node kind is xnVerbatimText”
+(<a href="https://github.com/nim-lang/Nim/issues/21541">#21541</a>)</li>
+  <li>Fixed “newSeqWith: Unexpected behavior when len template parameter contains side effects”
+(<a href="https://github.com/nim-lang/Nim/issues/21538">#21538</a>)</li>
+  <li>Fixed “Generics for tuple”
+(<a href="https://github.com/nim-lang/Nim/issues/21536">#21536</a>)</li>
+  <li>Fixed “[Codegen] function call is not emitted”
+(<a href="https://github.com/nim-lang/Nim/issues/21272">#21272</a>)</li>
+  <li>Fixed “Private field is not resolved properly in templates”
+(<a href="https://github.com/nim-lang/Nim/issues/3770">#3770</a>)</li>
+  <li>Fixed “Crash in compiler when using system.any by accident.”
+(<a href="https://github.com/nim-lang/Nim/issues/14255">#14255</a>)</li>
+  <li>Fixed “importcpp types with explicit constructor “producing chosen constructor is explicit in copy-initialization””
+(<a href="https://github.com/nim-lang/Nim/issues/21505">#21505</a>)</li>
+  <li>Fixed “[ARC] Destructor falsely injected in code with generics &amp; a type alias”
+(<a href="https://github.com/nim-lang/Nim/issues/20993">#20993</a>)</li>
+</ul>
+
+
+        </div>
+      </div>
+    </div>
+    <footer>
+  <section class="content">
+    <div class="pure-g">
+      <div class="copyright pure-u-2-3">
+        <p>
+          Unless otherwise stated, the content of this page is
+          licensed under the
+          <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0</a>
+          license.
+          Code displayed on this website is MIT licensed.
+        </p>
+        <p>
+          This website is available on
+          <a href="https://github.com/nim-lang/website">GitHub</a>
+          and contributions are welcome.
+          Original website design by
+          <a href="https://github.com/dom96">Dominik Picheta</a> and
+          <a href="https://github.com/Calinou">Hugo Locurcio</a>.
+          Logo by <a href="https://github.com/josephwecker">Joseph Wecker</a>.
+        </p>
+      </div>
+      <div class="pure-u-1-3 right-center">
+        <a href="https://m.do.co/c/637ab907c7f4"><img src="/assets/img/do.png"/></a>
+      </div>
+    </div>
+  </section>
+
+</footer>
+<script>
+    (function(){
+      function setTracking(a) {
+        var url = a.href;
+        a.onclick = function() {
+          if (typeof(ga) !== "undefined") {
+            ga('send', 'event', 'outbound', 'click', url, {
+              'transport': 'beacon',
+              'hitCallback': function(){document.location = url;}
+            });
+          }
+        };
+      }
+
+      var a = document.getElementsByTagName("a");
+      for (var i = 0; i < a.length; ++i) {
+        if (a[i].hostname != location.hostname &&
+            a[i].getAttribute("target") !== "_blank"
+        ) {
+          setTracking(a[i])
+        }
+      }
+    })();
+</script>
+
+  </div>
+  </body>
+</html>

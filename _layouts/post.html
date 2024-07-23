@@ -1,0 +1,35 @@
+---
+current: Blog
+title: Nim Blog
+---
+<!doctype html>
+<html lang="en">
+  {% include head.html %}
+  <body class="site">
+    {% include header.html %}
+    <div class="site-content post-page">
+      <div class="content">
+        <div class="width-reduced">
+          <h1 class="post-title">
+            {{ page.title }}
+          </h1>
+          <h3 class="post-meta">
+            <span>
+              <i class="far fa-calendar-alt" aria-hidden="true"></i>
+              {{ page.date | date_to_long_string }}
+            </span>
+            {% for author in page.author %}
+            <span>
+              <i class="fa fa-user-circle" aria-hidden="true"></i>
+              {{ author }}
+            </span>
+            {% endfor %}
+          </h3>
+          {{ content }}
+        </div>
+      </div>
+    </div>
+    {% include footer.html %}
+  </div>
+  </body>
+</html>

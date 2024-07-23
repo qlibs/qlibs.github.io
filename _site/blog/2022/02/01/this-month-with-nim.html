@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta name="charset" content="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The Nim programming language is a concise, fast programming language that compiles to C, C++ and JavaScript.">
+  <meta charset="utf-8">
+  <link rel="icon" type="image/png" href="/assets/img/logo_bw.png" />
+
+  
+  <title>This Month with Nim: January 2022 - Nim Blog</title>
+  
+  <link rel="stylesheet" href="/assets/css/pure.min.css">
+  <link rel="stylesheet" href="/assets/css/pure-grids-responsive.min.css">
+  <link href="https://use.fontawesome.com/releases/v5.0.2/css/all.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+  
+  <link rel="stylesheet" href="/assets/css/highlight/github.css">
+  
+
+  <link rel="stylesheet" href="/assets/css/google-fonts.css">
+  <link rel="stylesheet" href="/assets/css/main.css?t=1721738524015683587">
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-48159761-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+  <script defer data-domain="nim-lang.org" src="https://plausible.io/js/plausible.js"></script>
+
+  <meta name="twitter:title" content="This Month with Nim: January 2022">
+
+  
+  <meta name="twitter:description" content="January and December introduced cool and interesting libraries.">
+  <meta property="og:description" content="January and December introduced cool and interesting libraries.">
+  
+
+  <meta name="twitter:site" content="@nim_lang">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://nim-lang.org/assets/img/twitter_banner.png">
+
+  <meta property="og:title" content="This Month with Nim: January 2022" />
+  <meta property="og:site_name" content="Nim Programming Language" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://nim-lang.org/assets/img/twitter_banner.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1000" />
+  <meta property="og:image:height" content="500" />
+  <meta property="og:image:alt" content="Nim Programming Language" />
+</head>
+
+  <body class="site">
+    <header>
+  <nav class="pure-menu pure-menu-horizontal pure-menu-scrollable">
+    <div class="nav-content">
+      <a href="/" class="pure-menu-heading pure-menu-link site-logo-container">
+        <img class="site-logo" src="/assets/img/logo.svg" height="28" alt="Nim">
+      </a>
+      <ul class="pure-menu-list">
+        
+        <li class="pure-menu-item">
+          <a href="/blog.html"
+             class="pure-menu-link current">
+            Blog
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/features.html"
+             class="pure-menu-link ">
+            Features
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/install.html"
+             class="pure-menu-link ">
+            Download
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/documentation.html"
+             class="pure-menu-link ">
+            Documentation
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="https://forum.nim-lang.org"
+             class="pure-menu-link ">
+            Forum
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/donate.html"
+             class="pure-menu-link ">
+            Donate
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://github.com/nim-lang/Nim">Source</a>
+        </li>
+      </ul>
+    </div>
+    <div class="menu-fade"></div>
+  </nav>
+</header>
+
+    <div class="site-content post-page">
+      <div class="content">
+        <div class="width-reduced">
+          <h1 class="post-title">
+            This Month with Nim: January 2022
+          </h1>
+          <h3 class="post-meta">
+            <span>
+              <i class="far fa-calendar-alt" aria-hidden="true"></i>
+              01 February 2022
+            </span>
+            
+            <span>
+              <i class="fa fa-user-circle" aria-hidden="true"></i>
+              The Nim Community
+            </span>
+            
+          </h3>
+          <h2 id="mcd"><a href="https://gitlab.com/malicious-commit-detector/mcd">MCD</a></h2>
+
+<h4 id="author-echopouet">Author: <a href="https://gitlab.com/EchoPouet">EchoPouet</a></h4>
+<p>MCD (Malicious Commit Detector) is an application to detect which commit generates malicious code detection by antivirus software.</p>
+
+<p>MCD use the <a href="https://www.virustotal.com">Virus Total</a> web API to detect malicious code in files.
+You need a API key that you can get with a free Virus Total account.
+A pro account is prefered if you have lot of files to check because the free version limit the number of request.</p>
+
+<p>To analyse your project commits, you must create a file to explain how build the project that you will test.</p>
+
+<p>The file is a TOML format it must contains these keys:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">project_dir</code>: path of the project source code. Absolute path or relative to this file.</li>
+  <li><code class="language-plaintext highlighter-rouge">build_dir</code>: folder where the commands must be run. Relative path to project_dir.</li>
+  <li><code class="language-plaintext highlighter-rouge">build_command</code>: a list of succesive commands to run to build your project. Relative path to project_dir.</li>
+  <li><code class="language-plaintext highlighter-rouge">file_path</code>: a list of all files to analyse. Relative path to project_dir.</li>
+</ul>
+
+<p>To analyze the project’s master branch, run the following command:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.\mcd.exe detectCommit -a=XXXXXXXXXX -c=c:\Users\A\mcd\tests\mcd-config.toml -b=master
+Configuration file: c:\Users\A\mcd\tests\mcd-config.toml
+🔍 Commit "70740ce"
+🔨 Build
+⏳ Wait analyze 25 sec ...
+  analyze not completed, wait 25 sec ...
+  analyze not completed, wait 25 sec ...
+  analyze not completed, wait 25 sec ...
+❌ malicious.exe
+🔍 Commit "c92584b"
+🔨 Build
+⏳ Wait analyze 25 sec ...
+  analyze not completed, wait 25 sec ...
+  analyze not completed, wait 25 sec ...
+  analyze not completed, wait 25 sec ...
+✔️ malicious.exe
+Commit "c92584b" is the last commit without generated malicous files
+</code></pre></div></div>
+
+<h2 id="grab"><a href="https://github.com/metagn/grab">grab</a></h2>
+
+<h4 id="author-metagn">Author: <a href="https://github.com/metagn">metagn</a></h4>
+<p>Adds a <code class="language-plaintext highlighter-rouge">grab</code> statement for installing and importing Nimble packages
+directly through Nim code, similar to Groovy’s Grape and <code class="language-plaintext highlighter-rouge">@Grab</code>. Works
+with NimScript, as all the computation is done at compile time.</p>
+
+<p>This installs the package globally, and can affect compilation time. For
+this reason it should generally only be used for scripts and snippets and
+the like.</p>
+
+<div class="language-nim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="n">grab</span>
+
+<span class="c"># install the package `regex` if not installed already, and import it</span>
+<span class="n">grab</span> <span class="s">"regex"</span>
+
+<span class="n">assert</span> <span class="s">"abc.123"</span><span class="p">.</span><span class="n">match</span><span class="p">(</span><span class="s">re"\w+\.\d+"</span><span class="p">)</span>
+
+<span class="c"># run install command with the given arguments</span>
+<span class="n">grab</span> <span class="n">package</span><span class="p">(</span><span class="s">"-y https://github.com/arnetheduck/nim-result@#HEAD"</span><span class="p">,</span>
+             <span class="n">name</span> <span class="o">=</span> <span class="s">"result"</span><span class="p">,</span> <span class="n">forceInstall</span> <span class="o">=</span> <span class="kp">true</span><span class="p">):</span> <span class="c"># clarify package name to correctly query path</span>
+  <span class="c"># imports from the package directory</span>
+  <span class="k">import</span> <span class="n">results</span>
+
+<span class="k">func</span> <span class="n">works</span><span class="p">():</span> <span class="n">Result</span><span class="o">[</span><span class="kt">int</span><span class="p">,</span> <span class="kt">string</span><span class="o">]</span> <span class="o">=</span>
+  <span class="n">result</span><span class="p">.</span><span class="n">ok</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+
+<span class="k">func</span> <span class="n">fails</span><span class="p">():</span> <span class="n">Result</span><span class="o">[</span><span class="kt">int</span><span class="p">,</span> <span class="kt">string</span><span class="o">]</span> <span class="o">=</span>
+  <span class="n">result</span><span class="p">.</span><span class="n">err</span><span class="p">(</span><span class="s">"abc"</span><span class="p">)</span>
+
+<span class="n">assert</span> <span class="n">works</span><span class="p">().</span><span class="n">isOk</span>
+<span class="n">assert</span> <span class="n">fails</span><span class="p">().</span><span class="n">error</span> <span class="o">==</span> <span class="s">"abc"</span>
+</code></pre></div></div>
+
+<p>Install with:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nimble install grab
+</code></pre></div></div>
+
+<h2 id="slicerator"><a href="https://github.com/beef331/slicerator">Slicerator</a></h2>
+
+<h4 id="author-jason-beetham">Author: <a href="https://github.com/beef331/slicerator">Jason Beetham</a></h4>
+
+<p>Slicerator is a package with a bunch of goodies for iterators.
+From implementing an <code class="language-plaintext highlighter-rouge">[]</code> iterator for <code class="language-plaintext highlighter-rouge">openarray</code>s for zero-copy slicing iterations, to being able to make a closure from an inline iterator it’s got useful features.
+The following is a showcase of just some of the features:</p>
+<div class="language-nim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="n">slicerator</span>
+<span class="k">var</span> <span class="n">myIter</span> <span class="o">=</span> <span class="n">asClosure</span><span class="p">(</span><span class="s">"hello"</span><span class="p">.</span><span class="n">items</span><span class="p">)</span>
+<span class="n">assert</span> <span class="n">peek</span><span class="p">(</span><span class="n">myIter</span><span class="p">)</span> <span class="o">==</span> <span class="sc">'h'</span>
+<span class="n">assert</span> <span class="n">peek</span><span class="p">(</span><span class="n">myIter</span><span class="p">)</span> <span class="o">==</span> <span class="sc">'h'</span>
+<span class="n">assert</span> <span class="n">myIter</span><span class="p">()</span> <span class="o">==</span> <span class="sc">'h'</span>
+<span class="n">assert</span> <span class="n">myIter</span><span class="p">()</span> <span class="o">==</span> <span class="sc">'e'</span>
+<span class="n">reset</span><span class="p">(</span><span class="n">myIter</span><span class="p">)</span>
+<span class="n">assert</span> <span class="n">myIter</span><span class="p">()</span> <span class="o">==</span> <span class="sc">'h'</span>
+
+<span class="k">const</span> <span class="n">data</span> <span class="o">=</span> <span class="o">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">60</span><span class="o">]</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">chain</span> <span class="n">data</span><span class="p">.</span><span class="n">pairs</span><span class="p">.</span><span class="n">unpack</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">val</span><span class="p">).</span><span class="n">map</span><span class="p">(</span><span class="n">val</span> <span class="o">*</span> <span class="mi">30</span><span class="p">):</span>
+  <span class="n">assert</span> <span class="n">index</span> <span class="o">==</span> <span class="n">i</span>
+  <span class="n">assert</span> <span class="n">data</span><span class="o">[</span><span class="n">index</span><span class="o">]</span> <span class="o">*</span> <span class="mi">30</span> <span class="o">==</span> <span class="n">x</span>
+<span class="k">let</span> <span class="n">a</span> <span class="o">=</span> <span class="n">zip</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">items</span><span class="p">,</span> <span class="s">"helloWorld"</span><span class="p">.</span><span class="n">items</span><span class="p">,</span> <span class="s">"myIter"</span><span class="p">)</span>
+<span class="n">assert</span> <span class="n">a</span> <span class="o">==</span> <span class="o">@[</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="sc">'h'</span><span class="p">,</span> <span class="sc">'m'</span><span class="p">),</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="sc">'e'</span><span class="p">,</span> <span class="sc">'y'</span><span class="p">),</span> <span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="sc">'l'</span><span class="p">,</span> <span class="sc">'I'</span><span class="p">),</span> <span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="sc">'l'</span><span class="p">,</span> <span class="sc">'t'</span><span class="p">),</span> <span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="sc">'o'</span><span class="p">,</span> <span class="sc">'e'</span><span class="p">),</span> <span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="sc">'W'</span><span class="p">,</span> <span class="sc">'r'</span><span class="p">)</span><span class="o">]</span>
+
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="want-to-see-your-project-here-next-month">Want to see your project here next month?</h2>
+
+<p><a href="https://github.com/beef331/website#adding-your-project-to-month-with-nim">Follow this</a>
+to add your project to the next month’s blog post.</p>
+
+        </div>
+      </div>
+    </div>
+    <footer>
+  <section class="content">
+    <div class="pure-g">
+      <div class="copyright pure-u-2-3">
+        <p>
+          Unless otherwise stated, the content of this page is
+          licensed under the
+          <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0</a>
+          license.
+          Code displayed on this website is MIT licensed.
+        </p>
+        <p>
+          This website is available on
+          <a href="https://github.com/nim-lang/website">GitHub</a>
+          and contributions are welcome.
+          Original website design by
+          <a href="https://github.com/dom96">Dominik Picheta</a> and
+          <a href="https://github.com/Calinou">Hugo Locurcio</a>.
+          Logo by <a href="https://github.com/josephwecker">Joseph Wecker</a>.
+        </p>
+      </div>
+      <div class="pure-u-1-3 right-center">
+        <a href="https://m.do.co/c/637ab907c7f4"><img src="/assets/img/do.png"/></a>
+      </div>
+    </div>
+  </section>
+
+</footer>
+<script>
+    (function(){
+      function setTracking(a) {
+        var url = a.href;
+        a.onclick = function() {
+          if (typeof(ga) !== "undefined") {
+            ga('send', 'event', 'outbound', 'click', url, {
+              'transport': 'beacon',
+              'hitCallback': function(){document.location = url;}
+            });
+          }
+        };
+      }
+
+      var a = document.getElementsByTagName("a");
+      for (var i = 0; i < a.length; ++i) {
+        if (a[i].hostname != location.hostname &&
+            a[i].getAttribute("target") !== "_blank"
+        ) {
+          setTracking(a[i])
+        }
+      }
+    })();
+</script>
+
+  </div>
+  </body>
+</html>

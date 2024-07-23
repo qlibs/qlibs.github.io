@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta name="charset" content="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The Nim programming language is a concise, fast programming language that compiles to C, C++ and JavaScript.">
+  <meta charset="utf-8">
+  <link rel="icon" type="image/png" href="/assets/img/logo_bw.png" />
+
+  
+  <title>Nim version 2.0.6 released - Nim Blog</title>
+  
+  <link rel="stylesheet" href="/assets/css/pure.min.css">
+  <link rel="stylesheet" href="/assets/css/pure-grids-responsive.min.css">
+  <link href="https://use.fontawesome.com/releases/v5.0.2/css/all.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+  
+  <link rel="stylesheet" href="/assets/css/highlight/github.css">
+  
+
+  <link rel="stylesheet" href="/assets/css/google-fonts.css">
+  <link rel="stylesheet" href="/assets/css/main.css?t=1721738524015683587">
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-48159761-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+  <script defer data-domain="nim-lang.org" src="https://plausible.io/js/plausible.js"></script>
+
+  <meta name="twitter:title" content="Nim version 2.0.6 released">
+
+  
+  <meta name="twitter:description" content="The Nim team is happy to announce Nim version 2.0.6, our third, and the largest by far, patch release for Nim 2.0.">
+  <meta property="og:description" content="The Nim team is happy to announce Nim version 2.0.6, our third, and the largest by far, patch release for Nim 2.0.">
+  
+
+  <meta name="twitter:site" content="@nim_lang">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://nim-lang.org/assets/img/twitter_banner.png">
+
+  <meta property="og:title" content="Nim version 2.0.6 released" />
+  <meta property="og:site_name" content="Nim Programming Language" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://nim-lang.org/assets/img/twitter_banner.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1000" />
+  <meta property="og:image:height" content="500" />
+  <meta property="og:image:alt" content="Nim Programming Language" />
+</head>
+
+  <body class="site">
+    <header>
+  <nav class="pure-menu pure-menu-horizontal pure-menu-scrollable">
+    <div class="nav-content">
+      <a href="/" class="pure-menu-heading pure-menu-link site-logo-container">
+        <img class="site-logo" src="/assets/img/logo.svg" height="28" alt="Nim">
+      </a>
+      <ul class="pure-menu-list">
+        
+        <li class="pure-menu-item">
+          <a href="/blog.html"
+             class="pure-menu-link current">
+            Blog
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/features.html"
+             class="pure-menu-link ">
+            Features
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/install.html"
+             class="pure-menu-link ">
+            Download
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/documentation.html"
+             class="pure-menu-link ">
+            Documentation
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="https://forum.nim-lang.org"
+             class="pure-menu-link ">
+            Forum
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/donate.html"
+             class="pure-menu-link ">
+            Donate
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://github.com/nim-lang/Nim">Source</a>
+        </li>
+      </ul>
+    </div>
+    <div class="menu-fade"></div>
+  </nav>
+</header>
+
+    <div class="site-content post-page">
+      <div class="content">
+        <div class="width-reduced">
+          <h1 class="post-title">
+            Nim version 2.0.6 released
+          </h1>
+          <h3 class="post-meta">
+            <span>
+              <i class="far fa-calendar-alt" aria-hidden="true"></i>
+              17 June 2024
+            </span>
+            
+            <span>
+              <i class="fa fa-user-circle" aria-hidden="true"></i>
+              The Nim Team
+            </span>
+            
+          </h3>
+          <p>The Nim team is happy to announce Nim version 2.0.6, our third, and the largest by far, patch release for Nim 2.0.</p>
+
+<p>Version 2.0.6 contains (exactly!) <a href="https://github.com/nim-lang/Nim/compare/v2.0.4...v2.0.6">200 commits</a> and brings bugfixes and improvements to Nim 2.0.4, released two months ago.</p>
+
+<p>The reason for this many commits in this release is that this is planned as the last 2.0.x release before Nim 2.2 and we wanted to give you the best Nim 2.0 experience in case you won’t be able to switch immediately to Nim 2.2.</p>
+
+<p><strong>NOTE</strong>: If your program uses threads (<code class="language-plaintext highlighter-rouge">--threads:on</code> became the default in the 2.0.x line) please also use the <code class="language-plaintext highlighter-rouge">-d:useMalloc</code> switch.
+This problem will be fixed in a future release, sorry for the inconvenience.</p>
+
+<p>Check out if the package manager of your OS already ships version 2.0.6 or
+install it as described <a href="https://nim-lang.org/install.html">here</a>.</p>
+
+<h2 id="existing-users">Existing users</h2>
+
+<p>If you have installed a previous version of Nim using <code class="language-plaintext highlighter-rouge">choosenim</code>,
+getting Nim 2.0.6 is as easy as:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>choosenim 2.0.6
+</code></pre></div></div>
+
+<p>If you are on OSX ARM, <code class="language-plaintext highlighter-rouge">choosenim</code> will not work for you.
+Please choose an alternative method of installing or updating.</p>
+
+<p>Alternatively, you can download Nim 2.0.6 from
+<a href="https://github.com/nim-lang/nightlies/releases/tag/2024-06-17-version-2-0-c00e8e71e0c8465b5a5257c76c674b803273b222">our nightlies builds</a>.</p>
+
+<h1 id="donating-to-nim">Donating to Nim</h1>
+
+<p>We would like to encourage you to donate to Nim.
+The donated money will be used to further improve Nim by creating bounties
+for the most important bugfixes and features.</p>
+
+<p>You can donate via:</p>
+
+<ul>
+  <li><a href="https://opencollective.com/nim">Open Collective</a></li>
+  <li>Bitcoin: <code class="language-plaintext highlighter-rouge">1BXfuKM2uvoD6mbx4g5xM3eQhLzkCK77tJ</code></li>
+</ul>
+
+<p>If you are a company, we also offer commercial support.</p>
+
+<h1 id="bugfixes">Bugfixes</h1>
+
+<p>These reported issues were fixed:</p>
+
+<ul>
+  <li>Fixed “<code class="language-plaintext highlighter-rouge">rand(bool)</code> always returns <code class="language-plaintext highlighter-rouge">false</code>”
+(<a href="https://github.com/nim-lang/Nim/issues/22360">#22360</a>)</li>
+  <li>Fixed “Compiler crashes with staticBoundsCheck on”
+(<a href="https://github.com/nim-lang/Nim/issues/22362">#22362</a>)</li>
+  <li>Fixed “Unspecified generic on default value segfaults the compiler”
+(<a href="https://github.com/nim-lang/Nim/issues/20883">#20883</a>)</li>
+  <li>Fixed “Passing Natural to bitops.BitsRange[T] parameter in generic proc is compile error”
+(<a href="https://github.com/nim-lang/Nim/issues/18823">#18823</a>)</li>
+  <li>Fixed “Illegal capture when should be legal? (part 2)”
+(<a href="https://github.com/nim-lang/Nim/issues/20891">#20891</a>)</li>
+  <li>Fixed “nim compiler assertion fail when literal integer is passed as template argument for array size”
+(<a href="https://github.com/nim-lang/Nim/issues/12938">#12938</a>)</li>
+  <li>Fixed “Can’t instantiate generic in some cases”
+(<a href="https://github.com/nim-lang/Nim/issues/21760">#21760</a>)</li>
+  <li>Fixed “Borrowing std/times.format causes “Error: illformed AST””
+(<a href="https://github.com/nim-lang/Nim/issues/19304">#19304</a>)</li>
+  <li>Fixed “nimsuggest: Incorrect error reported during overload resolution with procedures with static parameters”
+(<a href="https://github.com/nim-lang/Nim/issues/22448">#22448</a>)</li>
+  <li>Fixed “Exceptions in top level statements of submodule not being reported/handled”
+(<a href="https://github.com/nim-lang/Nim/issues/22469">#22469</a>)</li>
+  <li>Fixed “returning string inside a loop unnecessarily generates <code class="language-plaintext highlighter-rouge">=sink</code>”
+(<a href="https://github.com/nim-lang/Nim/issues/21722">#21722</a>)</li>
+  <li>Fixed ““environment misses” for type reference in iterator access nested in closure”
+(<a href="https://github.com/nim-lang/Nim/issues/22548">#22548</a>)</li>
+  <li>Fixed “Default value does not work with object’s discriminator”
+(<a href="https://github.com/nim-lang/Nim/issues/22613">#22613</a>)</li>
+  <li>Fixed “internal error: no generic body”
+(<a href="https://github.com/nim-lang/Nim/issues/1500">#1500</a>)</li>
+  <li>Fixed “type binding fails for type alias with extra generic parameter”
+(<a href="https://github.com/nim-lang/Nim/issues/21742">#21742</a>)</li>
+  <li>Fixed “Procs with constructor pragma doesn’t initialize object’s fields”
+(<a href="https://github.com/nim-lang/Nim/issues/22662">#22662</a>)</li>
+  <li>Fixed “=copy hook for seq appears to be broken”
+(<a href="https://github.com/nim-lang/Nim/issues/22664">#22664</a>)</li>
+  <li>Fixed “Size calculation thinks type is infinitely recursive with shared section and pragma”
+(<a href="https://github.com/nim-lang/Nim/issues/22713">#22713</a>)</li>
+  <li>Fixed “Generated enum <code class="language-plaintext highlighter-rouge">case</code> code may trigger <code class="language-plaintext highlighter-rouge">-Wmaybe-uninitialized</code>”
+(<a href="https://github.com/nim-lang/Nim/issues/22246">#22246</a>)</li>
+  <li>Fixed ““unknown hint” should not be an error - it should itself be a <code class="language-plaintext highlighter-rouge">hint</code> that can be enabled/disabled”
+(<a href="https://github.com/nim-lang/Nim/issues/22706">#22706</a>)</li>
+  <li>Fixed “Varargs conversions produce erroneous ConvFromXtoItselfNotNeeded warnings”
+(<a href="https://github.com/nim-lang/Nim/issues/10542">#10542</a>)</li>
+  <li>Fixed “Compilation fails when using fusion’s ‘Some’ inside a generic proc”
+(<a href="https://github.com/nim-lang/Nim/issues/20435">#20435</a>)</li>
+  <li>Fixed “func <code class="language-plaintext highlighter-rouge">strutils.join</code> for non-strings uses proc <code class="language-plaintext highlighter-rouge">$</code> which can have side effects”
+(<a href="https://github.com/nim-lang/Nim/issues/22696">#22696</a>)</li>
+  <li>Fixed “Different results on orc/refc or global/procedure scope with orc”
+(<a href="https://github.com/nim-lang/Nim/issues/22787">#22787</a>)</li>
+  <li>Fixed “[Renderer] SIGSEGV when trying to render invalid AST”
+(<a href="https://github.com/nim-lang/Nim/issues/8893">#8893</a>)</li>
+  <li>Fixed “<code class="language-plaintext highlighter-rouge">AnyEnumConv</code> warning when iterating over <code class="language-plaintext highlighter-rouge">enum</code>”
+(<a href="https://github.com/nim-lang/Nim/issues/22790">#22790</a>)</li>
+  <li>Fixed “ORC AssertionDefect <code class="language-plaintext highlighter-rouge">not containsManagedMemory(n.typ)</code>”
+(<a href="https://github.com/nim-lang/Nim/issues/19250">#19250</a>)</li>
+  <li>Fixed “enumutils items[HoleyEnum] example code produces “unsafe” warnings”
+(<a href="https://github.com/nim-lang/Nim/issues/22844">#22844</a>)</li>
+  <li>Fixed “<code class="language-plaintext highlighter-rouge">Table</code>, <code class="language-plaintext highlighter-rouge">CountTable</code>, and <code class="language-plaintext highlighter-rouge">HashSet</code> warn on <code class="language-plaintext highlighter-rouge">UnsafeDefault</code> <code class="language-plaintext highlighter-rouge">del</code>/<code class="language-plaintext highlighter-rouge">excl</code> <code class="language-plaintext highlighter-rouge">requiresInit</code> key type”
+(<a href="https://github.com/nim-lang/Nim/issues/22883">#22883</a>)</li>
+  <li>Fixed ““Error: borrow from proc return type mismatch: ‘lent string’” when borrowing <code class="language-plaintext highlighter-rouge">[]</code> from Table”
+(<a href="https://github.com/nim-lang/Nim/issues/22902">#22902</a>)</li>
+  <li>Fixed “<code class="language-plaintext highlighter-rouge">AnyEnumConv</code> warning when iterating over <code class="language-plaintext highlighter-rouge">set</code>”
+(<a href="https://github.com/nim-lang/Nim/issues/22860">#22860</a>)</li>
+  <li>Fixed “Cannot prove that result is initialized for a placeholder base method returning a lent”
+(<a href="https://github.com/nim-lang/Nim/issues/22673">#22673</a>)</li>
+  <li>Fixed “<code class="language-plaintext highlighter-rouge">std/options</code> don’t consider closure iterators to be pointer types”
+(<a href="https://github.com/nim-lang/Nim/issues/22932">#22932</a>)</li>
+  <li>Fixed “Defaulting a value to a type silently works in ref object”
+(<a href="https://github.com/nim-lang/Nim/issues/22996">#22996</a>)</li>
+  <li>Fixed “Different type inferred when setting a default value for an array field”
+(<a href="https://github.com/nim-lang/Nim/issues/22926">#22926</a>)</li>
+  <li>Fixed “Problem removing cstring unsafe conversion warning”
+(<a href="https://github.com/nim-lang/Nim/issues/23001">#23001</a>)</li>
+  <li>Fixed “Undeclared identifier in Unicode gives Unhelpful error message”
+(<a href="https://github.com/nim-lang/Nim/issues/23060">#23060</a>)</li>
+  <li>Fixed “macro is evaluated twice in generic context”
+(<a href="https://github.com/nim-lang/Nim/issues/9381">#9381</a>)</li>
+  <li>Fixed “Type mismatch error when importing strutils on platforms where ints are less then 32-bits wide”
+(<a href="https://github.com/nim-lang/Nim/issues/23125">#23125</a>)</li>
+  <li>Fixed “Importing module with path concatenation inside templates not working anymore”
+(<a href="https://github.com/nim-lang/Nim/issues/23167">#23167</a>)</li>
+  <li>Fixed “Cannot get repr of range type of enum”
+(<a href="https://github.com/nim-lang/Nim/issues/23139">#23139</a>)</li>
+  <li>Fixed “ambiguous call with <code class="language-plaintext highlighter-rouge">$</code> when using <code class="language-plaintext highlighter-rouge">distinct</code>”
+(<a href="https://github.com/nim-lang/Nim/issues/23172">#23172</a>)</li>
+  <li>Fixed “Tuple destructuring is broken with closure iterators”
+(<a href="https://github.com/nim-lang/Nim/issues/15924">#15924</a>)</li>
+  <li>Fixed “Compiler error (illegal read) on tuple unpacking in a <code class="language-plaintext highlighter-rouge">for</code> loop”
+(<a href="https://github.com/nim-lang/Nim/issues/23180">#23180</a>)</li>
+  <li>Fixed “<code class="language-plaintext highlighter-rouge">system.insert</code> wipes the string if <code class="language-plaintext highlighter-rouge">item</code> is an empty string”
+(<a href="https://github.com/nim-lang/Nim/issues/23223">#23223</a>)</li>
+  <li>Fixed “const cstring incorrectly cgen’d (pointer is copied, pointing to garbage)”
+(<a href="https://github.com/nim-lang/Nim/issues/12334">#12334</a>)</li>
+  <li>Fixed “copy generated for non-copyable type”
+(<a href="https://github.com/nim-lang/Nim/issues/22218">#22218</a>)</li>
+  <li>Fixed “1.6 to 2.0 regression with <code class="language-plaintext highlighter-rouge">UncheckedArray[string]</code>/<code class="language-plaintext highlighter-rouge">toOpenArray</code> resulting in <code class="language-plaintext highlighter-rouge">SIGSEGV</code>”
+(<a href="https://github.com/nim-lang/Nim/issues/23247">#23247</a>)</li>
+  <li>Fixed “Compiler segfaults when passing static parameter to non static macro parameter”
+(<a href="https://github.com/nim-lang/Nim/issues/22909">#22909</a>)</li>
+  <li>Fixed “Refrain from using <code class="language-plaintext highlighter-rouge">sprintf()</code>, which triggers warnings in macOS 13/Xcode 14.1 <code class="language-plaintext highlighter-rouge">clang</code>”
+(<a href="https://github.com/nim-lang/Nim/issues/23304">#23304</a>)</li>
+  <li>Fixed “Error in proc that modifies instances of a recursive type defined with a concept”
+(<a href="https://github.com/nim-lang/Nim/issues/22723">#22723</a>)</li>
+  <li>Fixed “{.union.} pragma is ignored on NimVM”
+(<a href="https://github.com/nim-lang/Nim/issues/13481">#13481</a>)</li>
+  <li>Fixed “Regression from 1.6 to 2.0/devel with <code class="language-plaintext highlighter-rouge">nim c -c</code> <code class="language-plaintext highlighter-rouge">SIGSEGV</code> with <code class="language-plaintext highlighter-rouge">template</code>/<code class="language-plaintext highlighter-rouge">raises: []</code>”
+(<a href="https://github.com/nim-lang/Nim/issues/22284">#22284</a>)</li>
+  <li>Fixed “<code class="language-plaintext highlighter-rouge">close(File)</code> and <code class="language-plaintext highlighter-rouge">setFilePos(File, int64, ...)</code> can be used in <code class="language-plaintext highlighter-rouge">func</code>”
+(<a href="https://github.com/nim-lang/Nim/issues/22166">#22166</a>)</li>
+  <li>Fixed “NRVO can kick in on <code class="language-plaintext highlighter-rouge">exportc, dynlib</code> procedures”
+(<a href="https://github.com/nim-lang/Nim/issues/23401">#23401</a>)</li>
+  <li>Fixed “Pushing <code class="language-plaintext highlighter-rouge">used</code> suppresses the <code class="language-plaintext highlighter-rouge">XDeclaredButNotUsed</code> hint for some identifiers, but not others”
+(<a href="https://github.com/nim-lang/Nim/issues/22939">#22939</a>)</li>
+  <li>Fixed “Converter and openArray together generate the wrong C code.”
+(<a href="https://github.com/nim-lang/Nim/issues/22597">#22597</a>)</li>
+  <li>Fixed “Invalid C++ code generation when returning var T”
+(<a href="https://github.com/nim-lang/Nim/issues/10219">#10219</a>)</li>
+  <li>Fixed “ICE when trying to repr nnkMutableTy in macro”
+(<a href="https://github.com/nim-lang/Nim/issues/15751">#15751</a>)</li>
+  <li>Fixed “Lambdas expanded from template arguments crash the compiler”
+(<a href="https://github.com/nim-lang/Nim/issues/22846">#22846</a>)</li>
+  <li>Fixed “Warning is ignored when using flags <code class="language-plaintext highlighter-rouge">--warningAsError</code> and <code class="language-plaintext highlighter-rouge">--verbosity</code> together”
+(<a href="https://github.com/nim-lang/Nim/issues/23429">#23429</a>)</li>
+  <li>Fixed “<code class="language-plaintext highlighter-rouge">set[uint8].len</code> returns a random number when passed to a proc as a <code class="language-plaintext highlighter-rouge">var</code>”
+(<a href="https://github.com/nim-lang/Nim/issues/23422">#23422</a>)</li>
+  <li>Fixed “Wrong type in object construction error message”
+(<a href="https://github.com/nim-lang/Nim/issues/23494">#23494</a>)</li>
+  <li>Fixed “<code class="language-plaintext highlighter-rouge">Error: unhandled exception: injectdestructors.nim(425, 12) n.kind != nkSym or not hasDestructor(c, n.sym.typ)</code> with ARC or ORC during compilation”
+(<a href="https://github.com/nim-lang/Nim/issues/23505">#23505</a>)</li>
+  <li>Fixed “<code class="language-plaintext highlighter-rouge">&lt;expr&gt; is</code> crashes nimsuggest”
+(<a href="https://github.com/nim-lang/Nim/issues/23518">#23518</a>)</li>
+  <li>Fixed “Top level variables are moved sometimes”
+(<a href="https://github.com/nim-lang/Nim/issues/23524">#23524</a>)</li>
+  <li>Fixed “<code class="language-plaintext highlighter-rouge">nim c -c</code> on <code class="language-plaintext highlighter-rouge">{.push emit.}</code>: <code class="language-plaintext highlighter-rouge">Error: unhandled exception: field 'sons' is not accessible for type 'TNode' using 'kind = nkIdent' [FieldDefect]</code>”
+(<a href="https://github.com/nim-lang/Nim/issues/23525">#23525</a>)</li>
+  <li>Fixed “anonymous closure iterators doesn’t work with global variable in JS”
+(<a href="https://github.com/nim-lang/Nim/issues/23522">#23522</a>)</li>
+  <li>Fixed “Stack trace with wrong line number when the proc called inside for loop”
+(<a href="https://github.com/nim-lang/Nim/issues/23536">#23536</a>)</li>
+  <li>Fixed “<code class="language-plaintext highlighter-rouge">Error: fatal error: invalid kind for lastOrd(tyGenericParam)</code> in compiler given invalid array declaration”
+(<a href="https://github.com/nim-lang/Nim/issues/23531">#23531</a>)</li>
+  <li>Fixed “<code class="language-plaintext highlighter-rouge">Error: internal error: openArrayLoc: ref array[0..0, int]</code> with <code class="language-plaintext highlighter-rouge">new array[1, int]</code> and <code class="language-plaintext highlighter-rouge">toOpenArray</code>”
+(<a href="https://github.com/nim-lang/Nim/issues/23321">#23321</a>)</li>
+  <li>Fixed “<code class="language-plaintext highlighter-rouge">internal error: getTypeDescAux</code> with <code class="language-plaintext highlighter-rouge">void</code> in generic array instantiation”
+(<a href="https://github.com/nim-lang/Nim/issues/23419">#23419</a>)</li>
+  <li>Fixed “<code class="language-plaintext highlighter-rouge">typeinfo.extendSeq</code> generates random values”
+(<a href="https://github.com/nim-lang/Nim/issues/23556">#23556</a>)</li>
+  <li>Fixed “<code class="language-plaintext highlighter-rouge">value out of range [RangeDefect]</code> in getFileInfo() for a specific file (file handle overflow?)”
+(<a href="https://github.com/nim-lang/Nim/issues/23442">#23442</a>)</li>
+  <li>Fixed “Invalid styleCheck:hint for enum/func conflict”
+(<a href="https://github.com/nim-lang/Nim/issues/22409">#22409</a>)</li>
+  <li>Fixed “Invalid codegen when trying to mannualy delete distinct seq”
+(<a href="https://github.com/nim-lang/Nim/issues/23552">#23552</a>)</li>
+  <li>Fixed “Update unicode.nim: cmpRunesIgnoreCase: fix doc format”
+(<a href="https://github.com/nim-lang/Nim/issues/23560">#23560</a>)</li>
+  <li>Fixed “Destructor not called for object subclass created in template and immediately passed as argument”
+(<a href="https://github.com/nim-lang/Nim/issues/23440">#23440</a>)</li>
+  <li>Fixed “Viewtype codegen error turns a single proc call into two”
+(<a href="https://github.com/nim-lang/Nim/issues/15778">#15778</a>)</li>
+  <li>Fixed “sink parameters sometimes not copied even when there are later reads (refc)”
+(<a href="https://github.com/nim-lang/Nim/issues/23354">#23354</a>)</li>
+  <li>Fixed “SIGSEGV with object variants and RTTI”
+(<a href="https://github.com/nim-lang/Nim/issues/23690">#23690</a>)</li>
+  <li>Fixed “ORC runs into infinite recursion”
+(<a href="https://github.com/nim-lang/Nim/issues/22927">#22927</a>)</li>
+</ul>
+
+<p>The complete list of changes is available
+<a href="https://github.com/nim-lang/Nim/compare/v2.0.4...v2.0.6">here</a>.</p>
+
+
+        </div>
+      </div>
+    </div>
+    <footer>
+  <section class="content">
+    <div class="pure-g">
+      <div class="copyright pure-u-2-3">
+        <p>
+          Unless otherwise stated, the content of this page is
+          licensed under the
+          <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0</a>
+          license.
+          Code displayed on this website is MIT licensed.
+        </p>
+        <p>
+          This website is available on
+          <a href="https://github.com/nim-lang/website">GitHub</a>
+          and contributions are welcome.
+          Original website design by
+          <a href="https://github.com/dom96">Dominik Picheta</a> and
+          <a href="https://github.com/Calinou">Hugo Locurcio</a>.
+          Logo by <a href="https://github.com/josephwecker">Joseph Wecker</a>.
+        </p>
+      </div>
+      <div class="pure-u-1-3 right-center">
+        <a href="https://m.do.co/c/637ab907c7f4"><img src="/assets/img/do.png"/></a>
+      </div>
+    </div>
+  </section>
+
+</footer>
+<script>
+    (function(){
+      function setTracking(a) {
+        var url = a.href;
+        a.onclick = function() {
+          if (typeof(ga) !== "undefined") {
+            ga('send', 'event', 'outbound', 'click', url, {
+              'transport': 'beacon',
+              'hitCallback': function(){document.location = url;}
+            });
+          }
+        };
+      }
+
+      var a = document.getElementsByTagName("a");
+      for (var i = 0; i < a.length; ++i) {
+        if (a[i].hostname != location.hostname &&
+            a[i].getAttribute("target") !== "_blank"
+        ) {
+          setTracking(a[i])
+        }
+      }
+    })();
+</script>
+
+  </div>
+  </body>
+</html>

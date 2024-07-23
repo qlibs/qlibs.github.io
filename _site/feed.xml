@@ -1,0 +1,1078 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nim Programming Language</title>
+    <description>The Nim programming language is a concise, fast programming language that compiles to C, C++ and JavaScript.
+</description>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Tue, 23 Jul 2024 07:42:04 -0500</pubDate>
+    <lastBuildDate>Tue, 23 Jul 2024 07:42:04 -0500</lastBuildDate>
+    <generator>Jekyll v4.3.1</generator>
+    
+      <item>
+        <title>Nim version 2.0.8 released</title>
+        <description>&lt;p&gt;The Nim team is happy to announce Nim version 2.0.8, our fourth patch release for Nim 2.0.&lt;/p&gt;
+
+&lt;p&gt;Version 2.0.8 is a small release, containing just &lt;a href=&quot;https://github.com/nim-lang/Nim/compare/v2.0.6...v2.0.8&quot;&gt;20 commits&lt;/a&gt;, but it brings important improvements to Nim 2.0.6, released 10 days ago.&lt;/p&gt;
+
+&lt;p&gt;Major improvements in this release:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Nim’s allocator is now much more stable with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--threads:on&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Better support for &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gcc14&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Optimized &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;setLen(0)&lt;/code&gt; for uninitialized strings and seqs.&lt;/li&gt;
+  &lt;li&gt;Optimized &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;move&lt;/code&gt; when used with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--mm:refc&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This release comes relatively quickly after our previous release because it was time-critical for our partner Status to receive these improvements as soon as possible.
+It is our way of saying “thank you” for their continued support of Nim.&lt;/p&gt;
+
+&lt;p&gt;Check out if the package manager of your OS already ships version 2.0.8 or
+install it as described &lt;a href=&quot;https://nim-lang.org/install.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;existing-users&quot;&gt;Existing users&lt;/h2&gt;
+
+&lt;p&gt;If you have installed a previous version of Nim using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;choosenim&lt;/code&gt;,
+getting Nim 2.0.8 is as easy as:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;choosenim 2.0.8
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If you are on OSX ARM, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;choosenim&lt;/code&gt; will not work for you.
+Please choose an alternative method of installing or updating.&lt;/p&gt;
+
+&lt;p&gt;Alternatively, you can download Nim 2.0.8 from
+&lt;a href=&quot;https://github.com/nim-lang/nightlies/releases/tag/2024-07-03-version-2-0-5935c3bfa9fec6505394867b23510eb5cbab3dbf&quot;&gt;our nightlies builds&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;donating-to-nim&quot;&gt;Donating to Nim&lt;/h1&gt;
+
+&lt;p&gt;We would like to encourage you to donate to Nim.
+The donated money will be used to further improve Nim by creating bounties
+for the most important bugfixes and features.&lt;/p&gt;
+
+&lt;p&gt;You can donate via:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://opencollective.com/nim&quot;&gt;Open Collective&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Bitcoin: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1BXfuKM2uvoD6mbx4g5xM3eQhLzkCK77tJ&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you are a company, we also offer commercial support.&lt;/p&gt;
+
+&lt;h1 id=&quot;bugfixes&quot;&gt;Bugfixes&lt;/h1&gt;
+
+&lt;p&gt;These reported issues were fixed:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Fixed “[Semi-regression] C code contains backtick`gensym”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/23711&quot;&gt;#23711&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;setLen(0)&lt;/code&gt; allocates memory causing performance regression”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/23742&quot;&gt;#23742&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Sigsegv on std/tasks destructor”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/23725&quot;&gt;#23725&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;genericAssign&lt;/code&gt; does not take care of the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;importC&lt;/code&gt; variables”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/9940&quot;&gt;#9940&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;move(table)&lt;/code&gt; does not move the table”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/23759&quot;&gt;#23759&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Local variables can be prematurely moved to closure, causing use-after-move”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/23748&quot;&gt;#23748&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tvatiteropenarray&lt;/code&gt; test fails with c++”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/19977&quot;&gt;#19977&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The complete list of changes is available
+&lt;a href=&quot;https://github.com/nim-lang/Nim/compare/v2.0.6...v2.0.8&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 03 Jul 2024 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/blog/2024/07/03/version-208-released.html</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2024/07/03/version-208-released.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Nim version 2.0.6 released</title>
+        <description>&lt;p&gt;The Nim team is happy to announce Nim version 2.0.6, our third, and the largest by far, patch release for Nim 2.0.&lt;/p&gt;
+
+&lt;p&gt;Version 2.0.6 contains (exactly!) &lt;a href=&quot;https://github.com/nim-lang/Nim/compare/v2.0.4...v2.0.6&quot;&gt;200 commits&lt;/a&gt; and brings bugfixes and improvements to Nim 2.0.4, released two months ago.&lt;/p&gt;
+
+&lt;p&gt;The reason for this many commits in this release is that this is planned as the last 2.0.x release before Nim 2.2 and we wanted to give you the best Nim 2.0 experience in case you won’t be able to switch immediately to Nim 2.2.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: If your program uses threads (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--threads:on&lt;/code&gt; became the default in the 2.0.x line) please also use the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-d:useMalloc&lt;/code&gt; switch.
+This problem will be fixed in a future release, sorry for the inconvenience.&lt;/p&gt;
+
+&lt;p&gt;Check out if the package manager of your OS already ships version 2.0.6 or
+install it as described &lt;a href=&quot;https://nim-lang.org/install.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;existing-users&quot;&gt;Existing users&lt;/h2&gt;
+
+&lt;p&gt;If you have installed a previous version of Nim using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;choosenim&lt;/code&gt;,
+getting Nim 2.0.6 is as easy as:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;choosenim 2.0.6
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If you are on OSX ARM, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;choosenim&lt;/code&gt; will not work for you.
+Please choose an alternative method of installing or updating.&lt;/p&gt;
+
+&lt;p&gt;Alternatively, you can download Nim 2.0.6 from
+&lt;a href=&quot;https://github.com/nim-lang/nightlies/releases/tag/2024-06-17-version-2-0-c00e8e71e0c8465b5a5257c76c674b803273b222&quot;&gt;our nightlies builds&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;donating-to-nim&quot;&gt;Donating to Nim&lt;/h1&gt;
+
+&lt;p&gt;We would like to encourage you to donate to Nim.
+The donated money will be used to further improve Nim by creating bounties
+for the most important bugfixes and features.&lt;/p&gt;
+
+&lt;p&gt;You can donate via:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://opencollective.com/nim&quot;&gt;Open Collective&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Bitcoin: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1BXfuKM2uvoD6mbx4g5xM3eQhLzkCK77tJ&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you are a company, we also offer commercial support.&lt;/p&gt;
+
+&lt;h1 id=&quot;bugfixes&quot;&gt;Bugfixes&lt;/h1&gt;
+
+&lt;p&gt;These reported issues were fixed:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Fixed “&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rand(bool)&lt;/code&gt; always returns &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;false&lt;/code&gt;”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22360&quot;&gt;#22360&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Compiler crashes with staticBoundsCheck on”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22362&quot;&gt;#22362&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Unspecified generic on default value segfaults the compiler”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/20883&quot;&gt;#20883&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Passing Natural to bitops.BitsRange[T] parameter in generic proc is compile error”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/18823&quot;&gt;#18823&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Illegal capture when should be legal? (part 2)”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/20891&quot;&gt;#20891&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “nim compiler assertion fail when literal integer is passed as template argument for array size”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/12938&quot;&gt;#12938&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Can’t instantiate generic in some cases”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/21760&quot;&gt;#21760&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Borrowing std/times.format causes “Error: illformed AST””
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/19304&quot;&gt;#19304&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “nimsuggest: Incorrect error reported during overload resolution with procedures with static parameters”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22448&quot;&gt;#22448&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Exceptions in top level statements of submodule not being reported/handled”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22469&quot;&gt;#22469&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “returning string inside a loop unnecessarily generates &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;=sink&lt;/code&gt;”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/21722&quot;&gt;#21722&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed ““environment misses” for type reference in iterator access nested in closure”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22548&quot;&gt;#22548&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Default value does not work with object’s discriminator”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22613&quot;&gt;#22613&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “internal error: no generic body”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/1500&quot;&gt;#1500&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “type binding fails for type alias with extra generic parameter”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/21742&quot;&gt;#21742&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Procs with constructor pragma doesn’t initialize object’s fields”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22662&quot;&gt;#22662&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “=copy hook for seq appears to be broken”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22664&quot;&gt;#22664&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Size calculation thinks type is infinitely recursive with shared section and pragma”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22713&quot;&gt;#22713&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Generated enum &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;case&lt;/code&gt; code may trigger &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-Wmaybe-uninitialized&lt;/code&gt;”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22246&quot;&gt;#22246&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed ““unknown hint” should not be an error - it should itself be a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hint&lt;/code&gt; that can be enabled/disabled”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22706&quot;&gt;#22706&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Varargs conversions produce erroneous ConvFromXtoItselfNotNeeded warnings”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/10542&quot;&gt;#10542&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Compilation fails when using fusion’s ‘Some’ inside a generic proc”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/20435&quot;&gt;#20435&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “func &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;strutils.join&lt;/code&gt; for non-strings uses proc &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$&lt;/code&gt; which can have side effects”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22696&quot;&gt;#22696&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Different results on orc/refc or global/procedure scope with orc”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22787&quot;&gt;#22787&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “[Renderer] SIGSEGV when trying to render invalid AST”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/8893&quot;&gt;#8893&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AnyEnumConv&lt;/code&gt; warning when iterating over &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;enum&lt;/code&gt;”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22790&quot;&gt;#22790&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “ORC AssertionDefect &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;not containsManagedMemory(n.typ)&lt;/code&gt;”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/19250&quot;&gt;#19250&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “enumutils items[HoleyEnum] example code produces “unsafe” warnings”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22844&quot;&gt;#22844&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Table&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CountTable&lt;/code&gt;, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HashSet&lt;/code&gt; warn on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;UnsafeDefault&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;del&lt;/code&gt;/&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;excl&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;requiresInit&lt;/code&gt; key type”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22883&quot;&gt;#22883&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed ““Error: borrow from proc return type mismatch: ‘lent string’” when borrowing &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[]&lt;/code&gt; from Table”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22902&quot;&gt;#22902&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AnyEnumConv&lt;/code&gt; warning when iterating over &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;set&lt;/code&gt;”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22860&quot;&gt;#22860&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Cannot prove that result is initialized for a placeholder base method returning a lent”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22673&quot;&gt;#22673&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std/options&lt;/code&gt; don’t consider closure iterators to be pointer types”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22932&quot;&gt;#22932&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Defaulting a value to a type silently works in ref object”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22996&quot;&gt;#22996&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Different type inferred when setting a default value for an array field”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22926&quot;&gt;#22926&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Problem removing cstring unsafe conversion warning”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/23001&quot;&gt;#23001&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Undeclared identifier in Unicode gives Unhelpful error message”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/23060&quot;&gt;#23060&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “macro is evaluated twice in generic context”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/9381&quot;&gt;#9381&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Type mismatch error when importing strutils on platforms where ints are less then 32-bits wide”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/23125&quot;&gt;#23125&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Importing module with path concatenation inside templates not working anymore”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/23167&quot;&gt;#23167&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Cannot get repr of range type of enum”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/23139&quot;&gt;#23139&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “ambiguous call with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$&lt;/code&gt; when using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;distinct&lt;/code&gt;”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/23172&quot;&gt;#23172&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Tuple destructuring is broken with closure iterators”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/15924&quot;&gt;#15924&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Compiler error (illegal read) on tuple unpacking in a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for&lt;/code&gt; loop”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/23180&quot;&gt;#23180&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;system.insert&lt;/code&gt; wipes the string if &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;item&lt;/code&gt; is an empty string”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/23223&quot;&gt;#23223&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “const cstring incorrectly cgen’d (pointer is copied, pointing to garbage)”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/12334&quot;&gt;#12334&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “copy generated for non-copyable type”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22218&quot;&gt;#22218&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “1.6 to 2.0 regression with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;UncheckedArray[string]&lt;/code&gt;/&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;toOpenArray&lt;/code&gt; resulting in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SIGSEGV&lt;/code&gt;”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/23247&quot;&gt;#23247&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Compiler segfaults when passing static parameter to non static macro parameter”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22909&quot;&gt;#22909&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Refrain from using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sprintf()&lt;/code&gt;, which triggers warnings in macOS 13/Xcode 14.1 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;clang&lt;/code&gt;”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/23304&quot;&gt;#23304&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Error in proc that modifies instances of a recursive type defined with a concept”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22723&quot;&gt;#22723&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “{.union.} pragma is ignored on NimVM”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/13481&quot;&gt;#13481&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Regression from 1.6 to 2.0/devel with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nim c -c&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;SIGSEGV&lt;/code&gt; with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;template&lt;/code&gt;/&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;raises: []&lt;/code&gt;”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22284&quot;&gt;#22284&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;close(File)&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;setFilePos(File, int64, ...)&lt;/code&gt; can be used in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;func&lt;/code&gt;”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22166&quot;&gt;#22166&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “NRVO can kick in on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;exportc, dynlib&lt;/code&gt; procedures”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/23401&quot;&gt;#23401&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Pushing &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;used&lt;/code&gt; suppresses the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;XDeclaredButNotUsed&lt;/code&gt; hint for some identifiers, but not others”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22939&quot;&gt;#22939&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Converter and openArray together generate the wrong C code.”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22597&quot;&gt;#22597&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Invalid C++ code generation when returning var T”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/10219&quot;&gt;#10219&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “ICE when trying to repr nnkMutableTy in macro”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/15751&quot;&gt;#15751&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Lambdas expanded from template arguments crash the compiler”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22846&quot;&gt;#22846&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Warning is ignored when using flags &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--warningAsError&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--verbosity&lt;/code&gt; together”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/23429&quot;&gt;#23429&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;set[uint8].len&lt;/code&gt; returns a random number when passed to a proc as a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;var&lt;/code&gt;”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/23422&quot;&gt;#23422&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Wrong type in object construction error message”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/23494&quot;&gt;#23494&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Error: unhandled exception: injectdestructors.nim(425, 12) n.kind != nkSym or not hasDestructor(c, n.sym.typ)&lt;/code&gt; with ARC or ORC during compilation”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/23505&quot;&gt;#23505&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;expr&amp;gt; is&lt;/code&gt; crashes nimsuggest”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/23518&quot;&gt;#23518&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Top level variables are moved sometimes”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/23524&quot;&gt;#23524&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nim c -c&lt;/code&gt; on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{.push emit.}&lt;/code&gt;: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Error: unhandled exception: field &apos;sons&apos; is not accessible for type &apos;TNode&apos; using &apos;kind = nkIdent&apos; [FieldDefect]&lt;/code&gt;”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/23525&quot;&gt;#23525&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “anonymous closure iterators doesn’t work with global variable in JS”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/23522&quot;&gt;#23522&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Stack trace with wrong line number when the proc called inside for loop”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/23536&quot;&gt;#23536&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Error: fatal error: invalid kind for lastOrd(tyGenericParam)&lt;/code&gt; in compiler given invalid array declaration”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/23531&quot;&gt;#23531&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Error: internal error: openArrayLoc: ref array[0..0, int]&lt;/code&gt; with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;new array[1, int]&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;toOpenArray&lt;/code&gt;”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/23321&quot;&gt;#23321&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;internal error: getTypeDescAux&lt;/code&gt; with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;void&lt;/code&gt; in generic array instantiation”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/23419&quot;&gt;#23419&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;typeinfo.extendSeq&lt;/code&gt; generates random values”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/23556&quot;&gt;#23556&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;value out of range [RangeDefect]&lt;/code&gt; in getFileInfo() for a specific file (file handle overflow?)”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/23442&quot;&gt;#23442&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Invalid styleCheck:hint for enum/func conflict”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22409&quot;&gt;#22409&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Invalid codegen when trying to mannualy delete distinct seq”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/23552&quot;&gt;#23552&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Update unicode.nim: cmpRunesIgnoreCase: fix doc format”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/23560&quot;&gt;#23560&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Destructor not called for object subclass created in template and immediately passed as argument”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/23440&quot;&gt;#23440&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Viewtype codegen error turns a single proc call into two”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/15778&quot;&gt;#15778&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “sink parameters sometimes not copied even when there are later reads (refc)”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/23354&quot;&gt;#23354&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “SIGSEGV with object variants and RTTI”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/23690&quot;&gt;#23690&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “ORC runs into infinite recursion”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22927&quot;&gt;#22927&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The complete list of changes is available
+&lt;a href=&quot;https://github.com/nim-lang/Nim/compare/v2.0.4...v2.0.6&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 17 Jun 2024 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/blog/2024/06/17/version-206-released.html</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2024/06/17/version-206-released.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>This Month with Nim: October 2023 to June 2024 (It is a long month)</title>
+        <description>&lt;h2 id=&quot;oolib-upgrade&quot;&gt;&lt;a href=&quot;https://github.com/Glasses-Neo/OOlib&quot;&gt;Oolib Upgrade&lt;/a&gt;&lt;/h2&gt;
+
+&lt;h4 id=&quot;author-neo&quot;&gt;Author: &lt;a href=&quot;https://github.com/glassesneo&quot;&gt;Neo&lt;/a&gt;&lt;/h4&gt;
+
+&lt;p&gt;New super cool features here!&lt;/p&gt;
+
+&lt;h3 id=&quot;multiple-constructor&quot;&gt;Multiple constructor&lt;/h3&gt;
+
+&lt;div class=&quot;language-nim highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Gun&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;offence&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;capacity&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;price&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;proc &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;`new`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;offence&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;offence&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;offence&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;capacity&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;price&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;300&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;proc &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;`new`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;capacity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;offence&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;14&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;capacity&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;capacity&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;price&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# This `new()` is made from the type definition&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;_ = Gun.new(offence = 5, price = 6)&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# 2nd one&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;_ = Gun.new(offence = 12)&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# 3rd one&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;_ = Gun.new(capacity = 10)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Sword&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;offence&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;price&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;initial&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# made from the type definition&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;_ = Sword.new(8)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;construct&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{.construct.}&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;a type definition with {.construct.} are made into a class. Now that we can define a class without using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;class&lt;/code&gt;!&lt;/p&gt;
+
+&lt;div class=&quot;language-nim highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Shield&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;construct&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;ref&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;object&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;defence&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;price&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;initial&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.}:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# This new() was made by `{.construct.}` pragma&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;_ = Shield.new(4)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;multiple-implementation&quot;&gt;Multiple implementation&lt;/h3&gt;
+
+&lt;p&gt;Now we can use multiple implementation!&lt;/p&gt;
+
+&lt;div class=&quot;language-nim highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;protocol&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Readable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;protocol&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Writable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;proc &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;`text=`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;protocol&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;price&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Writer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;protocoled&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;tuple&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;proc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Book&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;impl&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Readable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;price&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Diary&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;impl&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Readable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Writable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Product&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;initial&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.}:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;price&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;proc &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;`text=`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;HTMLWriter&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;impl&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Writer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;writable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Writable&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;proc &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;write&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;writable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;book&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Book&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;price&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;500&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;_ = book.toProtocol()&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;diary&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Diary&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;price&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;300&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;_ = diary.toProtocol()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Also, the features below were removed:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Class data constant&lt;/li&gt;
+  &lt;li&gt;Inheritance class, super keyword and {.open.}&lt;/li&gt;
+  &lt;li&gt;Alias class&lt;/li&gt;
+  &lt;li&gt;{.pClass.}, {.pProtocol.}&lt;/li&gt;
+  &lt;li&gt;{.noNewDef.} for class&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;nim-blinky-with-apache-nuttx-rtos-on-ox64-bl808-risc-v-sbc&quot;&gt;&lt;a href=&quot;https://lupyuen.codeberg.page/articles/nim.html&quot;&gt;Nim Blinky with Apache NuttX RTOS on Ox64 BL808 RISC-V SBC&lt;/a&gt;&lt;/h2&gt;
+
+&lt;h4 id=&quot;author-lup-yuan-lee&quot;&gt;Author: &lt;a href=&quot;https://github.com/lupyuen&quot;&gt;Lup Yuan Lee&lt;/a&gt;&lt;/h4&gt;
+
+&lt;p&gt;Running Apache NuttX RTOS (Real-Time Operating System) on Single-Board Computers with plenty of RAM.
+Like Pine64 Ox64 BL808 SBC with 64 MB RAM!&lt;/p&gt;
+
+&lt;p&gt;In &lt;a href=&quot;https://lupyuen.codeberg.page/articles/nim.html&quot;&gt;this article&lt;/a&gt;, we create a Blinky LED app with Nim on NuttX.&lt;/p&gt;
+
+&lt;p&gt;Garbage-Collected Languages (like Nim) require a bit more RAM than Low-Level Languages (like C).
+Perfect for our roomy (and vroomy) single board computer!&lt;/p&gt;
+
+&lt;p&gt;We test NuttX + Nim Blinky on QEMU Emulator for 64-bit RISC-V (minus the blinkenlight).
+Then we run NuttX + Nim Blinky on the Ox64 BL808 RISC-V SBC (with a real LED).&lt;/p&gt;
+
+&lt;h2 id=&quot;happyx-ui&quot;&gt;happyx-ui&lt;/h2&gt;
+
+&lt;h4 id=&quot;author-ethosa&quot;&gt;Author: &lt;a href=&quot;https://github.com/Ethosa&quot;&gt;Ethosa&lt;/a&gt;&lt;/h4&gt;
+
+&lt;p&gt;UI library for the HappyX web framework, inspired by Jetpack Compose.&lt;/p&gt;
+
+&lt;p&gt;A small code example follows:&lt;/p&gt;
+
+&lt;p style=&quot;text-align: center;&quot;&gt;
+  &lt;img width=&quot;auto&quot; height=&quot;600&quot; src=&quot;http://localhost:4000/assets/thismonthwithnim/2024-06/happyx-ui-code.png&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p style=&quot;text-align: center;&quot;&gt;
+  &lt;img width=&quot;auto&quot; height=&quot;600&quot; src=&quot;http://localhost:4000/assets/thismonthwithnim/2024-06/happyx-ui.png&quot; /&gt;
+&lt;/p&gt;
+&lt;p&gt;A live demo can be found &lt;a href=&quot;https://hapticx.github.io/happyx-ui/#/&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;want-to-see-your-project-here-next-month&quot;&gt;Want to see your project here next month?&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/beef331/website#adding-your-project-to-month-with-nim&quot;&gt;Follow this&lt;/a&gt;
+to add your project to the next month’s blog post.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 01 Jun 2024 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/blog/2024/06/01/this-month-with-nim.html</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2024/06/01/this-month-with-nim.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Versions 2.0.4 and 1.6.20 released</title>
+        <description>&lt;p&gt;The Nim team is happy to announce two releases:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;the latest Nim, version 2.0.4&lt;/li&gt;
+  &lt;li&gt;LTS release, version 1.6.20&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For the majority of our users, v2.0.4 contains &lt;a href=&quot;https://github.com/nim-lang/Nim/compare/v2.0.2...v2.0.4&quot;&gt;23 commits&lt;/a&gt; and brings bugfixes and improvements to Nim 2.0.2, released four months ago.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: If your program uses threads (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--threads:on&lt;/code&gt; became the default in the 2.0.x line) please also use the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-d:useMalloc&lt;/code&gt; switch.
+This problem will be fixed in a future release, sorry for the inconvenience.&lt;/p&gt;
+
+&lt;p&gt;For those users who haven’t switched to &lt;a href=&quot;https://nim-lang.org/blog/2023/08/01/nim-v20-released.html&quot;&gt;Nim v2.0&lt;/a&gt; yet, we have released the ninth patch release for Nim 1.6.x.
+It is a small release with &lt;a href=&quot;https://github.com/nim-lang/Nim/compare/v1.6.18...v1.6.20&quot;&gt;13 commits&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;installing-nim-204&quot;&gt;Installing Nim 2.0.4&lt;/h1&gt;
+
+&lt;h2 id=&quot;new-users&quot;&gt;New users&lt;/h2&gt;
+
+&lt;p&gt;Check out if the package manager of your OS already ships version 2.0.4 or
+install it as described &lt;a href=&quot;https://nim-lang.org/install.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;existing-users&quot;&gt;Existing users&lt;/h2&gt;
+
+&lt;p&gt;If you have installed a previous version of Nim using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;choosenim&lt;/code&gt;,
+getting Nim 2.0.4 is as easy as:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;choosenim 2.0.4
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If you are on OSX ARM, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;choosenim&lt;/code&gt; will not work for you.
+Please choose an alternative method of installing or updating.&lt;/p&gt;
+
+&lt;p&gt;Alternatively, you can download Nim 2.0.4 from
+&lt;a href=&quot;https://github.com/nim-lang/nightlies/releases/tag/2024-03-28-version-2-0-b47747d31844c6bd9af4322efe55e24fefea544c&quot;&gt;our nightlies builds&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;donating-to-nim&quot;&gt;Donating to Nim&lt;/h1&gt;
+
+&lt;p&gt;We would like to encourage you to donate to Nim.
+The donated money will be used to further improve Nim by creating bounties
+for the most important bugfixes and features.&lt;/p&gt;
+
+&lt;p&gt;You can donate via:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://opencollective.com/nim&quot;&gt;Open Collective&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Bitcoin: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1BXfuKM2uvoD6mbx4g5xM3eQhLzkCK77tJ&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you are a company, we also offer commercial support.&lt;/p&gt;
+
+&lt;h1 id=&quot;bugfixes&quot;&gt;Bugfixes&lt;/h1&gt;
+
+&lt;p&gt;These reported issues were fixed:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Fixed “import sth from mymodule is compiles and trying to see module sthfrommymodule”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/23148&quot;&gt;#23148&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Operations on inline toOpenArray len return a wrong result”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/23280&quot;&gt;#23280&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Nimsuggest segfault with invalid assignment to table”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22753&quot;&gt;#22753&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The complete list of changes is available
+&lt;a href=&quot;https://github.com/nim-lang/Nim/compare/v2.0.2...v2.0.4&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;p&gt; &lt;/p&gt;
+
+&lt;h1 id=&quot;installing-nim-1620&quot;&gt;Installing Nim 1.6.20&lt;/h1&gt;
+
+&lt;h2 id=&quot;new-users-1&quot;&gt;New users&lt;/h2&gt;
+
+&lt;p&gt;If you are a new user, we highly recommend that you start with Nim 2.0.x — see the sections above on how to install it.&lt;/p&gt;
+
+&lt;h2 id=&quot;existing-users-1&quot;&gt;Existing users&lt;/h2&gt;
+
+&lt;p&gt;If you have installed a previous version of Nim using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;choosenim&lt;/code&gt;,
+getting Nim 1.6.20 is as easy as:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;choosenim 1.6.20
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If you are on OSX ARM, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;choosenim&lt;/code&gt; will not work for you.
+Please choose an alternative method of installing or updating.&lt;/p&gt;
+
+&lt;p&gt;Alternatively, you can download Nim 1.6.20 from
+&lt;a href=&quot;https://github.com/nim-lang/nightlies/releases/tag/2024-04-07-version-1-6-19fdbfc173bfccb64cb64e0a963e69f52f71fc73&quot;&gt;our nightlies builds&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;bugfixes-1&quot;&gt;Bugfixes&lt;/h1&gt;
+
+&lt;p&gt;These reported issues were fixed:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Fixed “import sth from mymodule is compiles and trying to see module sthfrommymodule”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/23148&quot;&gt;#23148&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Operations on inline toOpenArray len return a wrong result”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/23280&quot;&gt;#23280&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “[Backport 2.0] Itanium mangling scheme”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/23301&quot;&gt;#23301&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Nimsuggest segfault with invalid assignment to table”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22753&quot;&gt;#22753&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The complete list of changes is available
+&lt;a href=&quot;https://github.com/nim-lang/Nim/compare/v1.6.18...v1.6.20&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 16 Apr 2024 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/blog/2024/04/16/versions-1620-204-released.html</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2024/04/16/versions-1620-204-released.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Nim Community Survey 2023 Results</title>
+        <description>&lt;p&gt;The Nim community survey 2023 has been open for two months, and we have received 662 responses – we think this is a large enough sample to draw conclusions about our users and their habits.
+Before we go into details, we would like to thank all the people who took the time to respond.
+We really appreciate the feedback!&lt;/p&gt;
+
+&lt;p&gt;The goal of this survey was primarily to determine how our community is using Nim, in order to better understand how we should be improving it.&lt;/p&gt;
+
+&lt;h2 id=&quot;do-you-use-nim&quot;&gt;Do you use Nim?&lt;/h2&gt;
+
+&lt;p&gt;Based on the answer to this question, the respondents were divided into two groups that each received a separate set of questions.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/news/images/survey2023/01.png&quot; alt=&quot;Do you use Nim?&quot; style=&quot;width:100%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Approximately three quarters of the respondents use Nim (33% frequently, 40% occasionally), while the remaining quarter is divided between people who never used Nim (10%) and people who stopped using Nim (16%).&lt;/p&gt;
+
+&lt;p&gt;Of those people who &lt;em&gt;don’t&lt;/em&gt; use Nim, the most frequent reasons are: “Nim seems immature, not ready for production”, “Nim doesn’t have libraries I need”, “Nim seems too risky for production”, and “Nim doesn’t have enough learning materials”.&lt;/p&gt;
+
+&lt;h2 id=&quot;users&quot;&gt;Users&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/news/images/survey2023/02.png&quot; alt=&quot;How long have you been using Nim?&quot; style=&quot;width:100%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Compared to the &lt;a href=&quot;/assets/news/images/survey2021/02.png&quot;&gt;response from last year&lt;/a&gt;, our user-base has more Nim experience than before.
+We have more users that have used Nim for at least two years: 38% this year vs 30% last year, and less new users (people who started using Nim in the last 6 months): 20% this year vs 30% last year.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/news/images/survey2023/03.png&quot; alt=&quot;Where are you from?&quot; style=&quot;width:100%&quot; /&gt;
+&lt;img src=&quot;/assets/news/images/survey2023/04.png&quot; alt=&quot;What is your occupation?&quot; style=&quot;width:100%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;A typical Nim user, just as in previous years, would be a software developer from Europe.&lt;/p&gt;
+
+&lt;p&gt;Besides Europe (more than half of our users), our users mostly come from North America and Asia.
+A half of our users are software developers (50%), and the next largest group are students (13%, same as &lt;a href=&quot;/assets/news/images/survey2021/04.png&quot;&gt;last year&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/news/images/survey2023/05.png&quot; alt=&quot;In what age group are you?&quot; style=&quot;width:100%&quot; /&gt;
+&lt;img src=&quot;/assets/news/images/survey2023/06.png&quot; alt=&quot;How many years of programming experience do you have?&quot; style=&quot;width:100%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We have users from all age groups and all levels of programming experience, proving that Nim can be used both by beginners and veteran programmers.&lt;/p&gt;
+
+&lt;p&gt;Just as with Nim experience, we are noticing a trend where our users are on average a bit older (33% Nim users are older than 40, 20% younger than 24) than &lt;a href=&quot;/assets/news/images/survey2021/05.png&quot;&gt;the year before&lt;/a&gt; (26% older than 40, 20% younger than 24).&lt;/p&gt;
+
+&lt;p&gt;Similar to &lt;a href=&quot;/assets/news/images/survey2021/06.png&quot;&gt;last year&lt;/a&gt;, this year we have with 55% user having at least 10 years of experience and just 6% users with less than 2 years of experience.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/news/images/survey2023/07.png&quot; alt=&quot;What are the technical aspects or features of Nim you like the most?&quot; style=&quot;width:100%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Same as &lt;a href=&quot;/assets/news/images/survey2021/07.png&quot;&gt;previously&lt;/a&gt;, things that people like about Nim the most are: performance/speed and syntax (80%), ease of use (73%), and self-contained binaries (66%).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/news/images/survey2023/08.png&quot; alt=&quot;What editor(s) do you use when writing Nim?&quot; style=&quot;width:100%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;VS Code continues to dominate, with 66% of Nim users choosing it in the survey.
+In the second place is Vim/Neovim (36% combined), followed by Emacs and Sublime Text (6% each).&lt;/p&gt;
+
+&lt;h2 id=&quot;nim-versions&quot;&gt;Nim versions&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/news/images/survey2023/09.png&quot; alt=&quot;Which version(s) of Nim do you use?&quot; style=&quot;width:100%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We’re glad to see that the large majority of users are using the latest stable version (2.0.x).&lt;/p&gt;
+
+&lt;p&gt;We can partially attribute this to the mostly painless upgrade process:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/news/images/survey2023/10.png&quot; alt=&quot;Has upgrading to a new version of the Nim compiler broken your code? How much work did it take to fix it?&quot; style=&quot;width:100%&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;using-nim&quot;&gt;Using Nim&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/news/images/survey2023/11.png&quot; alt=&quot;Roughly, what percentage of the programming work you do is in Nim?&quot; style=&quot;width:100%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This is the first year that we can be somewhat satisfied with this statistic: there is an upward trend &lt;a href=&quot;/assets/news/images/survey2021/11.png&quot;&gt;compared to the last year&lt;/a&gt; – more than 20% of our respondents use Nim for the majority of time (60% or more), which is a 25% increase from last year’s 16%.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/news/images/survey2023/14.png&quot; alt=&quot;Do you use Nim at work?&quot; style=&quot;width:100%&quot; /&gt;
+&lt;img src=&quot;/assets/news/images/survey2023/15.png&quot; alt=&quot;If you are not using it at work yet, do you plan to in the near future?&quot; style=&quot;width:100%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;One of the explanations for the poor Nim usage generally can be explained by these responses:
+only about 35% of the respondents use Nim at work. (Which is an increase from 30% last year)&lt;/p&gt;
+
+&lt;p&gt;We’re glad to hear that the large majority of people who could use Nim at work, are planning to do so in the near future.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/news/images/survey2023/13.png&quot; alt=&quot;What platforms are you targeting?&quot; style=&quot;width:100%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The results are similar to &lt;a href=&quot;/assets/news/images/survey2021/13.png&quot;&gt;2021 responses&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;learning-nim&quot;&gt;Learning Nim&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/news/images/survey2023/17.png&quot; alt=&quot;If you started using Nim in last two years (2022 and 2023), what learning resources, if any, did you use to learn Nim?&quot; style=&quot;width:100%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This year we only wanted to see the responses of Nim-newcomers, to see what learning materials are still “fresh” and still used in 2023, but from the amount of responses we see that even some our more experienced users answered this question :)&lt;/p&gt;
+
+&lt;p&gt;The most popular learning resource are &lt;a href=&quot;https://nim-lang.org/docs/tut1.html&quot;&gt;the official tutorials&lt;/a&gt;, followed by &lt;a href=&quot;https://nim-by-example.github.io/getting_started/&quot;&gt;“Nim by Example”&lt;/a&gt;.
+&lt;a href=&quot;https://narimiran.github.io/nim-basics/&quot;&gt;“Nim Basics”&lt;/a&gt; is in the third place, surpassing &lt;a href=&quot;https://book.picheta.me&quot;&gt;“Nim in Action”&lt;/a&gt; book.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://rosettacode.org/wiki/Category:Nim&quot;&gt;Rosetta Code examples&lt;/a&gt; is also a popular choice as a learning resource, closely followed by &lt;a href=&quot;https://www.amazon.com/dp/B0B4R7B9YX&quot;&gt;“Mastering Nim”&lt;/a&gt; book.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/news/images/survey2023/18.png&quot; alt=&quot;What kind of additional learning materials does Nim need?&quot; style=&quot;width:100%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Just like in &lt;a href=&quot;/assets/news/images/survey2021/18.png&quot;&gt;the previous survey&lt;/a&gt;, the most wanted types of learning materials are code examples and written tutorials.
+We also see an increased demand for video tutorials.&lt;/p&gt;
+
+&lt;p&gt;If someone in our community is willing to work on Nim, but has no idea &lt;em&gt;what&lt;/em&gt; to do, these tutorials would be a good start.&lt;/p&gt;
+
+&lt;h2 id=&quot;nim-in-2024-and-beyond&quot;&gt;Nim in 2024 and beyond&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/news/images/survey2023/23.png&quot; alt=&quot;What should be our priorities in improving Nim, that would bring the largest quality-of-life improvements? [improve tooling]&quot; style=&quot;width:100%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Each year improving the tooling is getting more and more votes, and this year it has become the top priority to fix, according to our users.&lt;/p&gt;
+
+&lt;p&gt;Thanks to our partnership with &lt;a href=&quot;https://status.im&quot;&gt;Status&lt;/a&gt;, it is one of our main priorities for 2024.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/news/images/survey2023/21.png&quot; alt=&quot;What should be our priorities in improving Nim, that would bring the largest quality-of-life improvements? [fixing compiler bugs]&quot; style=&quot;width:100%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;While, compared to the last year, more users think the current situation with the compilers bugs is ok, still 2/3 of our users find it very important.
+We will continue to work on it, and we appreciate any community effort on this: we already have several individuals continuously helping us with fixing compiler bugs (thank you!), and we’d benefit from more.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/news/images/survey2023/20.png&quot; alt=&quot;What should be our priorities in improving Nim, that would bring the largest quality-of-life improvements? [documentation]&quot; style=&quot;width:100%&quot; /&gt;
+&lt;img src=&quot;/assets/news/images/survey2023/26.png&quot; alt=&quot;What should be our priorities in improving Nim, that would bring the largest quality-of-life improvements? [more learning materials (tutorials, videos, books, ...)]&quot; style=&quot;width:100%&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;These results are basically the same as last year (&lt;a href=&quot;/assets/news/images/survey2021/20.png&quot;&gt;documentation 2021&lt;/a&gt;, &lt;a href=&quot;/assets/news/images/survey2021/26.png&quot;&gt;learning materials 2021&lt;/a&gt;).
+When it comes to learning materials, where we mostly lean on the community content (for this to improve we need your involvement!), people want to see more written tutorials and code examples.&lt;/p&gt;
+
+&lt;h2 id=&quot;last-words&quot;&gt;Last words&lt;/h2&gt;
+
+&lt;p&gt;Thank you to each and every one of you who took the time to answer this survey.
+Your time is precious and we are deeply thankful that you used it to share your feedback.&lt;/p&gt;
+
+&lt;p&gt;Please remember that you do not need to wait for a survey in order to give us feedback; of course you’re more than welcome to wait if you wish, but ideally share your feedback with us immediately.
+We can be found in various places - see &lt;a href=&quot;https://nim-lang.org/community.html&quot;&gt;the community page&lt;/a&gt; for links and instructions on how to get in touch.&lt;/p&gt;
+
+&lt;p&gt;If you would like to help us in our 2024 plans, consider &lt;a href=&quot;https://github.com/nim-lang/Nim&quot;&gt;contributing&lt;/a&gt; or making a donation.
+You can donate via:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://opencollective.com/nim&quot;&gt;Open Collective&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Bitcoin: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bc1qzgw3vsppsa9gu53qyecyu063jfajmjpye3r2h4&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you are a company, we also offer commercial support. Please get in
+touch with us via &lt;a href=&quot;mailto:support@nim-lang.org&quot;&gt;support@nim-lang.org&lt;/a&gt;. As a commercial backer, you
+can decide what features and bugfixes should be prioritized.&lt;/p&gt;
+</description>
+        <pubDate>Wed, 31 Jan 2024 00:00:00 -0600</pubDate>
+        <link>http://localhost:4000/blog/2024/01/31/community-survey-results-2023.html</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2024/01/31/community-survey-results-2023.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Versions 2.0.2 and 1.6.18 released</title>
+        <description>&lt;p&gt;The Nim team is happy to announce two releases:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;the latest Nim, version 2.0.2&lt;/li&gt;
+  &lt;li&gt;LTS release, version 1.6.18&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For the majority of our users, v2.0.2 contains &lt;a href=&quot;https://github.com/nim-lang/Nim/compare/v2.0.0...v2.0.2&quot;&gt;63 commits&lt;/a&gt; and brings bugfixes and improvements to Nim 2.0.0, released four months ago.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: If your program uses threads (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--threads:on&lt;/code&gt; became the default in the 2.0.x line) please also use the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-d:useMalloc&lt;/code&gt; switch.
+This problem will be fixed in a future release, sorry for the inconvenience.&lt;/p&gt;
+
+&lt;p&gt;For those users who haven’t switched to &lt;a href=&quot;https://nim-lang.org/blog/2023/08/01/nim-v20-released.html&quot;&gt;Nim v2.0&lt;/a&gt; yet, we have released the ninth patch release for Nim 1.6.x.
+It is a small release with &lt;a href=&quot;https://github.com/nim-lang/Nim/compare/v1.6.16...v1.6.18&quot;&gt;13 commits&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;nim-community-survey-2023&quot;&gt;Nim Community Survey 2023&lt;/h2&gt;
+
+&lt;p&gt;Before going into details of the release, we would like to remind you that &lt;a href=&quot;https://nim-lang.org/blog/2023/11/17/community-survey-2023.html&quot;&gt;2023 Nim Community Survey&lt;/a&gt; is still open, and we would appreciate your input if you haven’t done it already.&lt;/p&gt;
+
+&lt;h1 id=&quot;installing-nim-202&quot;&gt;Installing Nim 2.0.2&lt;/h1&gt;
+
+&lt;h2 id=&quot;new-users&quot;&gt;New users&lt;/h2&gt;
+
+&lt;p&gt;Check out if the package manager of your OS already ships version 2.0.2 or
+install it as described &lt;a href=&quot;https://nim-lang.org/install.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;existing-users&quot;&gt;Existing users&lt;/h2&gt;
+
+&lt;p&gt;If you have installed a previous version of Nim using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;choosenim&lt;/code&gt;,
+getting Nim 2.0.2 is as easy as:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;choosenim 2.0.2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If you are on OSX ARM, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;choosenim&lt;/code&gt; will not work for you.
+Please choose an alternative method of installing or updating.&lt;/p&gt;
+
+&lt;p&gt;Alternatively, you can download Nim 2.0.2 from
+&lt;a href=&quot;https://github.com/nim-lang/nightlies/releases/tag/2023-12-15-version-2-0-c4c44d10df8a14204a75c34e499def200589cb7c&quot;&gt;our nightlies builds&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;donating-to-nim&quot;&gt;Donating to Nim&lt;/h1&gt;
+
+&lt;p&gt;We would like to encourage you to donate to Nim.
+The donated money will be used to further improve Nim by creating bounties
+for the most important bugfixes and features.&lt;/p&gt;
+
+&lt;p&gt;You can donate via:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://opencollective.com/nim&quot;&gt;Open Collective&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Bitcoin: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1BXfuKM2uvoD6mbx4g5xM3eQhLzkCK77tJ&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you are a company, we also offer commercial support.&lt;/p&gt;
+
+&lt;h1 id=&quot;bugfixes&quot;&gt;Bugfixes&lt;/h1&gt;
+
+&lt;p&gt;These reported issues were fixed:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Fixed “Undefined behavior when with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hash(...)&lt;/code&gt; on non-aligned bytes due to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;murmurHash&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cast[ptr int32]&lt;/code&gt;”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22387&quot;&gt;#22387&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “async/closure environment does not align local variables”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22419&quot;&gt;#22419&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Debugging/stepping is broken in 2.0.0 and 2.1.1”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22366&quot;&gt;#22366&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;when&lt;/code&gt; picks wrong branch with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;static int&lt;/code&gt;”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22474&quot;&gt;#22474&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Regression from 1.6.14 to 2.0.0 - nimble test crashes with a core dump”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22357&quot;&gt;#22357&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Long-term arc-closure iterator problem”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22619&quot;&gt;#22619&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-d:useMalloc&lt;/code&gt; broken with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--mm:none&lt;/code&gt; and threads on”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22262&quot;&gt;#22262&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Crash of compiler on array type check”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/5780&quot;&gt;#5780&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Undefined behaviorwith &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;set&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;card()&lt;/code&gt; on non-aligned pointer from &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cardSetImpl&lt;/code&gt;/&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;countBits64cast&lt;/code&gt; on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ptr uint64&lt;/code&gt;”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22481&quot;&gt;#22481&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;elementType&lt;/code&gt; from &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std/typetraits&lt;/code&gt; doesn’t work in generic procs”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/21532&quot;&gt;#21532&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “peg matchLen can raise an unlisted exception: Exception”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22541&quot;&gt;#22541&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Piece of code output c compiler error “
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/17197&quot;&gt;#17197&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Missing type inference in loop + case + if + continue”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22604&quot;&gt;#22604&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Invalid type mismatch in generic”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/17509&quot;&gt;#17509&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “std/nativesockets getHostByAddr should support IPv6”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22834&quot;&gt;#22834&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “std/nre leaks memory on every created &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Regex&lt;/code&gt; due to auto-translated finalizers behaving differently under ARC/ORC”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22868&quot;&gt;#22868&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Destructor not called for temp objects passed as arguments”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22866&quot;&gt;#22866&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “nimsuggest inlay hints for types shown in the wrong place for exported vars and consts”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/23067&quot;&gt;#23067&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “[Regression] static integers in quote do”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22947&quot;&gt;#22947&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The complete list of changes is available
+&lt;a href=&quot;https://github.com/nim-lang/Nim/compare/v2.0.0...v2.0.2&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 19 Dec 2023 00:00:00 -0600</pubDate>
+        <link>http://localhost:4000/blog/2023/12/19/versions-1618-202-released.html</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2023/12/19/versions-1618-202-released.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Mastering Nim contest winners</title>
+        <description>&lt;p&gt;The &lt;a href=&quot;https://nim-lang.org/blog/2023/09/19/mastering-nim.html&quot;&gt;contest&lt;/a&gt; is over!
+A gold crown can be seen by turning the picture upside down:&lt;/p&gt;
+
+&lt;p style=&quot;text-align: center;&quot;&gt;
+  &lt;img width=&quot;auto&quot; height=&quot;600&quot; src=&quot;http://localhost:4000/assets/img/contest_image.png&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;We received lots of correct answers!
+Among those who answered correctly, three lucky winners were chosen by random draw.&lt;/p&gt;
+
+&lt;p&gt;An email has been sent to the lucky winners and we hope they reply in time with their postal addresses so that they can receive their signed books before Christmas eve. 
+Due to privacy concerns we will not publish any information about the winners.
+If they want, they can share the information on our forum.&lt;/p&gt;
+
+&lt;p&gt;We thank everybody who has participated and wish you a happy Santa Claus!&lt;/p&gt;
+
+</description>
+        <pubDate>Thu, 07 Dec 2023 00:00:00 -0600</pubDate>
+        <link>http://localhost:4000/blog/2023/12/07/contest-winners.html</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2023/12/07/contest-winners.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Launching the 2023 Nim Community Survey</title>
+        <description>&lt;p&gt;We are proud to announce the launch of the official
+&lt;a href=&quot;https://forms.gle/nRY68kEpFceAz9bE6&quot;&gt;2023 Nim Community Survey&lt;/a&gt;!&lt;/p&gt;
+
+&lt;p&gt;No matter whether you use Nim today, have used Nim previously, or never used Nim before;
+we want to know your opinions.
+Your feedback will help the Nim project understand its strengths and
+weaknesses, and to determine development priorities for the future.&lt;/p&gt;
+
+&lt;div style=&quot;text-align: center;&quot;&gt;
+  &lt;a class=&quot;pure-button pure-button-primary&quot; style=&quot;font-size: 85%; display: inline-block;&quot; href=&quot;https://forms.gle/nRY68kEpFceAz9bE6&quot; target=&quot;_blank&quot;&gt;
+  Answer Survey
+  &lt;/a&gt;
+&lt;/div&gt;
+
+&lt;p&gt;It shouldn’t take you much longer than 5 minutes to complete this survey.
+Submissions will be accepted until the start of 2024, depending on the
+response rates.
+If you have any questions or feedback, please don’t hesitate
+to get in touch with us via email at survey@nim-lang.org or on the
+&lt;a href=&quot;https://forum.nim-lang.org&quot;&gt;Nim Forum&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;This is now the seventh year in which this survey has been running.
+An analysis of the results for the past years can be found at the following links:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://nim-lang.org/blog/2016/09/03/community-survey-results-2016.html&quot;&gt;2016&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://nim-lang.org/blog/2017/10/01/community-survey-results-2017.html&quot;&gt;2017&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://nim-lang.org/blog/2018/10/27/community-survey-results-2018.html&quot;&gt;2018&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://nim-lang.org/blog/2020/02/18/community-survey-results-2019.html&quot;&gt;2019&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://nim-lang.org/blog/2021/01/20/community-survey-results-2020.html&quot;&gt;2020&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://nim-lang.org/blog/2022/01/14/community-survey-results-2021.html&quot;&gt;2021&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We would appreciate your help in spreading the word about this survey.
+Share the Google Forms link on your social network feeds, with your colleagues
+and in other communities.&lt;/p&gt;
+
+&lt;p&gt;Once the submission period ends, the results will be shown here and publicized
+via the Nim Forum.&lt;/p&gt;
+
+&lt;p&gt;Thanks for your time!&lt;/p&gt;
+</description>
+        <pubDate>Fri, 17 Nov 2023 00:00:00 -0600</pubDate>
+        <link>http://localhost:4000/blog/2023/11/17/community-survey-2023.html</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2023/11/17/community-survey-2023.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Version 1.6.16 released</title>
+        <description>&lt;p&gt;The Nim team is happy to announce version 1.6.16, our eight patch release for
+Nim 1.6.&lt;/p&gt;
+
+&lt;p&gt;Version 1.6.16 is a result of three months of hard work, and it contains
+&lt;a href=&quot;https://github.com/nim-lang/Nim/compare/v1.6.14...v1.6.16&quot;&gt;84 commits&lt;/a&gt;,
+bringing lots of general improvements over 1.6.14.&lt;/p&gt;
+
+&lt;p&gt;This release is aimed at our users who haven’t switched to &lt;a href=&quot;https://nim-lang.org/blog/2023/08/01/nim-v20-released.html&quot;&gt;Nim v2.0&lt;/a&gt; yet.&lt;/p&gt;
+
+&lt;h1 id=&quot;installing-nim-16&quot;&gt;Installing Nim 1.6&lt;/h1&gt;
+
+&lt;h2 id=&quot;new-users&quot;&gt;New users&lt;/h2&gt;
+
+&lt;p&gt;Check out if the package manager of your OS already ships version 1.6.16 or
+install it as described &lt;a href=&quot;https://nim-lang.org/install.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;existing-users&quot;&gt;Existing users&lt;/h2&gt;
+
+&lt;p&gt;If you have installed a previous version of Nim using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;choosenim&lt;/code&gt;,
+getting Nim 1.6.16 is as easy as:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;choosenim 1.6.16
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Alternatively, you can download Nim 1.6.16 from
+&lt;a href=&quot;https://github.com/nim-lang/nightlies/releases/tag/2023-10-10-version-1-6-3c9b68dc157804885b14a1984efc25e8b7cc861d&quot;&gt;our nightlies builds&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;donating-to-nim&quot;&gt;Donating to Nim&lt;/h1&gt;
+
+&lt;p&gt;We would like to encourage you to donate to Nim.
+The donated money will be used to further improve Nim by creating bounties
+for the most important bugfixes and features.&lt;/p&gt;
+
+&lt;p&gt;You can donate via:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://opencollective.com/nim&quot;&gt;Open Collective&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Bitcoin: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1BXfuKM2uvoD6mbx4g5xM3eQhLzkCK77tJ&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you are a company, we also offer commercial support.&lt;/p&gt;
+
+&lt;h1 id=&quot;bugfixes&quot;&gt;Bugfixes&lt;/h1&gt;
+
+&lt;p&gt;These reported issues were fixed:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Fixed “Undefined behavior when with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hash(...)&lt;/code&gt; on non-aligned bytes due to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;murmurHash&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cast[ptr int32]&lt;/code&gt;”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22387&quot;&gt;#22387&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “async/closure environment does not align local variables”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22419&quot;&gt;#22419&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Ambiguous error when import modules with same names but different aliases”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22208&quot;&gt;#22208&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “system.create doesn’t work with bitfield objects”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/20516&quot;&gt;#20516&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Memory leak with implicit &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;result&lt;/code&gt;”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/21703&quot;&gt;#21703&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Missing range or overflow check in “sum” or “prod” functions.”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/21792&quot;&gt;#21792&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Compiler SIGSEGV when using SharedTable”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/21251&quot;&gt;#21251&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Wrong codegen with openArray”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/15428&quot;&gt;#15428&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Invalid codegen when unpacking tuple via template”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22049&quot;&gt;#22049&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Wrong assignment for tuples in some contexts with refc”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/16331&quot;&gt;#16331&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Table has inconsistent hash”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/20023&quot;&gt;#20023&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;template&lt;/code&gt; with module as parameter elides usage/checking of module name specifier”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/21231&quot;&gt;#21231&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “gcc error compiling generated code using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;for&lt;/code&gt; with iterator”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/21110&quot;&gt;#21110&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Consistent nimsuggest crash on generics in first class functions”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22137&quot;&gt;#22137&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “SIGSEGV with ARC and closure iterator”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22237&quot;&gt;#22237&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--gcc.exe&lt;/code&gt; doesn’t work with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--genScript:on&lt;/code&gt;”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22281&quot;&gt;#22281&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “async proc Error: unhandled exception: closureiters.nim(858, 11) &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ctx.nearestFinally != 0&lt;/code&gt;  [AssertionDefect] when the return statement is in the finally block”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22297&quot;&gt;#22297&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Crash of compiler on array type check”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/5780&quot;&gt;#5780&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;when&lt;/code&gt; picks wrong branch with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;static int&lt;/code&gt;”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22474&quot;&gt;#22474&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Undefined behaviorwith &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;set&lt;/code&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;card()&lt;/code&gt; on non-aligned pointer from &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cardSetImpl&lt;/code&gt;/&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;countBits64cast&lt;/code&gt; on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ptr uint64&lt;/code&gt;”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22481&quot;&gt;#22481&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;elementType&lt;/code&gt; from &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std/typetraits&lt;/code&gt; doesn’t work in generic procs”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/21532&quot;&gt;#21532&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed ““environment misses” for type reference in iterator access nested in closure”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22548&quot;&gt;#22548&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Invalid type mismatch in generic”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/17509&quot;&gt;#17509&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Error compiling with ARC/ORC”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/21974&quot;&gt;#21974&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Internal error when using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lent&lt;/code&gt; + &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;template&lt;/code&gt; in method/proc”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22138&quot;&gt;#22138&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-d:useMalloc&lt;/code&gt; broken with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--mm:none&lt;/code&gt; and threads on”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22262&quot;&gt;#22262&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “peg matchLen can raise an unlisted exception: Exception”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22541&quot;&gt;#22541&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Piece of code output c compiler error “
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/17197&quot;&gt;#17197&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;Fixed “Missing type inference in loop + case + if + continue”
+(&lt;a href=&quot;https://github.com/nim-lang/Nim/issues/22604&quot;&gt;#22604&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The complete list of changes is available
+&lt;a href=&quot;https://github.com/nim-lang/Nim/compare/v1.6.14...v1.6.16&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+</description>
+        <pubDate>Wed, 11 Oct 2023 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/blog/2023/10/11/version-1616-released.html</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2023/10/11/version-1616-released.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Mastering Nim, 2nd edition</title>
+        <description>&lt;p&gt;Discover the secret of Nim!&lt;/p&gt;
+
+&lt;p&gt;The definite guide on Nim!
+Written by the inventor himself.&lt;/p&gt;
+
+&lt;p&gt;Now with updated content for version 2.0 which solves the biggest pain point of Nim 1.0, shared memory in a multi-threaded setting.&lt;/p&gt;
+
+&lt;p&gt;Please have a look at its cover image:&lt;/p&gt;
+&lt;p style=&quot;text-align: center;&quot;&gt;
+  &lt;img width=&quot;auto&quot; height=&quot;600&quot; src=&quot;http://localhost:4000/assets/img/mastering_nim_2.jpg&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;But Nim’s logo is a crown!
+Where is the crown?&lt;/strong&gt;
+That’s the secret of Nim!&lt;/p&gt;
+
+&lt;p&gt;Send us your reply to support@nim-lang.org until December 6th 2023.
+Among the correct answers we will select 3 winners by randomization.
+The winners will receive a signed hardcover!&lt;/p&gt;
+
+&lt;p&gt;“Mastering Nim” is available here:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.amazon.com/dp/B0B4R7B9YX&quot;&gt;amazon.com&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.amazon.de/dp/B0B4R7B9YX&quot;&gt;amazon.de&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Tue, 19 Sep 2023 00:00:00 -0500</pubDate>
+        <link>http://localhost:4000/blog/2023/09/19/mastering-nim.html</link>
+        <guid isPermaLink="true">http://localhost:4000/blog/2023/09/19/mastering-nim.html</guid>
+        
+        
+      </item>
+    
+  </channel>
+</rss>

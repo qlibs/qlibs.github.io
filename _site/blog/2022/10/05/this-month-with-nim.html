@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta name="charset" content="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The Nim programming language is a concise, fast programming language that compiles to C, C++ and JavaScript.">
+  <meta charset="utf-8">
+  <link rel="icon" type="image/png" href="/assets/img/logo_bw.png" />
+
+  
+  <title>This Month with Nim: September 2022 - Nim Blog</title>
+  
+  <link rel="stylesheet" href="/assets/css/pure.min.css">
+  <link rel="stylesheet" href="/assets/css/pure-grids-responsive.min.css">
+  <link href="https://use.fontawesome.com/releases/v5.0.2/css/all.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+  
+  <link rel="stylesheet" href="/assets/css/highlight/github.css">
+  
+
+  <link rel="stylesheet" href="/assets/css/google-fonts.css">
+  <link rel="stylesheet" href="/assets/css/main.css?t=1721738524015683587">
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-48159761-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+  <script defer data-domain="nim-lang.org" src="https://plausible.io/js/plausible.js"></script>
+
+  <meta name="twitter:title" content="This Month with Nim: September 2022">
+
+  
+  <meta name="twitter:description" content="Nodejs update, assignment macros, OpenSHMEM bindings, and a TCP monitor">
+  <meta property="og:description" content="Nodejs update, assignment macros, OpenSHMEM bindings, and a TCP monitor">
+  
+
+  <meta name="twitter:site" content="@nim_lang">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://nim-lang.org/assets/img/twitter_banner.png">
+
+  <meta property="og:title" content="This Month with Nim: September 2022" />
+  <meta property="og:site_name" content="Nim Programming Language" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://nim-lang.org/assets/img/twitter_banner.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1000" />
+  <meta property="og:image:height" content="500" />
+  <meta property="og:image:alt" content="Nim Programming Language" />
+</head>
+
+  <body class="site">
+    <header>
+  <nav class="pure-menu pure-menu-horizontal pure-menu-scrollable">
+    <div class="nav-content">
+      <a href="/" class="pure-menu-heading pure-menu-link site-logo-container">
+        <img class="site-logo" src="/assets/img/logo.svg" height="28" alt="Nim">
+      </a>
+      <ul class="pure-menu-list">
+        
+        <li class="pure-menu-item">
+          <a href="/blog.html"
+             class="pure-menu-link current">
+            Blog
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/features.html"
+             class="pure-menu-link ">
+            Features
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/install.html"
+             class="pure-menu-link ">
+            Download
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/documentation.html"
+             class="pure-menu-link ">
+            Documentation
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="https://forum.nim-lang.org"
+             class="pure-menu-link ">
+            Forum
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/donate.html"
+             class="pure-menu-link ">
+            Donate
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://github.com/nim-lang/Nim">Source</a>
+        </li>
+      </ul>
+    </div>
+    <div class="menu-fade"></div>
+  </nav>
+</header>
+
+    <div class="site-content post-page">
+      <div class="content">
+        <div class="width-reduced">
+          <h1 class="post-title">
+            This Month with Nim: September 2022
+          </h1>
+          <h3 class="post-meta">
+            <span>
+              <i class="far fa-calendar-alt" aria-hidden="true"></i>
+              05 October 2022
+            </span>
+            
+            <span>
+              <i class="fa fa-user-circle" aria-hidden="true"></i>
+              The Nim Community
+            </span>
+            
+          </h3>
+          <h2 id="node"><a href="https://github.com/juancarlospaco/nodejs">Node</a></h2>
+
+<h4 id="author-juan-carlos">Author: <a href="https://github.com/juancarlospaco">Juan Carlos</a></h4>
+
+<p>New APIs for the browser implemented recently</p>
+
+<ul>
+  <li><a href="https://juancarlospaco.github.io/nodejs/nodejs/jsfilesystemhandle">File IO API 💾</a></li>
+  <li><a href="https://juancarlospaco.github.io/nodejs/nodejs/jsgeolocation">GeoLocation API 🌎</a></li>
+  <li><a href="https://juancarlospaco.github.io/nodejs/nodejs/jseyedropper">EyeDropper API 🌈</a></li>
+  <li><a href="https://juancarlospaco.github.io/nodejs/nodejs/jsspeechsynthesis">Speech Synth API 🔊</a></li>
+  <li><a href="https://juancarlospaco.github.io/nodejs/nodejs/jswebusb">USB API</a></li>
+  <li><a href="https://juancarlospaco.github.io/nodejs/nodejs/jsbluetooth">Bluetooth API</a></li>
+  <li><a href="https://juancarlospaco.github.io/nodejs/nodejs/jsgamepad">Game controller API 🎮</a></li>
+  <li><a href="https://juancarlospaco.github.io/nodejs/nodejs/jsbattery">Battery API 🔋</a></li>
+  <li><a href="https://juancarlospaco.github.io/nodejs/nodejs/jswebvtt">Video Subtitles API 🎬</a></li>
+  <li><a href="https://juancarlospaco.github.io/nodejs/nodejs/jspayments">Payments API 💸</a></li>
+  <li><a href="https://juancarlospaco.github.io/nodejs/nodejs/jsbarcodes">QR-Codes and Bar-Codes API</a></li>
+  <li><a href="https://juancarlospaco.github.io/nodejs/nodejs/jsshare">Share API</a></li>
+  <li><a href="https://juancarlospaco.github.io/nodejs/nodejs/jssanitizer">Sanitizer API</a></li>
+  <li><a href="https://juancarlospaco.github.io/nodejs/nodejs/jstemporal">Temporal API ⏰</a></li>
+  <li><a href="https://github.com/juancarlospaco/nodejs/blob/main/src/nodejs/jsindexeddb.nim">IndexedDB API</a> (by Tandy)</li>
+  <li>WebSockets API (by Tandy)</li>
+  <li>Multisync for JS (by Tandy)</li>
+</ul>
+
+<p>Nodejs is your toolbox with 70+ modules for JavaScript, Node, browser and more!</p>
+
+<ul>
+  <li><a href="https://github.com/juancarlospaco/nodejs">https://github.com/juancarlospaco/nodejs</a></li>
+</ul>
+
+<h2 id="qwatcher"><a href="https://github.com/pouriyajamshidi/qwatcher">QWatcher</a></h2>
+
+<h4 id="author-pouriya-jamshidi">Author: <a href="https://github.com/pouriyajamshidi">Pouriya Jamshidi</a></h4>
+
+<p><code class="language-plaintext highlighter-rouge">qwatcher</code> is designed to help monitor TCP connections and diagnose buffer and connectivity issues on Linux machines related to input and output queues.</p>
+
+<h2 id="nim-sos"><a href="https://github.com/ct-clmsn/nim-sos">nim-sos</a></h2>
+
+<h4 id="author-christopher-taylor">Author: <a href="https://github.com/ct-clmsn">Christopher Taylor</a></h4>
+
+<p><a href="https://github.com/ct-clmsn/nim-sos">nim-sos</a> provides users the ability to program parallel applications.
+In the Single-Program-Many-Data (SPMD) style for supercomputers using the Nim programming language.</p>
+
+<p>nim-sos:</p>
+<ul>
+  <li>wraps the existing <a href="https://github.com/Sandia-OpenSHMEM/SOS">Sandia OpenSHMEM library</a> implemented by Sandia National Laboratory.</li>
+  <li>implements distributed symmetric array and distributed symmetric scalar support using the underlying OpenSHMEM wrapper.</li>
+  <li>provides the Nim programming language distributed symmetric shared memory and Partitioned Global Address Space (PGAS) support.</li>
+</ul>
+
+<h2 id="assigns"><a href="https://github.com/metagn/assigns">assigns</a></h2>
+
+<h4 id="author-metagn">Author: <a href="https://github.com/metagn">metagn</a></h4>
+
+<p><a href="https://github.com/metagn/assigns">assigns</a> is a library for unpacking assignment and basic pattern matching.
+Its advantage over other libraries with the same goal is that it has a simple, lightweight implementation that allows for overloading matching syntaxes based on the type of the matched value.</p>
+
+<div class="language-nim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="n">assigns</span>
+
+<span class="c"># unpacking assignment:</span>
+<span class="k">type</span> <span class="n">Person</span> <span class="o">=</span> <span class="k">tuple</span><span class="o">[</span><span class="n">name</span><span class="p">:</span> <span class="kt">string</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="kt">int</span><span class="o">]</span>
+<span class="p">(</span><span class="n">age</span><span class="p">:</span> <span class="n">a</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">n</span><span class="p">)</span> <span class="p">:</span><span class="o">=</span> <span class="p">(</span><span class="s">"John Smith"</span><span class="p">,</span> <span class="mi">30</span><span class="p">).</span><span class="n">Person</span>
+<span class="n">assert</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="s">"John Smith"</span><span class="p">)</span>
+
+<span class="c"># pattern matching:</span>
+<span class="k">proc </span><span class="nf">fizzbuzz</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="kt">int</span><span class="p">):</span> <span class="kt">string</span> <span class="o">=</span>
+  <span class="n">match</span> <span class="p">(</span><span class="n">n</span> <span class="ow">mod</span> <span class="mi">3</span><span class="p">,</span> <span class="n">n</span> <span class="ow">mod</span> <span class="mi">5</span><span class="p">):</span>
+  <span class="k">of</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span> <span class="s">"FizzBuzz"</span>
+  <span class="k">of</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="err">_): "Fizz"</span>
+  <span class="k">of</span> <span class="p">(</span><span class="err">_, 0): "Buzz"</span>
+  <span class="k">else</span><span class="p">:</span> <span class="o">$</span><span class="n">n</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="mf">1</span><span class="p">..</span><span class="mi">100</span><span class="p">:</span>
+  <span class="n">echo</span> <span class="n">fizzbuzz</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="c"># custom implementation:</span>
+<span class="k">import</span> <span class="n">assigns</span><span class="o">/</span><span class="n">impl</span><span class="p">,</span> <span class="n">std</span><span class="o">/</span><span class="n">macros</span>
+
+<span class="k">type</span> <span class="n">LinkedList</span><span class="o">[</span><span class="n">T</span><span class="o">]</span> <span class="p">{.</span><span class="n">acyclic</span><span class="p">.}</span> <span class="o">=</span> <span class="k">ref</span> <span class="k">object</span>
+  <span class="n">leaf</span><span class="p">:</span> <span class="n">T</span>
+  <span class="n">next</span><span class="p">:</span> <span class="n">LinkedList</span><span class="o">[</span><span class="n">T</span><span class="o">]</span>
+
+<span class="n">implementAssign</span> <span class="n">LinkedList</span><span class="p">:</span> <span class="c"># sugar for defining the overloading macro</span>
+  <span class="c"># skip bracket:</span>
+  <span class="k">let</span> <span class="n">newLhs</span> <span class="o">=</span> <span class="k">if</span> <span class="n">lhs</span><span class="p">.</span><span class="n">kind</span> <span class="o">==</span> <span class="n">nnkBracket</span> <span class="ow">and</span> <span class="n">lhs</span><span class="p">.</span><span class="n">len</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="n">lhs</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="k">else</span><span class="p">:</span> <span class="n">lhs</span>
+  <span class="c"># check for | operator:</span>
+  <span class="k">if</span> <span class="n">newLhs</span><span class="p">.</span><span class="n">kind</span> <span class="o">==</span> <span class="n">nnkInfix</span> <span class="ow">and</span> <span class="n">newLhs</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">.</span><span class="s">eqIdent"|"</span><span class="p">:</span>
+    <span class="c"># overloadably assign both parts</span>
+    <span class="n">newStmtList</span><span class="p">(</span>
+      <span class="n">open</span><span class="p">(</span><span class="n">newLhs</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">,</span> <span class="n">newDotExpr</span><span class="p">(</span><span class="n">rhs</span><span class="p">,</span> <span class="s">ident"leaf"</span><span class="p">)),</span>
+      <span class="n">open</span><span class="p">(</span><span class="n">newLhs</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span><span class="p">,</span> <span class="n">newDotExpr</span><span class="p">(</span><span class="n">rhs</span><span class="p">,</span> <span class="s">ident"next"</span><span class="p">)))</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="c"># use default assignment syntax if expression is not understood</span>
+    <span class="n">default</span><span class="p">()</span>
+
+<span class="k">let</span> <span class="n">list</span> <span class="o">=</span> <span class="n">LinkedList</span><span class="o">[</span><span class="kt">int</span><span class="o">]</span><span class="p">(</span><span class="n">leaf</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">next</span><span class="p">:</span>
+  <span class="n">LinkedList</span><span class="o">[</span><span class="kt">int</span><span class="o">]</span><span class="p">(</span><span class="n">leaf</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">next</span><span class="p">:</span>
+    <span class="n">LinkedList</span><span class="o">[</span><span class="kt">int</span><span class="o">]</span><span class="p">(</span><span class="n">leaf</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="n">next</span><span class="p">:</span> <span class="k">nil</span><span class="p">)))</span>
+
+<span class="n">x</span> <span class="o">|</span> <span class="o">[</span><span class="p">(</span><span class="o">&lt;</span> <span class="mi">5</span><span class="p">)</span> <span class="o">|</span> <span class="o">[</span><span class="n">y</span> <span class="o">|</span> <span class="err">_]] := list</span>
+<span class="n">assert</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Can be installed with <code class="language-plaintext highlighter-rouge">nimble install assigns</code>. More information in <a href="https://metagn.github.io/assigns/docs/assigns.html">docs</a>.</p>
+
+<hr />
+
+<h2 id="want-to-see-your-project-here-next-month">Want to see your project here next month?</h2>
+
+<p><a href="https://github.com/beef331/website#adding-your-project-to-month-with-nim">Follow this</a>
+to add your project to the next month’s blog post.</p>
+
+        </div>
+      </div>
+    </div>
+    <footer>
+  <section class="content">
+    <div class="pure-g">
+      <div class="copyright pure-u-2-3">
+        <p>
+          Unless otherwise stated, the content of this page is
+          licensed under the
+          <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0</a>
+          license.
+          Code displayed on this website is MIT licensed.
+        </p>
+        <p>
+          This website is available on
+          <a href="https://github.com/nim-lang/website">GitHub</a>
+          and contributions are welcome.
+          Original website design by
+          <a href="https://github.com/dom96">Dominik Picheta</a> and
+          <a href="https://github.com/Calinou">Hugo Locurcio</a>.
+          Logo by <a href="https://github.com/josephwecker">Joseph Wecker</a>.
+        </p>
+      </div>
+      <div class="pure-u-1-3 right-center">
+        <a href="https://m.do.co/c/637ab907c7f4"><img src="/assets/img/do.png"/></a>
+      </div>
+    </div>
+  </section>
+
+</footer>
+<script>
+    (function(){
+      function setTracking(a) {
+        var url = a.href;
+        a.onclick = function() {
+          if (typeof(ga) !== "undefined") {
+            ga('send', 'event', 'outbound', 'click', url, {
+              'transport': 'beacon',
+              'hitCallback': function(){document.location = url;}
+            });
+          }
+        };
+      }
+
+      var a = document.getElementsByTagName("a");
+      for (var i = 0; i < a.length; ++i) {
+        if (a[i].hostname != location.hostname &&
+            a[i].getAttribute("target") !== "_blank"
+        ) {
+          setTracking(a[i])
+        }
+      }
+    })();
+</script>
+
+  </div>
+  </body>
+</html>

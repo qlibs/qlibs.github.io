@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta name="charset" content="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The Nim programming language is a concise, fast programming language that compiles to C, C++ and JavaScript.">
+  <meta charset="utf-8">
+  <link rel="icon" type="image/png" href="/assets/img/logo_bw.png" />
+
+  
+  <title>Version 0.16.0 released - Nim Blog</title>
+  
+  <link rel="stylesheet" href="/assets/css/pure.min.css">
+  <link rel="stylesheet" href="/assets/css/pure-grids-responsive.min.css">
+  <link href="https://use.fontawesome.com/releases/v5.0.2/css/all.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+  
+  <link rel="stylesheet" href="/assets/css/highlight/github.css">
+  
+
+  <link rel="stylesheet" href="/assets/css/google-fonts.css">
+  <link rel="stylesheet" href="/assets/css/main.css?t=1721738524015683587">
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-48159761-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+  <script defer data-domain="nim-lang.org" src="https://plausible.io/js/plausible.js"></script>
+
+  <meta name="twitter:title" content="Version 0.16.0 released">
+
+  
+  <meta name="twitter:description" content="We’re happy to announce that the latest release of Nim, version 0.16.0, is now available!">
+  <meta property="og:description" content="We’re happy to announce that the latest release of Nim, version 0.16.0, is now available!">
+  
+
+  <meta name="twitter:site" content="@nim_lang">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://nim-lang.org/assets/img/twitter_banner.png">
+
+  <meta property="og:title" content="Version 0.16.0 released" />
+  <meta property="og:site_name" content="Nim Programming Language" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://nim-lang.org/assets/img/twitter_banner.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1000" />
+  <meta property="og:image:height" content="500" />
+  <meta property="og:image:alt" content="Nim Programming Language" />
+</head>
+
+  <body class="site">
+    <header>
+  <nav class="pure-menu pure-menu-horizontal pure-menu-scrollable">
+    <div class="nav-content">
+      <a href="/" class="pure-menu-heading pure-menu-link site-logo-container">
+        <img class="site-logo" src="/assets/img/logo.svg" height="28" alt="Nim">
+      </a>
+      <ul class="pure-menu-list">
+        
+        <li class="pure-menu-item">
+          <a href="/blog.html"
+             class="pure-menu-link current">
+            Blog
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/features.html"
+             class="pure-menu-link ">
+            Features
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/install.html"
+             class="pure-menu-link ">
+            Download
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/documentation.html"
+             class="pure-menu-link ">
+            Documentation
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="https://forum.nim-lang.org"
+             class="pure-menu-link ">
+            Forum
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/donate.html"
+             class="pure-menu-link ">
+            Donate
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://github.com/nim-lang/Nim">Source</a>
+        </li>
+      </ul>
+    </div>
+    <div class="menu-fade"></div>
+  </nav>
+</header>
+
+    <div class="site-content post-page">
+      <div class="content">
+        <div class="width-reduced">
+          <h1 class="post-title">
+            Version 0.16.0 released
+          </h1>
+          <h3 class="post-meta">
+            <span>
+              <i class="far fa-calendar-alt" aria-hidden="true"></i>
+              08 January 2017
+            </span>
+            
+            <span>
+              <i class="fa fa-user-circle" aria-hidden="true"></i>
+              The Nim Team
+            </span>
+            
+          </h3>
+          <p>We’re happy to announce that the latest release of Nim, version 0.16.0, is now
+available!</p>
+
+<p>As always, you can grab the latest version from the
+<a href="/install.html">downloads page</a>.</p>
+
+<p>This release includes over 80 bug fixes and improvements. To see a full list
+of changes, take a look at the detailed changelog
+<a href="#changelog">below</a>.</p>
+
+<p>Some of the most significant changes in this release include: a major new
+Nimble release, an improved import syntax, and the stabilisation of
+name mangling rules enabling faster compile times.</p>
+
+<p>The new Nimble release that is included with Nim 0.16.0 includes a variety of
+new features and bug fixes. The most prominent of which is the improved output
+system, as shown in the figure below.</p>
+
+<p><a href="/assets/news/images/0.16.0/nimble.png">
+  <img src="/assets/news/images/0.16.0/nimble.png" alt="Nimble 0.8.0" style="width:100%" />
+</a></p>
+
+<p>For a full list of changes in Nimble, see its
+<a href="https://github.com/nim-lang/nimble/blob/master/changelog.markdown#080---05012017">changelog</a>.</p>
+
+<p>The new import syntax makes it easier to import multiple modules from the same
+package or directory. For example:</p>
+
+<div class="language-nim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="n">compiler</span><span class="o">/</span><span class="n">ast</span><span class="p">,</span> <span class="n">compiler</span><span class="o">/</span><span class="n">parser</span><span class="p">,</span> <span class="n">compiler</span><span class="o">/</span><span class="n">lexer</span>
+<span class="k">import</span> <span class="n">compiler</span> <span class="o">/</span> <span class="o">[</span><span class="n">ast</span><span class="p">,</span> <span class="n">parser</span><span class="p">,</span> <span class="n">lexer</span><span class="o">]</span>
+</code></pre></div></div>
+
+<p>The two are equivalent, but the new latter syntax is less redundant.</p>
+
+<p>Finally, the code responsible for name mangling in the generated C and C++ code
+has been improved to reduce compile times. In particular, compile-time for
+the common edit-compile-run cycles have been reduced.</p>
+
+<h1 id="changelog">Changelog</h1>
+
+<h2 id="changes-affecting-backwards-compatibility">Changes affecting backwards compatibility</h2>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">staticExec</code> now uses the directory of the nim file that contains the
+<code class="language-plaintext highlighter-rouge">staticExec</code> call as the current working directory.</li>
+  <li><code class="language-plaintext highlighter-rouge">TimeInfo.tzname</code> has been removed from <code class="language-plaintext highlighter-rouge">times</code> module because it was
+broken. Because of this, the option <code class="language-plaintext highlighter-rouge">"ZZZ"</code> will no longer work in format
+strings for formatting and parsing.</li>
+</ul>
+
+<h2 id="library-additions">Library Additions</h2>
+
+<ul>
+  <li>Added new parameter to <code class="language-plaintext highlighter-rouge">error</code> proc of <code class="language-plaintext highlighter-rouge">macro</code> module to provide better
+error message</li>
+  <li>
+    <p>Added new <code class="language-plaintext highlighter-rouge">deques</code> module intended to replace <code class="language-plaintext highlighter-rouge">queues</code>.
+<code class="language-plaintext highlighter-rouge">deques</code> provides a superset of <code class="language-plaintext highlighter-rouge">queues</code> API with clear naming.
+<code class="language-plaintext highlighter-rouge">queues</code> module is now deprecated and will be removed in the future.</p>
+  </li>
+  <li>
+    <p>Added <code class="language-plaintext highlighter-rouge">hideCursor</code>, <code class="language-plaintext highlighter-rouge">showCursor</code>, <code class="language-plaintext highlighter-rouge">terminalWidth</code>,
+<code class="language-plaintext highlighter-rouge">terminalWidthIoctl</code> and <code class="language-plaintext highlighter-rouge">terminalSize</code> to the <code class="language-plaintext highlighter-rouge">terminal</code>
+<a href="http://nim-lang.org/docs/terminal.html">(doc)</a> module.</p>
+  </li>
+  <li>Added new module <code class="language-plaintext highlighter-rouge">distros</code>
+<a href="http://nim-lang.org/docs/distros.html">(doc)</a>  that can be used in Nimble
+packages to aid in supporting the OS’s native package managers.</li>
+</ul>
+
+<h2 id="tool-additions">Tool Additions</h2>
+
+<h2 id="compiler-additions">Compiler Additions</h2>
+
+<ul>
+  <li>The C/C++ code generator has been rewritten to use stable
+name mangling rules. This means that compile times for
+edit-compile-run cycles are much reduced.</li>
+</ul>
+
+<h2 id="language-additions">Language Additions</h2>
+
+<ul>
+  <li>
+    <p>The <code class="language-plaintext highlighter-rouge">emit</code> pragma now takes a list of Nim expressions instead
+of a single string literal. This list can easily contain non-strings
+like template parameters. This means <code class="language-plaintext highlighter-rouge">emit</code> works out of the
+box with templates and no new quoting rules needed to be introduced.
+The old way with backtick quoting is still supported but will be
+deprecated.</p>
+
+    <div class="language-nim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">type</span> <span class="n">Vector</span><span class="o">*</span> <span class="p">{.</span><span class="n">importcpp</span><span class="p">:</span> <span class="s">"std::vector"</span><span class="p">,</span> <span class="n">header</span><span class="p">:</span> <span class="s">"&lt;vector&gt;"</span><span class="p">.}</span><span class="o">[</span><span class="n">T</span><span class="o">]</span> <span class="o">=</span> <span class="k">object</span>
+
+<span class="k">template</span> <span class="p">`</span><span class="o">[]=</span><span class="p">`</span><span class="o">*[</span><span class="n">T</span><span class="o">]</span><span class="p">(</span><span class="n">v</span><span class="p">:</span> <span class="k">var</span> <span class="n">Vector</span><span class="o">[</span><span class="n">T</span><span class="o">]</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="kt">int</span><span class="p">,</span> <span class="n">val</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">=</span>
+  <span class="p">{.</span><span class="n">emit</span><span class="p">:</span> <span class="o">[</span><span class="n">v</span><span class="p">,</span> <span class="s">"["</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="s">"] = "</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="s">";"</span><span class="o">]</span><span class="p">.}</span>
+
+<span class="k">proc </span><span class="nf">setLen</span><span class="o">*[</span><span class="n">T</span><span class="o">]</span><span class="p">(</span><span class="n">v</span><span class="p">:</span> <span class="k">var</span> <span class="n">Vector</span><span class="o">[</span><span class="n">T</span><span class="o">]</span><span class="p">;</span> <span class="n">size</span><span class="p">:</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{.</span><span class="n">importcpp</span><span class="p">:</span> <span class="s">"resize"</span><span class="p">,</span> <span class="n">nodecl</span><span class="p">.}</span>
+<span class="k">proc </span><span class="nf">`[]`</span><span class="o">*[</span><span class="n">T</span><span class="o">]</span><span class="p">(</span><span class="n">v</span><span class="p">:</span> <span class="k">var</span> <span class="n">Vector</span><span class="o">[</span><span class="n">T</span><span class="o">]</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="kt">int</span><span class="p">):</span> <span class="n">T</span> <span class="p">{.</span><span class="n">importcpp</span><span class="p">:</span> <span class="s">"(#[#])"</span><span class="p">,</span> <span class="n">nodecl</span><span class="p">.}</span>
+
+<span class="k">proc </span><span class="nf">main</span> <span class="o">=</span>
+  <span class="k">var</span> <span class="n">v</span><span class="p">:</span> <span class="n">Vector</span><span class="o">[</span><span class="kt">float</span><span class="o">]</span>
+  <span class="n">v</span><span class="p">.</span><span class="n">setLen</span> <span class="mi">1</span>
+  <span class="n">v</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="mf">6.0</span>
+  <span class="n">echo</span> <span class="n">v</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>The <code class="language-plaintext highlighter-rouge">import</code> statement now supports importing multiple modules from
+the same directory:</p>
+
+    <div class="language-nim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="n">compiler</span> <span class="o">/</span> <span class="o">[</span><span class="n">ast</span><span class="p">,</span> <span class="n">parser</span><span class="p">,</span> <span class="n">lexer</span><span class="o">]</span>
+</code></pre></div>    </div>
+
+    <p>Is a shortcut for:</p>
+
+    <div class="language-nim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="n">compiler</span> <span class="o">/</span> <span class="n">ast</span><span class="p">,</span> <span class="n">compiler</span> <span class="o">/</span> <span class="n">parser</span><span class="p">,</span> <span class="n">compiler</span> <span class="o">/</span> <span class="n">lexer</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<h2 id="bugfixes">Bugfixes</h2>
+
+<p>The list below has been generated based on the commits in Nim’s git
+repository. As such it lists only the issues which have been closed
+via a commit, for a full list see
+<a href="https://github.com/nim-lang/Nim/issues?utf8=%E2%9C%93&amp;q=is%3Aissue+closed%3A%222016-10-23+..+2017-01-07%22+">this link on Github</a>.</p>
+
+<ul>
+  <li>Fixed “staticRead and staticExec have different working directories”
+(<a href="https://github.com/nim-lang/Nim/issues/4871">#4871</a>)</li>
+  <li>Fixed “CountTable doesn’t support the ‘==’ operator”
+(<a href="https://github.com/nim-lang/Nim/issues/4901">#4901</a>)</li>
+  <li>Fixed “documentation for module sequtls apply proc”
+(<a href="https://github.com/nim-lang/Nim/issues/4386">#4386</a>)</li>
+  <li>Fixed “Operator <code class="language-plaintext highlighter-rouge">==</code> for CountTable does not work.”
+(<a href="https://github.com/nim-lang/Nim/issues/4946">#4946</a>)</li>
+  <li>Fixed “sysFatal (IndexError) with parseUri and the / operator”
+(<a href="https://github.com/nim-lang/Nim/issues/4959">#4959</a>)</li>
+  <li>Fixed “initialSize parameter does not work in OrderedTableRef”
+(<a href="https://github.com/nim-lang/Nim/issues/4940">#4940</a>)</li>
+  <li>Fixed “error proc from macro library could have a node parameter”
+(<a href="https://github.com/nim-lang/Nim/issues/4915">#4915</a>)</li>
+  <li>Fixed “Segfault when comparing OrderedTableRef with nil”
+(<a href="https://github.com/nim-lang/Nim/issues/4974">#4974</a>)</li>
+  <li>Fixed “Bad codegen when comparing isNil results”
+(<a href="https://github.com/nim-lang/Nim/issues/4975">#4975</a>)</li>
+  <li>Fixed “OrderedTable cannot delete entry with empty string or 0 key”
+(<a href="https://github.com/nim-lang/Nim/issues/5035">#5035</a>)</li>
+  <li>Fixed “Deleting specific keys from ordered table leaves it in invalid state.”
+(<a href="https://github.com/nim-lang/Nim/issues/5057">#5057</a>)</li>
+  <li>Fixed “Paths are converted to lowercase on Windows”
+(<a href="https://github.com/nim-lang/Nim/issues/5076">#5076</a>)</li>
+  <li>Fixed “toTime(getGMTime(…)) doesn’t work correctly when local timezone is not UTC”
+(<a href="https://github.com/nim-lang/Nim/issues/5065">#5065</a>)</li>
+  <li>Fixed “out of memory error from <code class="language-plaintext highlighter-rouge">test=</code> type proc call when parameter is a call to a table’s <code class="language-plaintext highlighter-rouge">[]</code> proc”
+(<a href="https://github.com/nim-lang/Nim/issues/5079">#5079</a>)</li>
+  <li>Fixed “Incorrect field order in object construction”
+(<a href="https://github.com/nim-lang/Nim/issues/5055">#5055</a>)</li>
+  <li>Fixed “Incorrect codegen when importing nre with C++ backend (commit 8494338)”
+(<a href="https://github.com/nim-lang/Nim/issues/5081">#5081</a>)</li>
+  <li>Fixed “Templates, {.emit.}, and backtick interpolation do not work together”
+(<a href="https://github.com/nim-lang/Nim/issues/4730">#4730</a>)</li>
+  <li>Fixed “Regression: getType fails in certain cases”
+(<a href="https://github.com/nim-lang/Nim/issues/5129">#5129</a>)</li>
+  <li>Fixed “CreateThread doesn’t accept functions with generics”
+(<a href="https://github.com/nim-lang/Nim/issues/43">#43</a>)</li>
+  <li>Fixed “No instantiation information when template has error”
+(<a href="https://github.com/nim-lang/Nim/issues/4308">#4308</a>)</li>
+  <li>Fixed “realloc leaks”
+(<a href="https://github.com/nim-lang/Nim/issues/4818">#4818</a>)</li>
+  <li>Fixed “Regression: getType”
+(<a href="https://github.com/nim-lang/Nim/issues/5131">#5131</a>)</li>
+  <li>Fixed “Code generation for generics broken by sighashes”
+(<a href="https://github.com/nim-lang/Nim/issues/5135">#5135</a>)</li>
+  <li>Fixed “Regression: importc functions are not declared in generated C code”
+(<a href="https://github.com/nim-lang/Nim/issues/5136">#5136</a>)</li>
+  <li>Fixed “Calling split(“”) on string hangs program”
+(<a href="https://github.com/nim-lang/Nim/issues/5119">#5119</a>)</li>
+  <li>Fixed “Building dynamic library: undefined references (Linux)”
+(<a href="https://github.com/nim-lang/Nim/issues/4775">#4775</a>)</li>
+  <li>Fixed “Bad codegen for distinct + importc - sighashes regression”
+(<a href="https://github.com/nim-lang/Nim/issues/5137">#5137</a>)</li>
+  <li>Fixed “C++ codegen regression: memset called on a result variable of <code class="language-plaintext highlighter-rouge">importcpp</code> type”
+(<a href="https://github.com/nim-lang/Nim/issues/5140">#5140</a>)</li>
+  <li>Fixed “C++ codegen regression: using channels leads to broken C++ code”
+(<a href="https://github.com/nim-lang/Nim/issues/5142">#5142</a>)</li>
+  <li>Fixed “Ambiguous call when overloading var and non-var with generic type”
+(<a href="https://github.com/nim-lang/Nim/issues/4519">#4519</a>)</li>
+  <li>Fixed “[Debian]: build.sh error: unknown processor: aarch64”
+(<a href="https://github.com/nim-lang/Nim/issues/2147">#2147</a>)</li>
+  <li>Fixed “RFC: asyncdispatch.poll behaviour”
+(<a href="https://github.com/nim-lang/Nim/issues/5155">#5155</a>)</li>
+  <li>Fixed “Can’t access enum members through alias (possible sighashes regression)”
+(<a href="https://github.com/nim-lang/Nim/issues/5148">#5148</a>)</li>
+  <li>Fixed “Type, declared in generic proc body, leads to incorrect codegen (sighashes regression)”
+(<a href="https://github.com/nim-lang/Nim/issues/5147">#5147</a>)</li>
+  <li>Fixed “Compiler SIGSEGV when mixing method and proc”
+(<a href="https://github.com/nim-lang/Nim/issues/5161">#5161</a>)</li>
+  <li>Fixed “Compile-time SIGSEGV when declaring .importcpp method with return value “
+(<a href="https://github.com/nim-lang/Nim/issues/3848">#3848</a>)</li>
+  <li>Fixed “Variable declaration incorrectly parsed”
+(<a href="https://github.com/nim-lang/Nim/issues/2050">#2050</a>)</li>
+  <li>Fixed “Invalid C code when naming a object member “linux””
+(<a href="https://github.com/nim-lang/Nim/issues/5171">#5171</a>)</li>
+  <li>Fixed “[Windows] MinGW within Nim install is missing libraries”
+(<a href="https://github.com/nim-lang/Nim/issues/2723">#2723</a>)</li>
+  <li>Fixed “async: annoying warning for future.finished”
+(<a href="https://github.com/nim-lang/Nim/issues/4948">#4948</a>)</li>
+  <li>Fixed “new import syntax doesn’t work?”
+(<a href="https://github.com/nim-lang/Nim/issues/5185">#5185</a>)</li>
+  <li>Fixed “Fixes #1994”
+(<a href="https://github.com/nim-lang/Nim/issues/4874">#4874</a>)</li>
+  <li>Fixed “Can’t tell return value of programs with staticExec”
+(<a href="https://github.com/nim-lang/Nim/issues/1994">#1994</a>)</li>
+  <li>Fixed “startProcess() on Windows with poInteractive: Second call fails (“Alle Pipeinstanzen sind ausgelastet”)”
+(<a href="https://github.com/nim-lang/Nim/issues/5179">#5179</a>)</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+    <footer>
+  <section class="content">
+    <div class="pure-g">
+      <div class="copyright pure-u-2-3">
+        <p>
+          Unless otherwise stated, the content of this page is
+          licensed under the
+          <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0</a>
+          license.
+          Code displayed on this website is MIT licensed.
+        </p>
+        <p>
+          This website is available on
+          <a href="https://github.com/nim-lang/website">GitHub</a>
+          and contributions are welcome.
+          Original website design by
+          <a href="https://github.com/dom96">Dominik Picheta</a> and
+          <a href="https://github.com/Calinou">Hugo Locurcio</a>.
+          Logo by <a href="https://github.com/josephwecker">Joseph Wecker</a>.
+        </p>
+      </div>
+      <div class="pure-u-1-3 right-center">
+        <a href="https://m.do.co/c/637ab907c7f4"><img src="/assets/img/do.png"/></a>
+      </div>
+    </div>
+  </section>
+
+</footer>
+<script>
+    (function(){
+      function setTracking(a) {
+        var url = a.href;
+        a.onclick = function() {
+          if (typeof(ga) !== "undefined") {
+            ga('send', 'event', 'outbound', 'click', url, {
+              'transport': 'beacon',
+              'hitCallback': function(){document.location = url;}
+            });
+          }
+        };
+      }
+
+      var a = document.getElementsByTagName("a");
+      for (var i = 0; i < a.length; ++i) {
+        if (a[i].hostname != location.hostname &&
+            a[i].getAttribute("target") !== "_blank"
+        ) {
+          setTracking(a[i])
+        }
+      }
+    })();
+</script>
+
+  </div>
+  </body>
+</html>

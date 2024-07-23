@@ -1,16 +1,62 @@
-title: Qlibs++
-url: https://qlibs.github.io
-description: "Modern C++ libraries"
+# Site settings
+title: "Nim Programming Language"
+description: >
+  The Nim programming language is a concise, fast programming language that
+  compiles to C, C++ and JavaScript.
+url: "https://nim-lang.org/"
+baseurl: ""
 
-color:
-  primary-dark: '#000000'
-  links: '#219ab3'
+nim_version: 2.0.8
 
-footer: Qlibs++
+future: true
 
-social:
-  - title: github
-    url: https://github.com/qlibs
+defaults:
+  -
+    scope:
+      path: ""
+      type: pages
+    values:
+      layout: default
+  -
+    scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      is_post: true
+      title: "Nim Blog"
 
+navigation:
+  - title: Blog
+    url: /blog.html
+  - title: Features
+    url: /features.html
+  - title: Download
+    url: /install.html
+  - title: Documentation
+    url: /documentation.html
+  - title: Forum
+    url: https://forum.nim-lang.org
+  - title: Donate
+    url: /donate.html
+
+# Build settings
 markdown: kramdown
-permalink: pretty
+permalink: /blog/:year/:month/:day/:title.html
+sass:
+  style: compressed
+exclude:
+  - CNAME
+  - README.md
+  - LICENSE.md
+
+gems:
+  - jekyll-asciidoc
+
+asciidoc: {}
+asciidoctor:
+  attributes:
+    - imagesdir=/assets/news/images/asciidoc
+    - icons=font
+    - source-highlighter=pygments
+    - pygments-css=style

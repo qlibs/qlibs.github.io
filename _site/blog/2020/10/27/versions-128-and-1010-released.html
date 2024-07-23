@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta name="charset" content="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The Nim programming language is a concise, fast programming language that compiles to C, C++ and JavaScript.">
+  <meta charset="utf-8">
+  <link rel="icon" type="image/png" href="/assets/img/logo_bw.png" />
+
+  
+  <title>Versions 1.2.8 and 1.0.10 released - Nim Blog</title>
+  
+  <link rel="stylesheet" href="/assets/css/pure.min.css">
+  <link rel="stylesheet" href="/assets/css/pure-grids-responsive.min.css">
+  <link href="https://use.fontawesome.com/releases/v5.0.2/css/all.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+  
+  <link rel="stylesheet" href="/assets/css/highlight/github.css">
+  
+
+  <link rel="stylesheet" href="/assets/css/google-fonts.css">
+  <link rel="stylesheet" href="/assets/css/main.css?t=1721738524015683587">
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-48159761-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+  <script defer data-domain="nim-lang.org" src="https://plausible.io/js/plausible.js"></script>
+
+  <meta name="twitter:title" content="Versions 1.2.8 and 1.0.10 released">
+
+  
+  <meta name="twitter:description" content="The Nim team is happy to announce this double release of versions 1.2.8 and 1.0.10.">
+  <meta property="og:description" content="The Nim team is happy to announce this double release of versions 1.2.8 and 1.0.10.">
+  
+
+  <meta name="twitter:site" content="@nim_lang">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://nim-lang.org/assets/img/twitter_banner.png">
+
+  <meta property="og:title" content="Versions 1.2.8 and 1.0.10 released" />
+  <meta property="og:site_name" content="Nim Programming Language" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://nim-lang.org/assets/img/twitter_banner.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1000" />
+  <meta property="og:image:height" content="500" />
+  <meta property="og:image:alt" content="Nim Programming Language" />
+</head>
+
+  <body class="site">
+    <header>
+  <nav class="pure-menu pure-menu-horizontal pure-menu-scrollable">
+    <div class="nav-content">
+      <a href="/" class="pure-menu-heading pure-menu-link site-logo-container">
+        <img class="site-logo" src="/assets/img/logo.svg" height="28" alt="Nim">
+      </a>
+      <ul class="pure-menu-list">
+        
+        <li class="pure-menu-item">
+          <a href="/blog.html"
+             class="pure-menu-link current">
+            Blog
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/features.html"
+             class="pure-menu-link ">
+            Features
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/install.html"
+             class="pure-menu-link ">
+            Download
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/documentation.html"
+             class="pure-menu-link ">
+            Documentation
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="https://forum.nim-lang.org"
+             class="pure-menu-link ">
+            Forum
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/donate.html"
+             class="pure-menu-link ">
+            Donate
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://github.com/nim-lang/Nim">Source</a>
+        </li>
+      </ul>
+    </div>
+    <div class="menu-fade"></div>
+  </nav>
+</header>
+
+    <div class="site-content post-page">
+      <div class="content">
+        <div class="width-reduced">
+          <h1 class="post-title">
+            Versions 1.2.8 and 1.0.10 released
+          </h1>
+          <h3 class="post-meta">
+            <span>
+              <i class="far fa-calendar-alt" aria-hidden="true"></i>
+              27 October 2020
+            </span>
+            
+            <span>
+              <i class="fa fa-user-circle" aria-hidden="true"></i>
+              The Nim Team
+            </span>
+            
+          </h3>
+          <p>The Nim team is happy to announce this double release of versions 1.2.8 and 1.0.10.</p>
+
+<h1 id="version-128">Version 1.2.8</h1>
+
+<p>Version 1.2.8 is our fourth patch release for Nim 1.2 and it brings several new
+fixes since version 1.2.6.</p>
+
+<h2 id="installing-nim-128">Installing Nim 1.2.8</h2>
+
+<h3 id="new-users">New users</h3>
+
+<p>We recommend you to install the newest Nim version (1.4.0 at the time of writing).
+Check out if the package manager of your OS already ships Nim 1.4 or
+install it as described <a href="https://nim-lang.org/install.html">here</a>.</p>
+
+<h3 id="existing-users">Existing users</h3>
+
+<p>If you have installed a previous version of Nim using <code class="language-plaintext highlighter-rouge">choosenim</code>,
+getting Nim 1.2.8 is as easy as:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>choosenim 1.2.8
+</code></pre></div></div>
+
+<p>Alternatively, you can download Nim 1.2.8 from
+<a href="https://github.com/nim-lang/nightlies/releases/tag/2020-10-26-version-1-2-dde13f38c9df76671866901852942ad6b942f8e5">our nightlies builds</a>.</p>
+
+<h2 id="bugfixes-since-126">Bugfixes since 1.2.6</h2>
+
+<ul>
+  <li>Fixed “Defer and –gc:arc”
+(<a href="https://github.com/nim-lang/Nim/issues/15071">#15071</a>)</li>
+  <li>Fixed “Issue with –gc:arc at compile time”
+(<a href="https://github.com/nim-lang/Nim/issues/15129">#15129</a>)</li>
+  <li>Fixed “Nil check on each field fails in generic function”
+(<a href="https://github.com/nim-lang/Nim/issues/15101">#15101</a>)</li>
+  <li>Fixed “[strscans] scanf doesn’t match a single character with $+ if it’s the end of the string”
+(<a href="https://github.com/nim-lang/Nim/issues/15064">#15064</a>)</li>
+  <li>Fixed “Crash and incorrect return values when using readPasswordFromStdin on Windows.”
+(<a href="https://github.com/nim-lang/Nim/issues/15207">#15207</a>)</li>
+  <li>Fixed “Inconsistent unsigned -&gt; signed RangeDefect usage across integer sizes”
+(<a href="https://github.com/nim-lang/Nim/issues/15210">#15210</a>)</li>
+  <li>Fixed “toHex results in RangeDefect exception when used with large uint64”
+(<a href="https://github.com/nim-lang/Nim/issues/15257">#15257</a>)</li>
+  <li>Fixed “Mixing ‘return’ with expressions is allowed in 1.2”
+(<a href="https://github.com/nim-lang/Nim/issues/15280">#15280</a>)</li>
+  <li>Fixed “proc execCmdEx doesn’t work with -d:useWinAnsi”
+(<a href="https://github.com/nim-lang/Nim/issues/14203">#14203</a>)</li>
+  <li>Fixed “memory corruption in tmarshall.nim”
+(<a href="https://github.com/nim-lang/Nim/issues/9754">#9754</a>)</li>
+  <li>Fixed “Wrong number of variables”
+(<a href="https://github.com/nim-lang/Nim/issues/15360">#15360</a>)</li>
+  <li>Fixed “defer doesnt work with block, break and await”
+(<a href="https://github.com/nim-lang/Nim/issues/15243">#15243</a>)</li>
+  <li>Fixed “Sizeof of case object is incorrect. Showstopper”
+(<a href="https://github.com/nim-lang/Nim/issues/15516">#15516</a>)</li>
+  <li>Fixed “Mixing ‘return’ with expressions is allowed in 1.2”
+(<a href="https://github.com/nim-lang/Nim/issues/15280">#15280</a>)</li>
+  <li>Fixed “regression(1.0.2 =&gt; 1.0.4) VM register messed up depending on unrelated context”
+(<a href="https://github.com/nim-lang/Nim/issues/15704">#15704</a>)</li>
+</ul>
+
+<p>Full changelog since v1.2.6 contains <a href="https://github.com/nim-lang/Nim/compare/v1.2.6...v1.2.8">53 commits</a>.</p>
+
+<h1 id="verson-1010">Verson 1.0.10</h1>
+
+<p>Version 1.0.10 is our fifth patch release for Nim 1.0 for those users who haven’t
+yet switched to Nim 1.4, coming 3 months after the release of Nim 1.0.8.</p>
+
+<p>If you are still on Nim 1.0.x, and would like to know about new features
+available in Nim 1.2 and 1.4, check out our
+<a href="https://nim-lang.org/blog/2020/04/03/version-120-released.html">version 1.2.0 release article</a> and
+<a href="https://nim-lang.org/blog/2020/10/16/version-140-released.html">version 1.4.0 release article</a>.</p>
+
+<h2 id="installing-nim-1010">Installing Nim 1.0.10</h2>
+
+<h3 id="new-users-1">New users</h3>
+
+<p>We recommend you to install the newest Nim version (1.4.0 at the time of writing).
+Check out if the package manager of your OS already ships Nim 1.4 or
+install it as described <a href="https://nim-lang.org/install.html">here</a>.</p>
+
+<h3 id="existing-users-1">Existing users</h3>
+
+<p>If you have installed a previous version of Nim using <code class="language-plaintext highlighter-rouge">choosenim</code>,
+getting Nim 1.0.10 is as easy as:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>choosenim 1.0.10
+</code></pre></div></div>
+
+<p>Alternatively, you can download Nim 1.0.10 from
+<a href="https://github.com/nim-lang/nightlies/releases/tag/2020-10-26-version-1-0-0ca09f64cf6ecf2050b58bc26ebc622f856b4dc2">our nightlies builds</a>.</p>
+
+<h2 id="bugfixes-since-108">Bugfixes since 1.0.8</h2>
+
+<ul>
+  <li>Fixed “Defer and –gc:arc”
+(<a href="https://github.com/nim-lang/Nim/issues/15071">#15071</a>)</li>
+  <li>Fixed “Nil check on each field fails in generic function”
+(<a href="https://github.com/nim-lang/Nim/issues/15101">#15101</a>)</li>
+  <li>Fixed “Sizeof of case object is incorrect. Showstopper”
+(<a href="https://github.com/nim-lang/Nim/issues/15516">#15516</a>)</li>
+  <li>Fixed “regression(1.0.2 =&gt; 1.0.4) VM register messed up depending on unrelated context”
+(<a href="https://github.com/nim-lang/Nim/issues/15704">#15704</a>)</li>
+</ul>
+
+<p>Full changelog since v1.0.8 contains <a href="https://github.com/nim-lang/Nim/compare/v1.0.8...v1.0.10">22 commits</a>.</p>
+
+        </div>
+      </div>
+    </div>
+    <footer>
+  <section class="content">
+    <div class="pure-g">
+      <div class="copyright pure-u-2-3">
+        <p>
+          Unless otherwise stated, the content of this page is
+          licensed under the
+          <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0</a>
+          license.
+          Code displayed on this website is MIT licensed.
+        </p>
+        <p>
+          This website is available on
+          <a href="https://github.com/nim-lang/website">GitHub</a>
+          and contributions are welcome.
+          Original website design by
+          <a href="https://github.com/dom96">Dominik Picheta</a> and
+          <a href="https://github.com/Calinou">Hugo Locurcio</a>.
+          Logo by <a href="https://github.com/josephwecker">Joseph Wecker</a>.
+        </p>
+      </div>
+      <div class="pure-u-1-3 right-center">
+        <a href="https://m.do.co/c/637ab907c7f4"><img src="/assets/img/do.png"/></a>
+      </div>
+    </div>
+  </section>
+
+</footer>
+<script>
+    (function(){
+      function setTracking(a) {
+        var url = a.href;
+        a.onclick = function() {
+          if (typeof(ga) !== "undefined") {
+            ga('send', 'event', 'outbound', 'click', url, {
+              'transport': 'beacon',
+              'hitCallback': function(){document.location = url;}
+            });
+          }
+        };
+      }
+
+      var a = document.getElementsByTagName("a");
+      for (var i = 0; i < a.length; ++i) {
+        if (a[i].hostname != location.hostname &&
+            a[i].getAttribute("target") !== "_blank"
+        ) {
+          setTracking(a[i])
+        }
+      }
+    })();
+</script>
+
+  </div>
+  </body>
+</html>

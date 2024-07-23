@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta name="charset" content="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The Nim programming language is a concise, fast programming language that compiles to C, C++ and JavaScript.">
+  <meta charset="utf-8">
+  <link rel="icon" type="image/png" href="/assets/img/logo_bw.png" />
+
+  
+  <title>This Month with Nim: November 2021 - Nim Blog</title>
+  
+  <link rel="stylesheet" href="/assets/css/pure.min.css">
+  <link rel="stylesheet" href="/assets/css/pure-grids-responsive.min.css">
+  <link href="https://use.fontawesome.com/releases/v5.0.2/css/all.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+  
+  <link rel="stylesheet" href="/assets/css/highlight/github.css">
+  
+
+  <link rel="stylesheet" href="/assets/css/google-fonts.css">
+  <link rel="stylesheet" href="/assets/css/main.css?t=1721738524015683587">
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-48159761-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+  <script defer data-domain="nim-lang.org" src="https://plausible.io/js/plausible.js"></script>
+
+  <meta name="twitter:title" content="This Month with Nim: November 2021">
+
+  
+  <meta name="twitter:description" content="November has brought one project, a blog post, and WASM-4 support.">
+  <meta property="og:description" content="November has brought one project, a blog post, and WASM-4 support.">
+  
+
+  <meta name="twitter:site" content="@nim_lang">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://nim-lang.org/assets/img/twitter_banner.png">
+
+  <meta property="og:title" content="This Month with Nim: November 2021" />
+  <meta property="og:site_name" content="Nim Programming Language" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://nim-lang.org/assets/img/twitter_banner.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1000" />
+  <meta property="og:image:height" content="500" />
+  <meta property="og:image:alt" content="Nim Programming Language" />
+</head>
+
+  <body class="site">
+    <header>
+  <nav class="pure-menu pure-menu-horizontal pure-menu-scrollable">
+    <div class="nav-content">
+      <a href="/" class="pure-menu-heading pure-menu-link site-logo-container">
+        <img class="site-logo" src="/assets/img/logo.svg" height="28" alt="Nim">
+      </a>
+      <ul class="pure-menu-list">
+        
+        <li class="pure-menu-item">
+          <a href="/blog.html"
+             class="pure-menu-link current">
+            Blog
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/features.html"
+             class="pure-menu-link ">
+            Features
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/install.html"
+             class="pure-menu-link ">
+            Download
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/documentation.html"
+             class="pure-menu-link ">
+            Documentation
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="https://forum.nim-lang.org"
+             class="pure-menu-link ">
+            Forum
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/donate.html"
+             class="pure-menu-link ">
+            Donate
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://github.com/nim-lang/Nim">Source</a>
+        </li>
+      </ul>
+    </div>
+    <div class="menu-fade"></div>
+  </nav>
+</header>
+
+    <div class="site-content post-page">
+      <div class="content">
+        <div class="width-reduced">
+          <h1 class="post-title">
+            This Month with Nim: November 2021
+          </h1>
+          <h3 class="post-meta">
+            <span>
+              <i class="far fa-calendar-alt" aria-hidden="true"></i>
+              01 December 2021
+            </span>
+            
+            <span>
+              <i class="fa fa-user-circle" aria-hidden="true"></i>
+              The Nim Community
+            </span>
+            
+          </h3>
+          <h2 id="xidoc"><a href="http://xidoc.nim.town/">xidoc</a></h2>
+
+<h4 id="author-xigoi">Author: <a href="https://github.com/xigoi">xigoi</a></h4>
+<p><code class="language-plaintext highlighter-rouge">xidoc</code> is a markup language intended to be consistent and powerful.
+It has a very straightforward syntax where everything is in the form of a command surrounded by square brackets.
+For example: <code class="language-plaintext highlighter-rouge">[color #ff0; This text is yellow.]</code>
+It can compile to HTML and LaTeX, allowing it to be used in many places.</p>
+
+<p>Features include:</p>
+
+<ul>
+  <li>Basic text styling (bold, italics, monospace, spoiler, …)</li>
+  <li>Document layout primitives (section, paragraph, title, …)</li>
+  <li>Shortcuts for common Unicode characters (dashes, pretty quotes, …)</li>
+  <li>Lists, tables, checkboxes</li>
+  <li>LaTeX math with helper commands</li>
+  <li>Code snippets and blocks with optional syntax highlighting</li>
+  <li>Defining custom commands</li>
+  <li>Including other <code class="language-plaintext highlighter-rouge">xidoc</code> files</li>
+  <li>Ways to produce any code in the target language</li>
+  <li>CSS styling when compiling to HTML</li>
+  <li>Documentation of all commands with examples</li>
+  <li><a href="http://xidoc.nim.town/playground.html">Interactive playground</a> for trying out a limited subset of the language in the browser</li>
+</ul>
+
+<p>Some planned features:</p>
+<ul>
+  <li>Inserting images</li>
+  <li>Drawing vector images</li>
+  <li>A proper module system</li>
+  <li>Compiling to Markdown, plain text and gemtext</li>
+</ul>
+
+<p>Check out <a href="http://xidoc.nim.town/">the project website</a> to find out more.
+I also wrote <a href="https://xigoi.neocities.org/why-i-created-a-markup-language.html">an article</a> about the motivation for the project and how I went about implementing it.</p>
+
+<h2 id="using-nim-for-web-development-in-2021"><a href="https://arhamjain.com/2021/11/22/nim-webdev.html">Using Nim for Web Development in 2021</a></h2>
+
+<h4 id="author-ajusa">Author: <a href="https://github.com/ajusa">ajusa</a></h4>
+<p>A quick (opinionated) overview of the Nim webdev ecosystem in 2021.
+Goes into using Nim for frontend, templating, and backend frameworks.</p>
+
+<h2 id="nim-support-for-wasm-4"><a href="https://wasm4.org/">Nim support for WASM-4</a></h2>
+
+<p>WASM-4 is a low-level fantasy game console for building small games with WebAssembly.
+Game cartridges (ROMs) are small, self-contained .wasm files.
+Nim support was merged in <a href="https://github.com/aduros/wasm4/pull/167">this PR</a> so go ahead and start making WASM-4 games with Nim!</p>
+
+<hr />
+
+<h2 id="reminders">Reminders</h2>
+
+<p>We would like to remind you that we are running our annual Community Survey, and we would like to hear your opinions.
+More details at <a href="https://nim-lang.org/blog/2021/11/22/community-survey-2021.html">this link</a>.</p>
+
+<p>If you would like to practice your Nim skills by solving a series of small programming puzzles, join us in <code class="language-plaintext highlighter-rouge">#AdventOfNim</code> where we solve <a href="https://adventofcode.com/">Advent of Code</a> puzzles.
+More information on <a href="https://forum.nim-lang.org/t/8657">the forum</a>.</p>
+
+<hr />
+
+<h2 id="want-to-see-your-project-here-next-month">Want to see your project here next month?</h2>
+
+<p><a href="https://github.com/beef331/website#adding-your-project-to-month-with-nim">Follow this</a>
+to add your project to the next month’s blog post.</p>
+
+        </div>
+      </div>
+    </div>
+    <footer>
+  <section class="content">
+    <div class="pure-g">
+      <div class="copyright pure-u-2-3">
+        <p>
+          Unless otherwise stated, the content of this page is
+          licensed under the
+          <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0</a>
+          license.
+          Code displayed on this website is MIT licensed.
+        </p>
+        <p>
+          This website is available on
+          <a href="https://github.com/nim-lang/website">GitHub</a>
+          and contributions are welcome.
+          Original website design by
+          <a href="https://github.com/dom96">Dominik Picheta</a> and
+          <a href="https://github.com/Calinou">Hugo Locurcio</a>.
+          Logo by <a href="https://github.com/josephwecker">Joseph Wecker</a>.
+        </p>
+      </div>
+      <div class="pure-u-1-3 right-center">
+        <a href="https://m.do.co/c/637ab907c7f4"><img src="/assets/img/do.png"/></a>
+      </div>
+    </div>
+  </section>
+
+</footer>
+<script>
+    (function(){
+      function setTracking(a) {
+        var url = a.href;
+        a.onclick = function() {
+          if (typeof(ga) !== "undefined") {
+            ga('send', 'event', 'outbound', 'click', url, {
+              'transport': 'beacon',
+              'hitCallback': function(){document.location = url;}
+            });
+          }
+        };
+      }
+
+      var a = document.getElementsByTagName("a");
+      for (var i = 0; i < a.length; ++i) {
+        if (a[i].hostname != location.hostname &&
+            a[i].getAttribute("target") !== "_blank"
+        ) {
+          setTracking(a[i])
+        }
+      }
+    })();
+</script>
+
+  </div>
+  </body>
+</html>

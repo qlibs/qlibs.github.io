@@ -1,0 +1,686 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta name="charset" content="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The Nim programming language is a concise, fast programming language that compiles to C, C++ and JavaScript.">
+  <meta charset="utf-8">
+  <link rel="icon" type="image/png" href="/assets/img/logo_bw.png" />
+
+  
+  <title>Nim v2.0 released - Nim Blog</title>
+  
+  <link rel="stylesheet" href="/assets/css/pure.min.css">
+  <link rel="stylesheet" href="/assets/css/pure-grids-responsive.min.css">
+  <link href="https://use.fontawesome.com/releases/v5.0.2/css/all.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+  
+  <link rel="stylesheet" href="/assets/css/highlight/github.css">
+  
+
+  <link rel="stylesheet" href="/assets/css/google-fonts.css">
+  <link rel="stylesheet" href="/assets/css/main.css?t=1721738524015683587">
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-48159761-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+  <script defer data-domain="nim-lang.org" src="https://plausible.io/js/plausible.js"></script>
+
+  <meta name="twitter:title" content="Nim v2.0 released">
+
+  
+  <meta name="twitter:description" content="The Nim team is proud and happy to announce Nim version 2.0.">
+  <meta property="og:description" content="The Nim team is proud and happy to announce Nim version 2.0.">
+  
+
+  <meta name="twitter:site" content="@nim_lang">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://nim-lang.org/assets/img/twitter_banner.png">
+
+  <meta property="og:title" content="Nim v2.0 released" />
+  <meta property="og:site_name" content="Nim Programming Language" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://nim-lang.org/assets/img/twitter_banner.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1000" />
+  <meta property="og:image:height" content="500" />
+  <meta property="og:image:alt" content="Nim Programming Language" />
+</head>
+
+  <body class="site">
+    <header>
+  <nav class="pure-menu pure-menu-horizontal pure-menu-scrollable">
+    <div class="nav-content">
+      <a href="/" class="pure-menu-heading pure-menu-link site-logo-container">
+        <img class="site-logo" src="/assets/img/logo.svg" height="28" alt="Nim">
+      </a>
+      <ul class="pure-menu-list">
+        
+        <li class="pure-menu-item">
+          <a href="/blog.html"
+             class="pure-menu-link current">
+            Blog
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/features.html"
+             class="pure-menu-link ">
+            Features
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/install.html"
+             class="pure-menu-link ">
+            Download
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/documentation.html"
+             class="pure-menu-link ">
+            Documentation
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="https://forum.nim-lang.org"
+             class="pure-menu-link ">
+            Forum
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/donate.html"
+             class="pure-menu-link ">
+            Donate
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://github.com/nim-lang/Nim">Source</a>
+        </li>
+      </ul>
+    </div>
+    <div class="menu-fade"></div>
+  </nav>
+</header>
+
+    <div class="site-content post-page">
+      <div class="content">
+        <div class="width-reduced">
+          <h1 class="post-title">
+            Nim v2.0 released
+          </h1>
+          <h3 class="post-meta">
+            <span>
+              <i class="far fa-calendar-alt" aria-hidden="true"></i>
+              01 August 2023
+            </span>
+            
+            <span>
+              <i class="fa fa-user-circle" aria-hidden="true"></i>
+              The Nim Team
+            </span>
+            
+          </h3>
+          <p>The Nim team is proud and happy to announce Nim version 2.0.</p>
+
+<p>This is an evolution (not revolution) of Nim, bringing ORC memory management as a default, along with many other new features and improvements.</p>
+
+<p>Nim is a programming language that is good for everything, but not for everybody.
+It focuses on the imperative programming paradigm and enhances it with a macro system.
+Its customizable memory management makes it well suited for unforgiving domains such as hard realtime systems and system programming in general.</p>
+
+<h2 id="installing-nim-20">Installing Nim 2.0</h2>
+
+<h3 id="new-users">New users</h3>
+
+<p>Check out if the package manager of your OS already ships version 2.0 or
+install it as described <a href="https://nim-lang.org/install.html">here</a>.</p>
+
+<h3 id="existing-users">Existing users</h3>
+
+<p>If you have installed a previous version of Nim using <code class="language-plaintext highlighter-rouge">choosenim</code>,
+getting Nim 2.0 is as easy as:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>choosenim update stable
+</code></pre></div></div>
+
+<p>Alternatively, you can download Nim 2.0 from
+<a href="https://github.com/nim-lang/nightlies/releases/tag/2023-08-01-version-2-0-a488067a4130f029000be4550a0fb1b39e0e9e7c">our nightlies builds</a>.</p>
+
+<h2 id="donating-to-nim">Donating to Nim</h2>
+
+<p>We would like to encourage you to donate to Nim.
+The donated money will be used to further improve Nim by creating bounties
+for the most important bugfixes and features.</p>
+
+<p>You can donate via:</p>
+
+<ul>
+  <li><a href="https://opencollective.com/nim">Open Collective</a></li>
+  <li>Bitcoin: <code class="language-plaintext highlighter-rouge">1BXfuKM2uvoD6mbx4g5xM3eQhLzkCK77tJ</code></li>
+</ul>
+
+<p>If you are a company, we also offer commercial support.</p>
+
+<h2 id="new-features">New features</h2>
+
+<h3 id="better-tuple-unpacking">Better tuple unpacking</h3>
+
+<p>Tuple unpacking for variables is now treated as syntax sugar that directly
+expands into multiple assignments. Along with this, tuple unpacking for
+variables can now be nested.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>proc returnsNestedTuple(): (int, (int, int), int, int) = (4, (5, 7), 2, 3)
+
+# Now nesting is supported!
+let (x, (_, y), _, z) = returnsNestedTuple()
+</code></pre></div></div>
+
+<h3 id="improved-type-inference">Improved type inference</h3>
+
+<p>A new form of type inference called <a href="https://nim-lang.github.io/Nim/manual_experimental.html#topminusdown-type-inference">top-down inference</a> has been implemented for a variety of basic cases.</p>
+
+<p>For example, code like the following now compiles:</p>
+
+<div class="language-nim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="n">foo</span><span class="p">:</span> <span class="kt">seq</span><span class="o">[</span><span class="p">(</span><span class="kt">float</span><span class="p">,</span> <span class="n">byte</span><span class="p">,</span> <span class="n">cstring</span><span class="p">)</span><span class="o">]</span> <span class="o">=</span> <span class="o">@[</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s">"abc"</span><span class="p">)</span><span class="o">]</span>
+</code></pre></div></div>
+
+<h3 id="forbidden-tags">Forbidden Tags</h3>
+
+<p><a href="https://nim-lang.github.io/Nim/manual.html#effect-system-tag-tracking">Tag tracking</a> now supports the definition
+of forbidden tags by the <code class="language-plaintext highlighter-rouge">.forbids</code> pragma which can be used to disable certain effects in proc types.</p>
+
+<p>For example:</p>
+
+<div class="language-nim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">type</span> <span class="n">IO</span> <span class="o">=</span> <span class="k">object</span> <span class="sd">## input/output effect</span>
+<span class="k">proc </span><span class="nf">readLine</span><span class="p">():</span> <span class="kt">string</span> <span class="p">{.</span><span class="n">tags</span><span class="p">:</span> <span class="o">[</span><span class="n">IO</span><span class="o">]</span><span class="p">.}</span> <span class="o">=</span> <span class="k">discard</span>
+<span class="k">proc </span><span class="nf">echoLine</span><span class="p">():</span> <span class="n">void</span> <span class="o">=</span> <span class="k">discard</span>
+
+<span class="k">proc </span><span class="nf">no_IO_please</span><span class="p">()</span> <span class="p">{.</span><span class="n">forbids</span><span class="p">:</span> <span class="o">[</span><span class="n">IO</span><span class="o">]</span><span class="p">.}</span> <span class="o">=</span>
+  <span class="c"># this is OK because it didn't define any tag:</span>
+  <span class="n">echoLine</span><span class="p">()</span>
+  <span class="c"># the compiler prevents this:</span>
+  <span class="k">let</span> <span class="n">y</span> <span class="o">=</span> <span class="n">readLine</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="new-standard-library-modules">New standard library modules</h3>
+
+<p>The famous <code class="language-plaintext highlighter-rouge">os</code> module got an overhaul. Several of its features are available
+under a new interface that introduces a <code class="language-plaintext highlighter-rouge">Path</code> abstraction. A <code class="language-plaintext highlighter-rouge">Path</code> is
+a <code class="language-plaintext highlighter-rouge">distinct string</code>, which improves the type safety when dealing with paths, files
+and directories.</p>
+
+<p>Use:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">std/oserrors</code> for OS error reporting.</li>
+  <li><code class="language-plaintext highlighter-rouge">std/envvars</code> for environment variables handling.</li>
+  <li><code class="language-plaintext highlighter-rouge">std/paths</code> for path handling.</li>
+  <li><code class="language-plaintext highlighter-rouge">std/dirs</code> for directory creation/deletion/traversal.</li>
+  <li><code class="language-plaintext highlighter-rouge">std/files</code> for file existence checking, file deletions and moves.</li>
+  <li><code class="language-plaintext highlighter-rouge">std/symlinks</code> for symlink handling.</li>
+  <li><code class="language-plaintext highlighter-rouge">std/appdirs</code> for accessing configuration/home/temp directories.</li>
+  <li><code class="language-plaintext highlighter-rouge">std/cmdline</code> for reading command line parameters.</li>
+</ul>
+
+<h3 id="overloadable-enums">Overloadable enums</h3>
+
+<p><a href="https://nim-lang.github.io/Nim/manual.html#overloadable-enum-value-names">Overloadable enums</a> are no longer experimental.</p>
+
+<p>For example:</p>
+
+<div class="language-nim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">type</span>
+  <span class="n">E1</span> <span class="o">=</span> <span class="k">enum</span>
+    <span class="n">value1</span><span class="p">,</span> <span class="n">value2</span>
+  <span class="n">E2</span> <span class="o">=</span> <span class="k">enum</span>
+    <span class="n">value1</span><span class="p">,</span> <span class="n">value2</span> <span class="o">=</span> <span class="mi">4</span>
+
+<span class="k">const</span>
+  <span class="n">Lookuptable</span> <span class="o">=</span> <span class="o">[</span>
+    <span class="n">E1</span><span class="p">.</span><span class="n">value1</span><span class="p">:</span> <span class="s">"1"</span><span class="p">,</span>
+    <span class="n">value2</span><span class="p">:</span> <span class="s">"2"</span>
+  <span class="o">]</span>
+</code></pre></div></div>
+
+<p>The types <code class="language-plaintext highlighter-rouge">E1</code> and <code class="language-plaintext highlighter-rouge">E2</code> share the names <code class="language-plaintext highlighter-rouge">value1</code> and <code class="language-plaintext highlighter-rouge">value2</code>. These are overloaded and the usual overload disambiguation
+is used so that the <code class="language-plaintext highlighter-rouge">E1</code> or <code class="language-plaintext highlighter-rouge">E2</code> prefixes can be left out in many cases. These features are most beneficial for independently developed libraries.</p>
+
+<h3 id="default-values-for-objects">Default values for objects</h3>
+
+<p>Inside an object declaration, fields can now have default values:</p>
+
+<div class="language-nim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">type</span>
+  <span class="n">Rational</span><span class="o">*</span> <span class="o">=</span> <span class="k">object</span>
+    <span class="n">num</span><span class="p">:</span> <span class="kt">int</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">den</span><span class="p">:</span> <span class="kt">int</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">var</span> <span class="n">r</span> <span class="o">=</span> <span class="n">Rational</span><span class="p">()</span>
+<span class="n">assert</span> <span class="o">$</span><span class="n">r</span> <span class="o">==</span> <span class="s">"(num: 0, den: 1)"</span>
+</code></pre></div></div>
+
+<p>These default values are used when the field is not initialized explicitly. See also <a href="https://nim-lang.github.io/Nim/manual.html#types-default-values-for-object-fields">default values for object fields</a> for details.</p>
+
+<h3 id="definite-assignment-analysis">Definite assignment analysis</h3>
+
+<p>We found Nim’s default initialization rule to be one major source of bugs. There is a new
+experimental switch called <code class="language-plaintext highlighter-rouge">strictDefs</code> that protects against these bugs. When enabled,
+it is enforced that a variable has been given a value explicitly before the variable can
+be used:</p>
+
+<div class="language-nim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{.</span><span class="n">experimental</span><span class="p">:</span> <span class="s">"strictDefs"</span><span class="p">.}</span>
+
+<span class="k">proc </span><span class="nf">main</span> <span class="o">=</span>
+  <span class="k">var</span> <span class="n">r</span><span class="p">:</span> <span class="n">Rational</span>
+  <span class="n">echo</span> <span class="n">r</span> <span class="c"># Warning: use explicit initialization of 'r' for clarity [Uninit]</span>
+
+<span class="n">main</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>To turn the warning into an error, use <code class="language-plaintext highlighter-rouge">--warningAsError:Uninit:on</code> on the command line.</p>
+
+<p>The analysis understands basic control flow so the following works because every
+possible code path assigns a value to <code class="language-plaintext highlighter-rouge">r</code> before it is used:</p>
+
+<div class="language-nim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{.</span><span class="n">experimental</span><span class="p">:</span> <span class="s">"strictDefs"</span><span class="p">.}</span>
+
+<span class="k">proc </span><span class="nf">main</span><span class="p">(</span><span class="n">cond</span><span class="p">:</span> <span class="kt">bool</span><span class="p">)</span> <span class="o">=</span>
+  <span class="k">var</span> <span class="n">r</span><span class="p">:</span> <span class="n">Rational</span>
+  <span class="k">if</span> <span class="n">cond</span><span class="p">:</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">Rational</span><span class="p">(</span><span class="n">num</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="n">den</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">Rational</span><span class="p">()</span>
+  <span class="n">echo</span> <span class="n">r</span>
+
+<span class="n">main</span><span class="p">(</span><span class="kp">false</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Even better, this feature works with <code class="language-plaintext highlighter-rouge">let</code> variables too:</p>
+
+<div class="language-nim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{.</span><span class="n">experimental</span><span class="p">:</span> <span class="s">"strictDefs"</span><span class="p">.}</span>
+
+<span class="k">proc </span><span class="nf">main</span><span class="p">(</span><span class="n">cond</span><span class="p">:</span> <span class="kt">bool</span><span class="p">)</span> <span class="o">=</span>
+  <span class="k">let</span> <span class="n">r</span><span class="p">:</span> <span class="n">Rational</span>
+  <span class="k">if</span> <span class="n">cond</span><span class="p">:</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">Rational</span><span class="p">(</span><span class="n">num</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="n">den</span><span class="p">:</span> <span class="mi">3</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">Rational</span><span class="p">()</span>
+  <span class="n">echo</span> <span class="n">r</span>
+
+<span class="n">main</span><span class="p">(</span><span class="kp">false</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>It is checked that every <code class="language-plaintext highlighter-rouge">let</code> variable is assigned a value exactly once.</p>
+
+<h3 id="strict-effects">Strict effects</h3>
+
+<p><code class="language-plaintext highlighter-rouge">--experimental:strictEffects</code> are now always enabled. Strict effects require callback
+parameters to be annotated with <code class="language-plaintext highlighter-rouge">effectsOf</code>:</p>
+
+<div class="language-nim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span> <span class="n">sort</span><span class="o">*[</span><span class="n">T</span><span class="o">]</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="k">var</span> <span class="n">openArray</span><span class="o">[</span><span class="n">T</span><span class="o">]</span><span class="p">,</span>
+              <span class="n">cmp</span><span class="p">:</span> <span class="k">proc</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">T</span><span class="p">):</span> <span class="kt">int</span> <span class="p">{.</span><span class="n">closure</span><span class="p">.},</span>
+              <span class="n">order</span> <span class="o">=</span> <span class="n">SortOrder</span><span class="p">.</span><span class="n">Ascending</span><span class="p">)</span> <span class="p">{.</span><span class="n">effectsOf</span><span class="p">:</span> <span class="n">cmp</span><span class="p">.}</span>
+</code></pre></div></div>
+
+<p>The meaning here is that <code class="language-plaintext highlighter-rouge">sort</code> has the effects of <code class="language-plaintext highlighter-rouge">cmp</code>: <code class="language-plaintext highlighter-rouge">sort</code> can raise the exceptions of <code class="language-plaintext highlighter-rouge">cmp</code>.</p>
+
+<h3 id="improved-error-message-for-type-mismatch">Improved error message for type mismatch</h3>
+
+<div class="language-nim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">proc </span><span class="nf">foo</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="kt">string</span><span class="p">)</span> <span class="o">=</span> <span class="k">discard</span>
+<span class="k">proc </span><span class="nf">foo</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="kt">int</span><span class="p">)</span> <span class="o">=</span> <span class="k">discard</span>
+<span class="k">proc </span><span class="nf">foo</span><span class="p">(</span><span class="n">c</span><span class="p">:</span> <span class="kt">char</span><span class="p">)</span> <span class="o">=</span> <span class="k">discard</span>
+
+<span class="n">foo</span> <span class="mi">4</span>
+</code></pre></div></div>
+
+<p>produces:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>temp3.nim(11, 1) Error: type mismatch
+Expression: foo 4
+  [1] 4: int literal(4)
+
+Expected one of (first mismatch at [position]):
+[1] proc foo(c: char)
+[1] proc foo(s: string)
+[2] proc foo(x, y: int)
+</code></pre></div></div>
+
+<h3 id="consistent-underscore-handling">Consistent underscore handling</h3>
+
+<p>The underscore identifier (<code class="language-plaintext highlighter-rouge">_</code>) is now generally not added to a scope when
+used as the name of a definition. While this was already the case for
+variables, it is now also the case for routine parameters, generic
+parameters, routine declarations, type declarations, etc. This means that the following code now does not compile:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>proc foo(_: int): int = _ + 1
+echo foo(1)
+
+proc foo[_](t: typedesc[_]): seq[_] = @[default(_)]
+echo foo[int]()
+
+proc _() = echo "_"
+_()
+
+type _ = int
+let x: _ = 3
+</code></pre></div></div>
+
+<p>Whereas the following code now compiles:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>proc foo(_, _: int): int = 123
+echo foo(1, 2)
+
+proc foo[_, _](): int = 123
+echo foo[int, bool]()
+
+proc foo[T, U](_: typedesc[T], _: typedesc[U]): (T, U) = (default(T), default(U))
+echo foo(int, bool)
+
+proc _() = echo "one"
+proc _() = echo "two"
+
+type _ = int
+type _ = float
+</code></pre></div></div>
+
+<h3 id="javascript-codegen-improvement">JavaScript codegen improvement</h3>
+
+<p>The JavaScript backend now uses <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt">BigInt</a>
+for 64-bit integer types (<code class="language-plaintext highlighter-rouge">int64</code> and <code class="language-plaintext highlighter-rouge">uint64</code>) by default. As this affects
+JS code generation, code using these types to interface with the JS backend
+may need to be updated. Note that <code class="language-plaintext highlighter-rouge">int</code> and <code class="language-plaintext highlighter-rouge">uint</code> are not affected.</p>
+
+<p>For compatibility with <a href="https://caniuse.com/bigint">platforms that do not support BigInt</a>
+and in the case of potential bugs with the new implementation, the
+old behavior is currently still supported with the command line option
+<code class="language-plaintext highlighter-rouge">--jsbigint64:off</code>.</p>
+
+<h2 id="docgen-improvements">Docgen improvements</h2>
+
+<p><code class="language-plaintext highlighter-rouge">Markdown</code> is now the default markup language of doc comments (instead
+of the legacy <code class="language-plaintext highlighter-rouge">RstMarkdown</code> mode). In this release we begin to separate
+RST and Markdown features to better follow the specification of each
+language, with the focus on Markdown development.
+See also <a href="https://nim-lang.github.io/Nim/markdown_rst.html">the docs</a>.</p>
+
+<ul>
+  <li>
+    <p>Added a <code class="language-plaintext highlighter-rouge">{.doctype: Markdown | RST | RstMarkdown.}</code> pragma allowing to
+select the markup language mode in the doc comments of the current <code class="language-plaintext highlighter-rouge">.nim</code>
+file for processing by <code class="language-plaintext highlighter-rouge">nim doc</code>:</p>
+
+    <ol>
+      <li><code class="language-plaintext highlighter-rouge">Markdown</code> (default) is basically CommonMark (standard Markdown) +
+ some Pandoc Markdown features + some RST features that are missing
+ in our current implementation of CommonMark and Pandoc Markdown.</li>
+      <li><code class="language-plaintext highlighter-rouge">RST</code> closely follows the RST spec with few additional Nim features.</li>
+      <li><code class="language-plaintext highlighter-rouge">RstMarkdown</code> is a maximum mix of RST and Markdown features, which
+ is kept for the sake of compatibility and ease of migration.</li>
+    </ol>
+  </li>
+  <li>
+    <p>Added separate <code class="language-plaintext highlighter-rouge">md2html</code> and <code class="language-plaintext highlighter-rouge">rst2html</code> commands for processing
+standalone <code class="language-plaintext highlighter-rouge">.md</code> and <code class="language-plaintext highlighter-rouge">.rst</code> files respectively (and also <code class="language-plaintext highlighter-rouge">md2tex</code>/<code class="language-plaintext highlighter-rouge">rst2tex</code>).</p>
+  </li>
+  <li>
+    <p>Added Pandoc Markdown bracket syntax <code class="language-plaintext highlighter-rouge">[...]</code> for making anchor-less links.</p>
+  </li>
+  <li>Docgen now supports concise syntax for referencing Nim symbols:
+instead of specifying HTML anchors directly one can use original
+Nim symbol declarations (adding the aforementioned link brackets
+<code class="language-plaintext highlighter-rouge">[...]</code> around them).
+    <ul>
+      <li>To use this feature across modules, a new <code class="language-plaintext highlighter-rouge">importdoc</code> directive was added.
+Using this feature for referencing also helps to ensure that links
+(inside one module or the whole project) are not broken.</li>
+    </ul>
+  </li>
+  <li>
+    <p>Added support for RST &amp; Markdown quote blocks (blocks starting with <code class="language-plaintext highlighter-rouge">&gt;</code>).</p>
+  </li>
+  <li>
+    <p>Added a popular Markdown definition lists extension.</p>
+  </li>
+  <li>
+    <p>Added Markdown indented code blocks (blocks indented by &gt;= 4 spaces).</p>
+  </li>
+  <li>
+    <p>Added syntax for additional parameters to Markdown code blocks:</p>
+
+    <p><code class="language-plaintext highlighter-rouge">nim test="nim c $1"
+ ...
+</code></p>
+  </li>
+</ul>
+
+<h2 id="c-interop-enhancements">C++ interop enhancements</h2>
+
+<p>Nim 2.0 takes C++ interop to the next level with the new <a href="https://nim-lang.github.io/Nim/manual_experimental.html#virtual-pragma">virtual</a> pragma and the extended <a href="https://nim-lang.github.io/Nim/manual_experimental.html#constructor-pragma">constructor</a> pragma.
+Now one can define constructors and virtual procs that map to C++ constructors and virtual methods, allowing one to further customize
+the interoperability. There is also extended support for the <a href="https://nim-lang.org/docs/manual.html#implementation-specific-pragmas-codegendecl-pragma">codeGenDecl</a> pragma, so that it works on types.</p>
+
+<p>It’s a common pattern in C++ to use inheritance to extend a library. Some even use multiple inheritance as a mechanism to make interfaces.</p>
+
+<p>Consider the following example:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">struct</span> <span class="nc">Base</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">someValue</span><span class="p">;</span>
+  <span class="n">Base</span><span class="p">(</span><span class="kt">int</span> <span class="n">inValue</span><span class="p">)</span>  <span class="p">{</span>
+    <span class="n">someValue</span> <span class="o">=</span> <span class="n">inValue</span><span class="p">;</span>
+  <span class="p">};</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">IPrinter</span> <span class="p">{</span>
+<span class="nl">public:</span>
+  <span class="k">virtual</span> <span class="kt">void</span> <span class="n">print</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<div class="language-nim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">type</span>
+  <span class="n">Base</span><span class="o">*</span> <span class="p">{.</span><span class="n">importcpp</span><span class="p">,</span> <span class="n">inheritable</span><span class="p">.}</span> <span class="o">=</span> <span class="k">object</span>
+    <span class="n">someValue</span><span class="o">*</span><span class="p">:</span> <span class="kt">int32</span>
+  <span class="n">IPrinter</span><span class="o">*</span> <span class="p">{.</span><span class="n">importcpp</span><span class="p">.}</span> <span class="o">=</span> <span class="k">object</span>
+
+<span class="k">const</span> <span class="n">objTemplate</span> <span class="o">=</span> <span class="s">"""
+  struct </span><span class="si">$1</span><span class="s"> : public </span><span class="si">$3</span><span class="s">, public IPrinter {
+    </span><span class="si">$2</span><span class="s">
+  };
+"""</span><span class="p">;</span>
+
+<span class="k">type</span> <span class="n">NimChild</span> <span class="p">{.</span><span class="n">codegenDecl</span><span class="p">:</span> <span class="n">objTemplate</span><span class="p">.}</span> <span class="o">=</span> <span class="k">object</span> <span class="k">of</span> <span class="n">Base</span>
+
+<span class="k">proc </span><span class="nf">makeNimChild</span><span class="p">(</span><span class="n">val</span><span class="p">:</span> <span class="kt">int32</span><span class="p">):</span> <span class="n">NimChild</span> <span class="p">{.</span><span class="n">constructor</span><span class="p">:</span> <span class="s">"NimClass('1 #1) : Base(#1)"</span><span class="p">.}</span> <span class="o">=</span>
+  <span class="n">echo</span> <span class="s">"It calls the base constructor passing "</span> <span class="o">&amp;</span> <span class="o">$</span><span class="n">this</span><span class="p">.</span><span class="n">someValue</span>
+  <span class="n">this</span><span class="p">.</span><span class="n">someValue</span> <span class="o">=</span> <span class="n">val</span> <span class="o">*</span> <span class="mi">2</span> <span class="c"># Notice how we can access `this` inside the constructor. It's of the type `ptr NimChild`.</span>
+
+<span class="k">proc </span><span class="nf">print</span><span class="o">*</span><span class="p">(</span><span class="n">self</span><span class="p">:</span> <span class="n">NimChild</span><span class="p">)</span> <span class="p">{.</span><span class="n">virtual</span><span class="p">.}</span> <span class="o">=</span>
+  <span class="n">echo</span> <span class="s">"Some value is "</span> <span class="o">&amp;</span> <span class="o">$</span><span class="n">self</span><span class="p">.</span><span class="n">someValue</span>
+
+<span class="k">let</span> <span class="n">child</span> <span class="o">=</span> <span class="n">makeNimChild</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">child</span><span class="p">.</span><span class="n">print</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>It outputs:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>It calls the base constructor passing 10
+Some value is 20
+</code></pre></div></div>
+
+<h2 id="arcorc-refinements">ARC/ORC refinements</h2>
+
+<p>With the 2.0 release, the ARC/ORC model got refined once again and is now finally complete:</p>
+
+<ol>
+  <li>Programmers now have control over the “item was moved from” state as <code class="language-plaintext highlighter-rouge">=wasMoved</code> is overridable.</li>
+  <li>There is a new <code class="language-plaintext highlighter-rouge">=dup</code> hook which is more efficient than the old combination of <code class="language-plaintext highlighter-rouge">=wasMoved(tmp); =copy(tmp, x)</code> operations.</li>
+  <li>Destructors now take a parameter of the attached object type <code class="language-plaintext highlighter-rouge">T</code> directly and don’t have to take a <code class="language-plaintext highlighter-rouge">var T</code> parameter.</li>
+</ol>
+
+<p>With these important optimizations we improved the runtime of the compiler and important benchmarks by 0%! Wait … what?
+Yes, unfortunately it turns out that for a modern optimizer like in GCC or LLVM there is no difference.</p>
+
+<p>But! This refined model is more efficient once separate compilation enters the picture. In other words, as we think of
+providing a stable ABI it is important not to lose any efficiency in the calling conventions.</p>
+
+<h2 id="tool-changes">Tool changes</h2>
+
+<ul>
+  <li>
+    <p>Nim now ships Nimble version 0.14 which added support for lock-files. Libraries are stored in <code class="language-plaintext highlighter-rouge">$nimbleDir/pkgs2</code> (it was <code class="language-plaintext highlighter-rouge">$nimbleDir/pkgs</code> before). Use <code class="language-plaintext highlighter-rouge">nimble develop --global</code> to create an old style link file in the special links directory documented <a href="https://github.com/nim-lang/nimble#nimble-develop">here</a>.</p>
+  </li>
+  <li>
+    <p>nimgrep now offers the option <code class="language-plaintext highlighter-rouge">--inContext</code> (and <code class="language-plaintext highlighter-rouge">--notInContext</code>), which
+allows to filter only matches with the context block containing a given pattern.</p>
+  </li>
+  <li>
+    <p>nimgrep: names of options containing “include/exclude” are deprecated,
+e.g. instead of <code class="language-plaintext highlighter-rouge">--includeFile</code> and <code class="language-plaintext highlighter-rouge">--excludeFile</code> we have
+<code class="language-plaintext highlighter-rouge">--filename</code> and <code class="language-plaintext highlighter-rouge">--notFilename</code> respectively.
+Also, the semantics are now consistent for such positive/negative filters.</p>
+  </li>
+  <li>
+    <p>Nim now ships with an alternative package manager called <a href="http://nim-lang.github.io/Nim/atlas.html">Atlas</a>. More on this in upcoming versions.</p>
+  </li>
+</ul>
+
+<h2 id="porting-guide">Porting guide</h2>
+
+<h3 id="block-and-break">Block and Break</h3>
+
+<p>Using an unnamed break in a block is deprecated. This warning will become an error in future versions! Use a named block with a named break instead. In other words, turn:</p>
+
+<div class="language-nim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">block</span><span class="p">:</span>
+  <span class="n">a</span><span class="p">()</span>
+  <span class="k">if</span> <span class="n">cond</span><span class="p">:</span>
+    <span class="k">break</span>
+  <span class="n">b</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>Into:</p>
+
+<div class="language-nim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">block</span> <span class="n">maybePerformB</span><span class="p">:</span>
+  <span class="n">a</span><span class="p">()</span>
+  <span class="k">if</span> <span class="n">cond</span><span class="p">:</span>
+    <span class="k">break</span> <span class="n">maybePerformB</span>
+  <span class="n">b</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="strict-funcs">Strict funcs</h3>
+
+<p>The definition of <code class="language-plaintext highlighter-rouge">"strictFuncs"</code> was changed.
+The old definition was roughly: “A store to a ref/ptr deref is forbidden unless it’s coming from a <code class="language-plaintext highlighter-rouge">var T</code> parameter”.
+The new definition is: “A store to a ref/ptr deref is forbidden”.</p>
+
+<p>This new definition is much easier to understand, but the price is some expressibility. The following code used to be
+accepted:</p>
+
+<div class="language-nim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{.</span><span class="n">experimental</span><span class="p">:</span> <span class="s">"strictFuncs"</span><span class="p">.}</span>
+
+<span class="k">type</span> <span class="n">Node</span> <span class="o">=</span> <span class="k">ref</span> <span class="k">object</span>
+  <span class="n">s</span><span class="p">:</span> <span class="kt">string</span>
+
+<span class="k">func</span> <span class="n">create</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="kt">string</span><span class="p">):</span> <span class="n">Node</span> <span class="o">=</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="n">Node</span><span class="p">()</span>
+  <span class="n">result</span><span class="p">.</span><span class="n">s</span> <span class="o">=</span> <span class="n">s</span> <span class="c"># store to result[]</span>
+</code></pre></div></div>
+
+<p>Now it has to be rewritten to:</p>
+
+<div class="language-nim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{.</span><span class="n">experimental</span><span class="p">:</span> <span class="s">"strictFuncs"</span><span class="p">.}</span>
+
+<span class="k">type</span> <span class="n">Node</span> <span class="o">=</span> <span class="k">ref</span> <span class="k">object</span>
+  <span class="n">s</span><span class="p">:</span> <span class="kt">string</span>
+
+<span class="k">func</span> <span class="n">create</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="kt">string</span><span class="p">):</span> <span class="n">Node</span> <span class="o">=</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="standard-library">Standard library</h3>
+
+<p>Several standard library modules have been moved to nimble packages, use <code class="language-plaintext highlighter-rouge">nimble</code> or <code class="language-plaintext highlighter-rouge">atlas</code> to install them:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">std/punycode</code> =&gt; <code class="language-plaintext highlighter-rouge">punycode</code></li>
+  <li><code class="language-plaintext highlighter-rouge">std/asyncftpclient</code> =&gt; <code class="language-plaintext highlighter-rouge">asyncftpclient</code></li>
+  <li><code class="language-plaintext highlighter-rouge">std/smtp</code> =&gt; <code class="language-plaintext highlighter-rouge">smtp</code></li>
+  <li><code class="language-plaintext highlighter-rouge">std/db_common</code> =&gt; <code class="language-plaintext highlighter-rouge">db_connector/db_common</code></li>
+  <li><code class="language-plaintext highlighter-rouge">std/db_sqlite</code> =&gt; <code class="language-plaintext highlighter-rouge">db_connector/db_sqlite</code></li>
+  <li><code class="language-plaintext highlighter-rouge">std/db_mysql</code> =&gt; <code class="language-plaintext highlighter-rouge">db_connector/db_mysql</code></li>
+  <li><code class="language-plaintext highlighter-rouge">std/db_postgres</code> =&gt; <code class="language-plaintext highlighter-rouge">db_connector/db_postgres</code></li>
+  <li><code class="language-plaintext highlighter-rouge">std/db_odbc</code> =&gt; <code class="language-plaintext highlighter-rouge">db_connector/db_odbc</code></li>
+  <li><code class="language-plaintext highlighter-rouge">std/md5</code> =&gt; <code class="language-plaintext highlighter-rouge">checksums/md5</code></li>
+  <li><code class="language-plaintext highlighter-rouge">std/sha1</code> =&gt; <code class="language-plaintext highlighter-rouge">checksums/sha1</code></li>
+  <li><code class="language-plaintext highlighter-rouge">std/sums</code> =&gt; <code class="language-plaintext highlighter-rouge">sums</code></li>
+</ul>
+
+
+        </div>
+      </div>
+    </div>
+    <footer>
+  <section class="content">
+    <div class="pure-g">
+      <div class="copyright pure-u-2-3">
+        <p>
+          Unless otherwise stated, the content of this page is
+          licensed under the
+          <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0</a>
+          license.
+          Code displayed on this website is MIT licensed.
+        </p>
+        <p>
+          This website is available on
+          <a href="https://github.com/nim-lang/website">GitHub</a>
+          and contributions are welcome.
+          Original website design by
+          <a href="https://github.com/dom96">Dominik Picheta</a> and
+          <a href="https://github.com/Calinou">Hugo Locurcio</a>.
+          Logo by <a href="https://github.com/josephwecker">Joseph Wecker</a>.
+        </p>
+      </div>
+      <div class="pure-u-1-3 right-center">
+        <a href="https://m.do.co/c/637ab907c7f4"><img src="/assets/img/do.png"/></a>
+      </div>
+    </div>
+  </section>
+
+</footer>
+<script>
+    (function(){
+      function setTracking(a) {
+        var url = a.href;
+        a.onclick = function() {
+          if (typeof(ga) !== "undefined") {
+            ga('send', 'event', 'outbound', 'click', url, {
+              'transport': 'beacon',
+              'hitCallback': function(){document.location = url;}
+            });
+          }
+        };
+      }
+
+      var a = document.getElementsByTagName("a");
+      for (var i = 0; i < a.length; ++i) {
+        if (a[i].hostname != location.hostname &&
+            a[i].getAttribute("target") !== "_blank"
+        ) {
+          setTracking(a[i])
+        }
+      }
+    })();
+</script>
+
+  </div>
+  </body>
+</html>

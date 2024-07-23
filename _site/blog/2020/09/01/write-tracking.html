@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta name="charset" content="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The Nim programming language is a concise, fast programming language that compiles to C, C++ and JavaScript.">
+  <meta charset="utf-8">
+  <link rel="icon" type="image/png" href="/assets/img/logo_bw.png" />
+
+  
+  <title>Write Tracking for Nim (Part 2) - Nim Blog</title>
+  
+  <link rel="stylesheet" href="/assets/css/pure.min.css">
+  <link rel="stylesheet" href="/assets/css/pure-grids-responsive.min.css">
+  <link href="https://use.fontawesome.com/releases/v5.0.2/css/all.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+  
+  <link rel="stylesheet" href="/assets/css/highlight/github.css">
+  
+
+  <link rel="stylesheet" href="/assets/css/google-fonts.css">
+  <link rel="stylesheet" href="/assets/css/main.css?t=1721738524015683587">
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-48159761-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+  <script defer data-domain="nim-lang.org" src="https://plausible.io/js/plausible.js"></script>
+
+  <meta name="twitter:title" content="Write Tracking for Nim (Part 2)">
+
+  
+  <meta name="twitter:description" content="7 years ago I wrote how Nim would get “write tracking” as an alternative to adding const to Nim’s type system. This year it finally made it into Nim nightly! Since then the feature was reimplemented and all the details how it works did change.">
+  <meta property="og:description" content="7 years ago I wrote how Nim would get “write tracking” as an alternative to adding const to Nim’s type system. This year it finally made it into Nim nightly! Since then the feature was reimplemented and all the details how it works did change.">
+  
+
+  <meta name="twitter:site" content="@nim_lang">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://nim-lang.org/assets/img/twitter_banner.png">
+
+  <meta property="og:title" content="Write Tracking for Nim (Part 2)" />
+  <meta property="og:site_name" content="Nim Programming Language" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://nim-lang.org/assets/img/twitter_banner.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1000" />
+  <meta property="og:image:height" content="500" />
+  <meta property="og:image:alt" content="Nim Programming Language" />
+</head>
+
+  <body class="site">
+    <header>
+  <nav class="pure-menu pure-menu-horizontal pure-menu-scrollable">
+    <div class="nav-content">
+      <a href="/" class="pure-menu-heading pure-menu-link site-logo-container">
+        <img class="site-logo" src="/assets/img/logo.svg" height="28" alt="Nim">
+      </a>
+      <ul class="pure-menu-list">
+        
+        <li class="pure-menu-item">
+          <a href="/blog.html"
+             class="pure-menu-link current">
+            Blog
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/features.html"
+             class="pure-menu-link ">
+            Features
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/install.html"
+             class="pure-menu-link ">
+            Download
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/documentation.html"
+             class="pure-menu-link ">
+            Documentation
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="https://forum.nim-lang.org"
+             class="pure-menu-link ">
+            Forum
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/donate.html"
+             class="pure-menu-link ">
+            Donate
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://github.com/nim-lang/Nim">Source</a>
+        </li>
+      </ul>
+    </div>
+    <div class="menu-fade"></div>
+  </nav>
+</header>
+
+    <div class="site-content post-page">
+      <div class="content">
+        <div class="width-reduced">
+          <h1 class="post-title">
+            Write Tracking for Nim (Part 2)
+          </h1>
+          <h3 class="post-meta">
+            <span>
+              <i class="far fa-calendar-alt" aria-hidden="true"></i>
+              01 September 2020
+            </span>
+            
+            <span>
+              <i class="fa fa-user-circle" aria-hidden="true"></i>
+              Araq
+            </span>
+            
+          </h3>
+          <p>7 years ago I wrote how Nim would get <a href="https://nim-lang.org/araq/writetracking.html">“write
+tracking”</a>
+as an alternative to adding <code class="language-plaintext highlighter-rouge">const</code> to Nim’s type system.
+This year it finally made it into Nim nightly!
+Since then the feature was reimplemented and all the details how it works did change.</p>
+
+<p>My special thanks go to <a href="https://github.com/Clyybber">Clyybber</a> who
+simplified my initial proposal (see
+<a href="https://github.com/nim-lang/RFCs/issues/234">https://github.com/nim-lang/RFCs/issues/234</a>) so that this feature
+could be added to Nim without any new pragma at all! Quite an
+achievement.</p>
+
+<h2 id="status-quo">Status quo</h2>
+
+<p>Nim already has a strong notion of immutability, every parameter that
+does not use the <code class="language-plaintext highlighter-rouge">var T</code> type modifier is immutable.
+In fact, Nim’s parameter passing semantics continue to be one of my
+favorite features of the language and are a hidden gem.
+Nim gets the defaults exactly right.
+However, as usual, pointers complicate matters.
+This code compiles without any warning:</p>
+
+<div class="language-nim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">type</span>
+  <span class="n">Node</span> <span class="o">=</span> <span class="k">ref</span> <span class="k">object</span>
+    <span class="n">data</span><span class="p">:</span> <span class="kt">string</span>
+    <span class="n">next</span><span class="p">:</span> <span class="n">Node</span>
+
+<span class="k">func</span> <span class="n">count</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="n">Node</span><span class="p">):</span> <span class="kt">int</span> <span class="o">=</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="k">var</span> <span class="n">it</span> <span class="o">=</span> <span class="n">n</span>
+  <span class="k">while</span> <span class="n">it</span> <span class="o">!=</span> <span class="k">nil</span><span class="p">:</span>
+    <span class="n">inc</span> <span class="n">result</span>
+    <span class="n">it</span> <span class="o">=</span> <span class="n">it</span><span class="p">.</span><span class="n">next</span>
+  <span class="c"># nasty code here:</span>
+  <span class="n">n</span><span class="p">.</span><span class="n">data</span> <span class="o">=</span> <span class="s">"mutated!"</span>
+</code></pre></div></div>
+
+<p>The reason is that while <code class="language-plaintext highlighter-rouge">n</code> itself is a parameter and immutable, <code class="language-plaintext highlighter-rouge">n.data</code>
+remains mutable due to the pointer indirection! This is sometimes called
+“shallow immutability”.</p>
+
+<p>As a reminder, the <code class="language-plaintext highlighter-rouge">func x(args)</code> notation is a shortcut for
+<code class="language-plaintext highlighter-rouge">proc x(args) {.noSideEffect.}</code>.</p>
+
+<h2 id="flawed-idea-const-t">Flawed idea: const T</h2>
+
+<p>The problem of adding <code class="language-plaintext highlighter-rouge">const</code> to a type system is that it’s inconvenient.
+To see why, let us imagine that a <code class="language-plaintext highlighter-rouge">const</code> type modifier would be added to Nim.
+<code class="language-plaintext highlighter-rouge">proc p(param: const T)</code> then would mean that no location reachable from
+<code class="language-plaintext highlighter-rouge">param</code> is allowed to be mutated by <code class="language-plaintext highlighter-rouge">p</code>.
+This is sometimes called “deep immutability”.</p>
+
+<p>So far, so good:</p>
+
+<div class="language-nim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span> <span class="n">p</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="k">const</span> <span class="n">Node</span><span class="p">)</span> <span class="o">=</span>
+  <span class="c"># does not compile:</span>
+  <span class="n">n</span><span class="p">.</span><span class="n">data</span> <span class="o">=</span> <span class="s">"mutated!"</span>
+</code></pre></div></div>
+
+<p>But our <code class="language-plaintext highlighter-rouge">count</code> example has a problem:</p>
+
+<div class="language-nim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">type</span>
+  <span class="n">Node</span> <span class="o">=</span> <span class="k">ref</span> <span class="k">object</span>
+    <span class="n">data</span><span class="p">:</span> <span class="kt">string</span>
+    <span class="n">next</span><span class="p">:</span> <span class="n">Node</span> <span class="c"># note: this is not 'const Node' as some operations</span>
+               <span class="c"># on singly linked lists really can mutate this field.</span>
+
+<span class="k">func</span> <span class="n">count</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="k">const</span> <span class="n">Node</span><span class="p">):</span> <span class="kt">int</span> <span class="o">=</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="k">var</span> <span class="n">it</span><span class="p">:</span> <span class="k">const</span> <span class="n">Node</span> <span class="o">=</span> <span class="n">n</span>
+  <span class="k">while</span> <span class="n">it</span> <span class="o">!=</span> <span class="k">nil</span><span class="p">:</span>
+    <span class="n">inc</span> <span class="n">result</span>
+    <span class="n">it</span> <span class="o">=</span> <span class="n">it</span><span class="p">.</span><span class="n">next</span>
+    <span class="c">#  ^ this would require an implicit conversion from 'Node' to 'const Node'!</span>
+</code></pre></div></div>
+
+<p>The type of the <code class="language-plaintext highlighter-rouge">next</code> field is <code class="language-plaintext highlighter-rouge">Node</code> and not <code class="language-plaintext highlighter-rouge">const Node</code> and so the naive
+iteration over a singly linked list does not work.
+Now you can argue that the iteration mechanism should be hidden inside an
+iterator anyway where we can also hide the dangerous looking but benign type conversion.</p>
+
+<p>Unfortunately there are many more examples where these type conversions would come up.
+In fact, for many simple operations like <code class="language-plaintext highlighter-rouge">id</code> or <code class="language-plaintext highlighter-rouge">select</code> what to use as the
+return type is problematic:</p>
+
+<div class="language-nim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span> <span class="n">select</span><span class="p">(</span><span class="n">cond</span><span class="p">:</span> <span class="kt">bool</span><span class="p">;</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="k">const</span> <span class="n">Node</span><span class="p">):</span> <span class="n">Node</span> <span class="o">=</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="k">if</span> <span class="n">cond</span><span class="p">:</span> <span class="n">a</span> <span class="k">else</span><span class="p">:</span> <span class="n">b</span>
+  <span class="c"># type mismatch: cannot convert from 'const Node' to 'Node'</span>
+
+<span class="k">proc </span><span class="nf">mutate</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">Node</span><span class="p">)</span> <span class="o">=</span>
+  <span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="n">select</span><span class="p">(</span><span class="kp">false</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+  <span class="n">x</span><span class="p">.</span><span class="n">data</span> <span class="o">=</span> <span class="s">"mutated!"</span>
+</code></pre></div></div>
+
+<p>Since this doesn’t compile, let’s try a different variant:</p>
+
+<div class="language-nim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span> <span class="n">select</span><span class="p">(</span><span class="n">cond</span><span class="p">:</span> <span class="kt">bool</span><span class="p">;</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="k">const</span> <span class="n">Node</span><span class="p">):</span> <span class="k">const</span> <span class="n">Node</span> <span class="o">=</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="k">if</span> <span class="n">cond</span><span class="p">:</span> <span class="n">a</span> <span class="k">else</span><span class="p">:</span> <span class="n">b</span>
+
+<span class="k">proc </span><span class="nf">mutate</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">Node</span><span class="p">)</span> <span class="o">=</span>
+  <span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">select</span><span class="p">(</span><span class="kp">false</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+  <span class="c">#        ^  convert back to a mutable node</span>
+  <span class="n">x</span><span class="p">.</span><span class="n">data</span> <span class="o">=</span> <span class="s">"mutated!"</span>
+</code></pre></div></div>
+
+<p>The problem with this solution is that it shouldn’t be <code class="language-plaintext highlighter-rouge">select</code>’s business to
+decide for me that the selected node cannot be mutated afterwards, that’s the
+caller’s choice to make.
+These problems are not unique to Nim, for instance in C++ you cannot pass a
+<code class="language-plaintext highlighter-rouge">vector&lt;string&gt;</code> to a <code class="language-plaintext highlighter-rouge">vector&lt;const string&gt;</code>.</p>
+
+<h2 id="idea-mutation-is-an-effect">Idea: Mutation is an effect</h2>
+
+<p>There is a better way to model deep immutability.
+What we really want to say is that <code class="language-plaintext highlighter-rouge">select</code> does not mutate any node passed
+to it, the dangerous pattern to watch out for is something like
+<code class="language-plaintext highlighter-rouge">x.field = value</code> or <code class="language-plaintext highlighter-rouge">x[] = value</code>, stores to the heap.
+(Here “heap” means the heap according to formal semantics, I’m not talking about
+the heap-vs-stack memory region that a typical language implementation uses.)</p>
+
+<p>If we attach an effect like <code class="language-plaintext highlighter-rouge">storeEffect</code> to patterns like <code class="language-plaintext highlighter-rouge">param.field = value</code>
+we can effectively communicate the dangerous operations via Nim’s existing
+effect system.
+Now Clyybber’s brilliant insight was that this effect can be incorporated into
+the existing <code class="language-plaintext highlighter-rouge">noSideEffect</code> effect!
+No new effect is required, we simply tweak the language definition!</p>
+
+<p><code class="language-plaintext highlighter-rouge">noSideEffect</code> in Nim means “does not access a global or thread-local variable
+nor does it call a routine that does”.
+We add another criterion to what it means to have a “side effect”:</p>
+
+<p>Mutating an object reachable from a parameter does count as a side effect.</p>
+
+<p>There is a new experimental mode written as <code class="language-plaintext highlighter-rouge">{.experimental: "strictFuncs".}</code>
+to enable this stricter interpretation of what a “side effect” means.</p>
+
+<p>Here is how it looks in practice:</p>
+
+<div class="language-nim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{.</span><span class="n">experimental</span><span class="p">:</span> <span class="s">"strictFuncs"</span><span class="p">.}</span>
+
+<span class="k">type</span>
+  <span class="n">Node</span> <span class="o">=</span> <span class="k">ref</span> <span class="k">object</span>
+    <span class="n">data</span><span class="p">:</span> <span class="kt">string</span>
+    <span class="n">next</span><span class="p">:</span> <span class="n">Node</span>
+
+<span class="k">func</span> <span class="n">count</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="n">Node</span><span class="p">):</span> <span class="kt">int</span> <span class="o">=</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="k">var</span> <span class="n">it</span> <span class="o">=</span> <span class="n">n</span>
+  <span class="k">while</span> <span class="n">it</span> <span class="o">!=</span> <span class="k">nil</span><span class="p">:</span>
+    <span class="n">inc</span> <span class="n">result</span>
+    <span class="n">it</span> <span class="o">=</span> <span class="n">it</span><span class="p">.</span><span class="n">next</span>
+  <span class="c"># does not compile anymore!</span>
+  <span class="n">n</span><span class="p">.</span><span class="n">data</span> <span class="o">=</span> <span class="s">"mutated!"</span>
+  <span class="c">#  Error: 'count' can have side effects</span>
+  <span class="c"># an object reachable from 'n' is potentially mutated</span>
+</code></pre></div></div>
+
+<p>As usual, the devil is in the details.
+Any algorithm that we use should be smart enough to detect hidden mutations 
+via local aliases:</p>
+
+<div class="language-nim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{.</span><span class="n">experimental</span><span class="p">:</span> <span class="s">"strictFuncs"</span><span class="p">.}</span>
+
+<span class="k">type</span>
+  <span class="n">Node</span> <span class="o">=</span> <span class="k">ref</span> <span class="k">object</span>
+    <span class="n">data</span><span class="p">:</span> <span class="kt">string</span>
+    <span class="n">next</span><span class="p">:</span> <span class="n">Node</span>
+
+<span class="k">func</span> <span class="n">p</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="n">Node</span><span class="p">)</span> <span class="o">=</span>
+  <span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="n">n</span>
+  <span class="k">let</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
+  <span class="n">y</span><span class="p">.</span><span class="n">data</span> <span class="o">=</span> <span class="s">"mutated!"</span>
+</code></pre></div></div>
+
+<p>And indeed the compiler is smart:</p>
+
+<div class="language-nim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span> <span class="n">p</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="n">Node</span><span class="p">)</span> <span class="o">=</span>
+  <span class="c"># Error: 'p' can have side effects</span>
+  <span class="c"># an object reachable from 'n' is potentially mutated</span>
+  <span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="n">n</span>
+  <span class="k">let</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="c"># is the statement that connected the mutation to the parameter</span>
+  <span class="n">y</span><span class="p">.</span><span class="n">data</span> <span class="o">=</span> <span class="s">"mutated!"</span> <span class="c">#  the mutation is here</span>
+</code></pre></div></div>
+
+<p>It is not fooled by function calls either:</p>
+
+<div class="language-nim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span> <span class="n">id</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="n">Node</span><span class="p">):</span> <span class="n">Node</span> <span class="o">=</span> <span class="n">n</span>
+
+<span class="k">func</span> <span class="n">p</span><span class="p">(</span><span class="n">n</span><span class="p">:</span> <span class="n">Node</span><span class="p">)</span> <span class="o">=</span>
+  <span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="n">id</span> <span class="n">n</span>
+  <span class="k">let</span> <span class="n">y</span> <span class="o">=</span> <span class="n">id</span> <span class="n">x</span>
+  <span class="n">y</span><span class="p">.</span><span class="n">data</span> <span class="o">=</span> <span class="s">"mutated!"</span>
+</code></pre></div></div>
+
+<p>Internally the compiler constructs an abstract graph and looks for
+subgraphs that are both mutated and “connected” to an input parameter.
+The analysis does not depend on the control flow, two locations
+<code class="language-plaintext highlighter-rouge">a</code> and <code class="language-plaintext highlighter-rouge">b</code> are connected if there is a pattern like <code class="language-plaintext highlighter-rouge">a = f(b)</code> in the source code.</p>
+
+<h2 id="mutability-via-var">Mutability via var</h2>
+
+<p>Some mutations remain to be allowed and do not count as a “side” effect:</p>
+
+<div class="language-nim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">func</span> <span class="n">add</span><span class="o">*[</span><span class="n">T</span><span class="o">]</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="k">var</span> <span class="kt">seq</span><span class="o">[</span><span class="n">T</span><span class="o">]</span><span class="p">;</span> <span class="n">x</span><span class="p">:</span> <span class="n">sink</span> <span class="n">T</span><span class="p">)</span> <span class="o">=</span>
+  <span class="c"># valid: mutates 's'.</span>
+  <span class="k">let</span> <span class="n">oldLen</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">len</span>
+  <span class="n">setLen</span> <span class="n">s</span><span class="p">,</span> <span class="n">oldLen</span> <span class="o">+</span> <span class="mi">1</span>
+  <span class="n">s</span><span class="o">[</span><span class="n">oldLen</span><span class="o">]</span> <span class="o">=</span> <span class="n">x</span>
+</code></pre></div></div>
+
+<p>The idea here is that no matter what <code class="language-plaintext highlighter-rouge">T</code> is instantiated with, <code class="language-plaintext highlighter-rouge">x</code> should be
+deeply immutable, but the seq <code class="language-plaintext highlighter-rouge">s</code> is mutated.
+Mutations to <code class="language-plaintext highlighter-rouge">var T</code> parameters remain valid.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>“strict” funcs are an answer to a long standing design question, fit
+Nim’s existing design in a most natural way (“hey, this is the
+definition of side effect that I always had in mind!”) and can enable
+Nim’s optimizer to be more effective.</p>
+
+<p>If you use Nim devel (1.3.x) this feature is already available to you
+and can be accessed via <code class="language-plaintext highlighter-rouge">{.experimental: "strictFuncs".}</code>
+in your source code or via <code class="language-plaintext highlighter-rouge">--experimental:strictFuncs</code> on the command line.
+Please try it out and give us your feedback!</p>
+
+        </div>
+      </div>
+    </div>
+    <footer>
+  <section class="content">
+    <div class="pure-g">
+      <div class="copyright pure-u-2-3">
+        <p>
+          Unless otherwise stated, the content of this page is
+          licensed under the
+          <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0</a>
+          license.
+          Code displayed on this website is MIT licensed.
+        </p>
+        <p>
+          This website is available on
+          <a href="https://github.com/nim-lang/website">GitHub</a>
+          and contributions are welcome.
+          Original website design by
+          <a href="https://github.com/dom96">Dominik Picheta</a> and
+          <a href="https://github.com/Calinou">Hugo Locurcio</a>.
+          Logo by <a href="https://github.com/josephwecker">Joseph Wecker</a>.
+        </p>
+      </div>
+      <div class="pure-u-1-3 right-center">
+        <a href="https://m.do.co/c/637ab907c7f4"><img src="/assets/img/do.png"/></a>
+      </div>
+    </div>
+  </section>
+
+</footer>
+<script>
+    (function(){
+      function setTracking(a) {
+        var url = a.href;
+        a.onclick = function() {
+          if (typeof(ga) !== "undefined") {
+            ga('send', 'event', 'outbound', 'click', url, {
+              'transport': 'beacon',
+              'hitCallback': function(){document.location = url;}
+            });
+          }
+        };
+      }
+
+      var a = document.getElementsByTagName("a");
+      for (var i = 0; i < a.length; ++i) {
+        if (a[i].hostname != location.hostname &&
+            a[i].getAttribute("target") !== "_blank"
+        ) {
+          setTracking(a[i])
+        }
+      }
+    })();
+</script>
+
+  </div>
+  </body>
+</html>

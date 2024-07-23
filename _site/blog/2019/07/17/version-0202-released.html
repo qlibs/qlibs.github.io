@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta name="charset" content="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The Nim programming language is a concise, fast programming language that compiles to C, C++ and JavaScript.">
+  <meta charset="utf-8">
+  <link rel="icon" type="image/png" href="/assets/img/logo_bw.png" />
+
+  
+  <title>Version 0.20.2 released - Nim Blog</title>
+  
+  <link rel="stylesheet" href="/assets/css/pure.min.css">
+  <link rel="stylesheet" href="/assets/css/pure-grids-responsive.min.css">
+  <link href="https://use.fontawesome.com/releases/v5.0.2/css/all.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+  
+  <link rel="stylesheet" href="/assets/css/highlight/github.css">
+  
+
+  <link rel="stylesheet" href="/assets/css/google-fonts.css">
+  <link rel="stylesheet" href="/assets/css/main.css?t=1721738524015683587">
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-48159761-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+  <script defer data-domain="nim-lang.org" src="https://plausible.io/js/plausible.js"></script>
+
+  <meta name="twitter:title" content="Version 0.20.2 released">
+
+  
+  <meta name="twitter:description" content="The Nim team is happy to announce version 0.20.2, which is our second release candidate for version 1.0.">
+  <meta property="og:description" content="The Nim team is happy to announce version 0.20.2, which is our second release candidate for version 1.0.">
+  
+
+  <meta name="twitter:site" content="@nim_lang">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://nim-lang.org/assets/img/twitter_banner.png">
+
+  <meta property="og:title" content="Version 0.20.2 released" />
+  <meta property="og:site_name" content="Nim Programming Language" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://nim-lang.org/assets/img/twitter_banner.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1000" />
+  <meta property="og:image:height" content="500" />
+  <meta property="og:image:alt" content="Nim Programming Language" />
+</head>
+
+  <body class="site">
+    <header>
+  <nav class="pure-menu pure-menu-horizontal pure-menu-scrollable">
+    <div class="nav-content">
+      <a href="/" class="pure-menu-heading pure-menu-link site-logo-container">
+        <img class="site-logo" src="/assets/img/logo.svg" height="28" alt="Nim">
+      </a>
+      <ul class="pure-menu-list">
+        
+        <li class="pure-menu-item">
+          <a href="/blog.html"
+             class="pure-menu-link current">
+            Blog
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/features.html"
+             class="pure-menu-link ">
+            Features
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/install.html"
+             class="pure-menu-link ">
+            Download
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/documentation.html"
+             class="pure-menu-link ">
+            Documentation
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="https://forum.nim-lang.org"
+             class="pure-menu-link ">
+            Forum
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/donate.html"
+             class="pure-menu-link ">
+            Donate
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://github.com/nim-lang/Nim">Source</a>
+        </li>
+      </ul>
+    </div>
+    <div class="menu-fade"></div>
+  </nav>
+</header>
+
+    <div class="site-content post-page">
+      <div class="content">
+        <div class="width-reduced">
+          <h1 class="post-title">
+            Version 0.20.2 released
+          </h1>
+          <h3 class="post-meta">
+            <span>
+              <i class="far fa-calendar-alt" aria-hidden="true"></i>
+              17 July 2019
+            </span>
+            
+            <span>
+              <i class="fa fa-user-circle" aria-hidden="true"></i>
+              The Nim Team
+            </span>
+            
+          </h3>
+          <p>The Nim team is happy to announce version 0.20.2, which is our second
+release candidate for version 1.0.</p>
+
+<p>To read more about version 0.20 and our plans for version 1.0 and beyond,
+check the <a href="https://nim-lang.org/blog/2019/06/06/version-0200-released.html">previous release notes</a>.
+This is mostly a bugfix release of version 0.20.0 (1.0 RC1).</p>
+
+<p>The only new feature is that <code class="language-plaintext highlighter-rouge">toOpenArray</code>, our slicing operator,
+is now available for the JavaScript backend.</p>
+
+<p>Although this release comes only one month after a previous release,
+it has over 200 new commits, fixing over 70 reported issues and bringing
+lots of improvements which should make Nim even more stable.</p>
+
+<h3 id="style-checks">Style checks</h3>
+
+<p>Since version 0.20.0 we improved our style checker to the point that
+Nim now bootstraps with <code class="language-plaintext highlighter-rouge">--styleCheck:error</code> flag, meaning that the compiler
+and the standard library are now style checked and they won’t compile if
+different styles (e.g. <code class="language-plaintext highlighter-rouge">fooBar</code> and <code class="language-plaintext highlighter-rouge">foo_bar</code>) are used.</p>
+
+<p>If you would like to only style check your own nimble package, but not its
+dependencies, you can use <code class="language-plaintext highlighter-rouge">--styleCheck:hint</code>, making your package consistent
+while still retaining perfect interoperability with all other Nim code in the wild.</p>
+
+<h3 id="nimpretty">Nimpretty</h3>
+
+<p>One of the areas which we focused on for this release is our <code class="language-plaintext highlighter-rouge">nimpretty</code> tool –
+it is a Nim source code beautifier, to format code according to the official
+style guide (<a href="https://nim-lang.org/docs/nep1.html">NEP-1</a>).
+More than 30 commits were made aiming to improve <code class="language-plaintext highlighter-rouge">nimpretty</code> experience and
+to make it more robust for real-world scenarios.
+Nimpretty version 0.2 ships with Nim, and we invite you to give it a try.</p>
+
+<h3 id="new-runtime">New runtime</h3>
+
+<p>The new runtime is progressing nicely but it is off the critical path for
+version 1.0 as it’s an opt-in feature.
+The next significant milestone is to make the new runtime work with <code class="language-plaintext highlighter-rouge">async</code>.
+Only after this is accomplished we can push for more adoption of it.</p>
+
+<h2 id="installing-0202">Installing 0.20.2</h2>
+
+<p>If you have installed a previous version of Nim using <code class="language-plaintext highlighter-rouge">choosenim</code>,
+getting Nim 0.20.2 is as easy as:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>choosenim update stable
+</code></pre></div></div>
+
+<p>If you don’t have it already, you can get <code class="language-plaintext highlighter-rouge">choosenim</code> by following
+<a href="https://github.com/dom96/choosenim">these instructions</a> or you can install
+Nim by following the instructions on our
+<a href="https://nim-lang.org/install.html">install</a> page.</p>
+
+<h2 id="changes-affecting-backwards-compatibility">Changes affecting backwards compatibility</h2>
+
+<ul>
+  <li>
+    <p>All <code class="language-plaintext highlighter-rouge">strutils.rfind</code> procs now take <code class="language-plaintext highlighter-rouge">start</code> and <code class="language-plaintext highlighter-rouge">last</code> like <code class="language-plaintext highlighter-rouge">strutils.find</code>
+with the same data slice/index meaning. This is backwards compatible for
+calls <em>not</em> changing the <code class="language-plaintext highlighter-rouge">rfind</code> <code class="language-plaintext highlighter-rouge">start</code> parameter from its default. (#11487)</p>
+
+    <p>In the unlikely case that you were using <code class="language-plaintext highlighter-rouge">rfind X, start=N</code>, or <code class="language-plaintext highlighter-rouge">rfind X, N</code>,
+then you need to change that to <code class="language-plaintext highlighter-rouge">rfind X, last=N</code> or <code class="language-plaintext highlighter-rouge">rfind X, 0, N</code>. (This
+should minimize gotchas porting code from other languages like Python or C++.)</p>
+  </li>
+  <li>
+    <p>On Windows stderr/stdout/stdin are not opened as binary files anymore. Use the switch
+<code class="language-plaintext highlighter-rouge">-d:nimBinaryStdFiles</code> for a transition period.</p>
+  </li>
+</ul>
+
+<h3 id="breaking-changes-in-the-standard-library">Breaking changes in the standard library</h3>
+
+<ul>
+  <li>Mac OS X / BSD: TSa_Family is now the <code class="language-plaintext highlighter-rouge">uint8</code> type, so type
+conversions like <code class="language-plaintext highlighter-rouge">x.sin_family = uint16 toInt(nativesockets.AF_INET)</code>
+need to be changed into <code class="language-plaintext highlighter-rouge">x.sin_family = TSa_Family toInt(nativesockets.AF_INET)</code>.</li>
+</ul>
+
+<h2 id="library-additions">Library additions</h2>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">toOpenArray</code> is now available for the JS target.</li>
+</ul>
+
+<h2 id="library-changes">Library changes</h2>
+
+<ul>
+  <li>
+    <p>Fix async IO operations stalling even after socket is closed. (#11232)</p>
+  </li>
+  <li>
+    <p>More informative error message for <code class="language-plaintext highlighter-rouge">streams.openFileStream</code>. (#11438)</p>
+  </li>
+</ul>
+
+<h2 id="compiler-changes">Compiler changes</h2>
+
+<ul>
+  <li>
+    <p>Better error message for IndexError for empty containers. (#11476)</p>
+  </li>
+  <li>
+    <p>Fix regression in semfold for old right shift. (#11477)</p>
+  </li>
+  <li>
+    <p>Fix for passing tuples as static params to macros. (#11423)</p>
+  </li>
+</ul>
+
+<h2 id="bugfixes">Bugfixes</h2>
+
+<ul>
+  <li>Fixed “nimpretty goes crazy with this snippet”
+(<a href="https://github.com/nim-lang/Nim/issues/10295">#10295</a>)</li>
+  <li>Fixed “nimpretty doesn’t trim all whitespace on the right side of an export marker”
+(<a href="https://github.com/nim-lang/Nim/issues/10177">#10177</a>)</li>
+  <li>Fixed “nimpretty gives invalid indentation to array elements”
+(<a href="https://github.com/nim-lang/Nim/issues/9505">#9505</a>)</li>
+  <li>Fixed “nimpretty doesn’t indent correctly if preceding line ends with <code class="language-plaintext highlighter-rouge">;</code>, <code class="language-plaintext highlighter-rouge">{</code> etc”
+(<a href="https://github.com/nim-lang/Nim/issues/10159">#10159</a>)</li>
+  <li>Fixed “Nimpretty wrong indentation for doc comments”
+(<a href="https://github.com/nim-lang/Nim/issues/10156">#10156</a>)</li>
+  <li>Fixed “HttpClient Documentation needs Proxy example”
+(<a href="https://github.com/nim-lang/Nim/issues/11281">#11281</a>)</li>
+  <li>Fixed “nimpretty aligns comment annoyingly”
+(<a href="https://github.com/nim-lang/Nim/issues/9399">#9399</a>)</li>
+  <li>Fixed “ENDB missing from Docs and TheIndex, remove ENDB from –fullhelp”
+(<a href="https://github.com/nim-lang/Nim/issues/11431">#11431</a>)</li>
+  <li>Fixed “Nimrod on Documentation generator”
+(<a href="https://github.com/nim-lang/Nim/issues/11460">#11460</a>)</li>
+  <li>Fixed “nimpretty (de)indents code where it shouldn’t”
+(<a href="https://github.com/nim-lang/Nim/issues/11468">#11468</a>)</li>
+  <li>Fixed “nimpretty adds spaces where it shouldn’t”
+(<a href="https://github.com/nim-lang/Nim/issues/11470">#11470</a>)</li>
+  <li>Fixed “nimpretty formats enums differently based on commas”
+(<a href="https://github.com/nim-lang/Nim/issues/11467">#11467</a>)</li>
+  <li>Fixed “strutils.rfind start parameter is unecessarily unusual”
+(<a href="https://github.com/nim-lang/Nim/issues/11430">#11430</a>)</li>
+  <li>Fixed “TinyC is not documented”
+(<a href="https://github.com/nim-lang/Nim/issues/11495">#11495</a>)</li>
+  <li>Fixed “c2nim missing from 0.20.0”
+(<a href="https://github.com/nim-lang/Nim/issues/11434">#11434</a>)</li>
+  <li>Fixed “nimsuggest doesn’t work unless compiled with -d:danger”
+(<a href="https://github.com/nim-lang/Nim/issues/11482">#11482</a>)</li>
+  <li>Fixed “random.initRand crashes in Nim 0.20.0 JS backend”
+(<a href="https://github.com/nim-lang/Nim/issues/11450">#11450</a>)</li>
+  <li>Fixed “0.20.0 fails to bootstrap when passing “–verbosity:2” (or 3) to koch”
+(<a href="https://github.com/nim-lang/Nim/issues/11436">#11436</a>)</li>
+  <li>Fixed “Destructors lifting doesn’t work with inheritance”
+(<a href="https://github.com/nim-lang/Nim/issues/11517">#11517</a>)</li>
+  <li>Fixed “std/sums missing from TheIndex”
+(<a href="https://github.com/nim-lang/Nim/issues/11543">#11543</a>)</li>
+  <li>Fixed “sequtils module: link is broken”
+(<a href="https://github.com/nim-lang/Nim/issues/11546">#11546</a>)</li>
+  <li>Fixed “Case Statement Macros do not work in functions above exported functions.”
+(<a href="https://github.com/nim-lang/Nim/issues/11556">#11556</a>)</li>
+  <li>Fixed “newruntime: internal error when initializing a proc variable”
+(<a href="https://github.com/nim-lang/Nim/issues/11533">#11533</a>)</li>
+  <li>Fixed “newruntime: error when modifying a sequence”
+(<a href="https://github.com/nim-lang/Nim/issues/11524">#11524</a>)</li>
+  <li>Fixed “fmod and other math module functions are missing in js mode”
+(<a href="https://github.com/nim-lang/Nim/issues/4630">#4630</a>)</li>
+  <li>Fixed “Object variants and new runtime”
+(<a href="https://github.com/nim-lang/Nim/issues/11563">#11563</a>)</li>
+  <li>Fixed “newruntime exceptions”
+(<a href="https://github.com/nim-lang/Nim/issues/11577">#11577</a>)</li>
+  <li>Fixed “nimpretty is not aware that the next line is a part of the same context”
+(<a href="https://github.com/nim-lang/Nim/issues/11469">#11469</a>)</li>
+  <li>Fixed “Distinct procs fail to compile”
+(<a href="https://github.com/nim-lang/Nim/issues/11600">#11600</a>)</li>
+  <li>Fixed “[SharedTables] Error: undeclared identifier: ‘defaultInitialSize’”
+(<a href="https://github.com/nim-lang/Nim/issues/11588">#11588</a>)</li>
+  <li>Fixed “newSeqOfCap is not working in newruntime”
+(<a href="https://github.com/nim-lang/Nim/issues/11098">#11098</a>)</li>
+  <li>Fixed “nimpretty destroys source with a source code filter”
+(<a href="https://github.com/nim-lang/Nim/issues/11532">#11532</a>)</li>
+  <li>Fixed “Unexpected behaviour when constructing with <code class="language-plaintext highlighter-rouge">result</code>”
+(<a href="https://github.com/nim-lang/Nim/issues/11525">#11525</a>)</li>
+  <li>Fixed “Regression in 0.20.0: Nested proc using outer scope variable fails to compile”
+(<a href="https://github.com/nim-lang/Nim/issues/11523">#11523</a>)</li>
+  <li>Fixed “os:standalone Error: redefinition of ‘nimToCStringConv’ “
+(<a href="https://github.com/nim-lang/Nim/issues/11445">#11445</a>)</li>
+  <li>Fixed “No ambiguity error on field overloaded by <code class="language-plaintext highlighter-rouge">field=</code>”
+(<a href="https://github.com/nim-lang/Nim/issues/11514">#11514</a>)</li>
+  <li>Fixed “object variants and new runtime part 2”
+(<a href="https://github.com/nim-lang/Nim/issues/11611">#11611</a>)</li>
+  <li>Fixed “seq Error: unhandled exception: value out of range: 32772 “
+(<a href="https://github.com/nim-lang/Nim/issues/11606">#11606</a>)</li>
+  <li>Fixed “Compiled binary includes full path to internal nim files”
+(<a href="https://github.com/nim-lang/Nim/issues/11572">#11572</a>)</li>
+  <li>Fixed “Newruntime: top-level string variable is empty after an array assignment”
+(<a href="https://github.com/nim-lang/Nim/issues/11614">#11614</a>)</li>
+  <li>Fixed “Newruntime: raise ObjContructor() doesn’t compile”
+(<a href="https://github.com/nim-lang/Nim/issues/11628">#11628</a>)</li>
+  <li>Fixed “Owned ref can be copied and causes double-free”
+(<a href="https://github.com/nim-lang/Nim/issues/11617">#11617</a>)</li>
+  <li>Fixed “When compiling to JS (in <code class="language-plaintext highlighter-rouge">-d:release</code>) output contains toolchain path on dev’s machine”
+(<a href="https://github.com/nim-lang/Nim/issues/11545">#11545</a>)</li>
+  <li>Fixed “wrong unicode string output”
+(<a href="https://github.com/nim-lang/Nim/issues/11618">#11618</a>)</li>
+  <li>Fixed “unittest “generic instantiation too nested” error”
+(<a href="https://github.com/nim-lang/Nim/issues/11515">#11515</a>)</li>
+  <li>Fixed “Last read of a var parameter generates sink instead of assignment”
+(<a href="https://github.com/nim-lang/Nim/issues/11633">#11633</a>)</li>
+  <li>Fixed “const table with proc type does not compile anymore”
+(<a href="https://github.com/nim-lang/Nim/issues/11479">#11479</a>)</li>
+  <li>Fixed “Can’t use offsetOf on object that ends with an UncheckedArray”
+(<a href="https://github.com/nim-lang/Nim/issues/11320">#11320</a>)</li>
+  <li>Fixed “Newruntime/regression: Bad codegen for inline methods”
+(<a href="https://github.com/nim-lang/Nim/issues/11636">#11636</a>)</li>
+  <li>Fixed “String or sequences inside a loop are not cleared in each iteration”
+(<a href="https://github.com/nim-lang/Nim/issues/11510">#11510</a>)</li>
+  <li>Fixed “Nim -v doesn’t acknowledge new danger flag”
+(<a href="https://github.com/nim-lang/Nim/issues/11484">#11484</a>)</li>
+  <li>Fixed “SIGSEGV while compiling when trying to instantiate a case type, that uses an enum with non-zero start”
+(<a href="https://github.com/nim-lang/Nim/issues/11585">#11585</a>)</li>
+  <li>Fixed “Compile-time usage of parts of strutils fails when using -d:useNimRtl”
+(<a href="https://github.com/nim-lang/Nim/issues/8405">#8405</a>)</li>
+  <li>Fixed “regression(0.20): <code class="language-plaintext highlighter-rouge">finally</code> block executed twice in VM”
+(<a href="https://github.com/nim-lang/Nim/issues/11610">#11610</a>)</li>
+  <li>Fixed “exportc symbol not exported, leading to link error”
+(<a href="https://github.com/nim-lang/Nim/issues/11651">#11651</a>)</li>
+  <li>Fixed “Render bug: opearator priority can be wrong for second argument”
+(<a href="https://github.com/nim-lang/Nim/issues/11662">#11662</a>)</li>
+  <li>Fixed “Nim &amp; C disagree on type size”
+(<a href="https://github.com/nim-lang/Nim/issues/6860">#6860</a>)</li>
+  <li>Fixed “Spawn passes refs across threads”
+(<a href="https://github.com/nim-lang/Nim/issues/7057">#7057</a>)</li>
+  <li>Fixed “BUG: “varargs[string, <code class="language-plaintext highlighter-rouge">$</code>]”  calls <code class="language-plaintext highlighter-rouge">$</code> n^2 times instead of n times (n=len(varargs))”
+(<a href="https://github.com/nim-lang/Nim/issues/8316">#8316</a>)</li>
+  <li>Fixed “Problem with the same name for module and exported type”
+(<a href="https://github.com/nim-lang/Nim/issues/3333">#3333</a>)</li>
+  <li>Fixed “–gc:go does not work anymore”
+(<a href="https://github.com/nim-lang/Nim/issues/11447">#11447</a>)</li>
+  <li>Fixed “Error: inconsistent typing for reintroduced symbol”
+(<a href="https://github.com/nim-lang/Nim/issues/11494">#11494</a>)</li>
+  <li>Fixed “Auto generated destructors  for tuples/objects fail with “non-trivial” error…”
+(<a href="https://github.com/nim-lang/Nim/issues/11671">#11671</a>)</li>
+  <li>Fixed “Regression: parameter default value + typedesc parameter causes compiler crash”
+(<a href="https://github.com/nim-lang/Nim/issues/11660">#11660</a>)</li>
+  <li>Fixed “newruntime: undetected dangling ref”
+(<a href="https://github.com/nim-lang/Nim/issues/11350">#11350</a>)</li>
+  <li>Fixed “Newruntime: setLen() not working on sequences of owned refs”
+(<a href="https://github.com/nim-lang/Nim/issues/11530">#11530</a>)</li>
+  <li>Fixed “Incorrect overflow/underflow error in case statements”
+(<a href="https://github.com/nim-lang/Nim/issues/11551">#11551</a>)</li>
+  <li>Fixed “cgen preprocessor directive placed after struct declaration”
+(<a href="https://github.com/nim-lang/Nim/issues/11691">#11691</a>)</li>
+  <li>Fixed “<code class="language-plaintext highlighter-rouge">continue</code> in an <code class="language-plaintext highlighter-rouge">except Exception as e</code> block crashes the compiler.”
+(<a href="https://github.com/nim-lang/Nim/issues/11683">#11683</a>)</li>
+  <li>Fixed “nimsuggest, nim check segfault when using bindSym and doAssert”
+(<a href="https://github.com/nim-lang/Nim/issues/10901">#10901</a>)</li>
+  <li>Fixed “Nimpretty issue, multiline string of x length only causes output grow every time.”
+(<a href="https://github.com/nim-lang/Nim/issues/11700">#11700</a>)</li>
+  <li>Fixed “Array indexed by distinct int doesnt work with iterators”
+(<a href="https://github.com/nim-lang/Nim/issues/11715">#11715</a>)</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+    <footer>
+  <section class="content">
+    <div class="pure-g">
+      <div class="copyright pure-u-2-3">
+        <p>
+          Unless otherwise stated, the content of this page is
+          licensed under the
+          <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0</a>
+          license.
+          Code displayed on this website is MIT licensed.
+        </p>
+        <p>
+          This website is available on
+          <a href="https://github.com/nim-lang/website">GitHub</a>
+          and contributions are welcome.
+          Original website design by
+          <a href="https://github.com/dom96">Dominik Picheta</a> and
+          <a href="https://github.com/Calinou">Hugo Locurcio</a>.
+          Logo by <a href="https://github.com/josephwecker">Joseph Wecker</a>.
+        </p>
+      </div>
+      <div class="pure-u-1-3 right-center">
+        <a href="https://m.do.co/c/637ab907c7f4"><img src="/assets/img/do.png"/></a>
+      </div>
+    </div>
+  </section>
+
+</footer>
+<script>
+    (function(){
+      function setTracking(a) {
+        var url = a.href;
+        a.onclick = function() {
+          if (typeof(ga) !== "undefined") {
+            ga('send', 'event', 'outbound', 'click', url, {
+              'transport': 'beacon',
+              'hitCallback': function(){document.location = url;}
+            });
+          }
+        };
+      }
+
+      var a = document.getElementsByTagName("a");
+      for (var i = 0; i < a.length; ++i) {
+        if (a[i].hostname != location.hostname &&
+            a[i].getAttribute("target") !== "_blank"
+        ) {
+          setTracking(a[i])
+        }
+      }
+    })();
+</script>
+
+  </div>
+  </body>
+</html>

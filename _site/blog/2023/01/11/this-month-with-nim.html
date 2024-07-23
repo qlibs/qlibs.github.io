@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta name="charset" content="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The Nim programming language is a concise, fast programming language that compiles to C, C++ and JavaScript.">
+  <meta charset="utf-8">
+  <link rel="icon" type="image/png" href="/assets/img/logo_bw.png" />
+
+  
+  <title>This Month with Nim: November and December 2022 - Nim Blog</title>
+  
+  <link rel="stylesheet" href="/assets/css/pure.min.css">
+  <link rel="stylesheet" href="/assets/css/pure-grids-responsive.min.css">
+  <link href="https://use.fontawesome.com/releases/v5.0.2/css/all.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+  
+  <link rel="stylesheet" href="/assets/css/highlight/github.css">
+  
+
+  <link rel="stylesheet" href="/assets/css/google-fonts.css">
+  <link rel="stylesheet" href="/assets/css/main.css?t=1721738524015683587">
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-48159761-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+  <script defer data-domain="nim-lang.org" src="https://plausible.io/js/plausible.js"></script>
+
+  <meta name="twitter:title" content="This Month with Nim: November and December 2022">
+
+  
+  <meta name="twitter:description" content="Cliche, WebRTC, Nimrun Action and p5nim">
+  <meta property="og:description" content="Cliche, WebRTC, Nimrun Action and p5nim">
+  
+
+  <meta name="twitter:site" content="@nim_lang">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://nim-lang.org/assets/img/twitter_banner.png">
+
+  <meta property="og:title" content="This Month with Nim: November and December 2022" />
+  <meta property="og:site_name" content="Nim Programming Language" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://nim-lang.org/assets/img/twitter_banner.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1000" />
+  <meta property="og:image:height" content="500" />
+  <meta property="og:image:alt" content="Nim Programming Language" />
+</head>
+
+  <body class="site">
+    <header>
+  <nav class="pure-menu pure-menu-horizontal pure-menu-scrollable">
+    <div class="nav-content">
+      <a href="/" class="pure-menu-heading pure-menu-link site-logo-container">
+        <img class="site-logo" src="/assets/img/logo.svg" height="28" alt="Nim">
+      </a>
+      <ul class="pure-menu-list">
+        
+        <li class="pure-menu-item">
+          <a href="/blog.html"
+             class="pure-menu-link current">
+            Blog
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/features.html"
+             class="pure-menu-link ">
+            Features
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/install.html"
+             class="pure-menu-link ">
+            Download
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/documentation.html"
+             class="pure-menu-link ">
+            Documentation
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="https://forum.nim-lang.org"
+             class="pure-menu-link ">
+            Forum
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/donate.html"
+             class="pure-menu-link ">
+            Donate
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://github.com/nim-lang/Nim">Source</a>
+        </li>
+      </ul>
+    </div>
+    <div class="menu-fade"></div>
+  </nav>
+</header>
+
+    <div class="site-content post-page">
+      <div class="content">
+        <div class="width-reduced">
+          <h1 class="post-title">
+            This Month with Nim: November and December 2022
+          </h1>
+          <h3 class="post-meta">
+            <span>
+              <i class="far fa-calendar-alt" aria-hidden="true"></i>
+              11 January 2023
+            </span>
+            
+            <span>
+              <i class="fa fa-user-circle" aria-hidden="true"></i>
+              The Nim Community
+            </span>
+            
+          </h3>
+          <h2 id="new-cliche-version">New <a href="https://github.com/juancarlospaco/cliche">Cliche</a> version</h2>
+
+<h4 id="author-juan-carlos">Author: <a href="https://github.com/juancarlospaco">Juan Carlos</a></h4>
+
+<p>New Cliche version:</p>
+<ul>
+  <li><a href="https://github.com/juancarlospaco/cliche/pull/9#issue-1445943903">Added support for <code class="language-plaintext highlighter-rouge">bool</code></a>.</li>
+  <li>Reads <code class="language-plaintext highlighter-rouge">enum</code>, <code class="language-plaintext highlighter-rouge">Positive</code>, <code class="language-plaintext highlighter-rouge">Natural</code>, <code class="language-plaintext highlighter-rouge">BiggestInt</code>, <code class="language-plaintext highlighter-rouge">BiggestFloat</code>, <code class="language-plaintext highlighter-rouge">int</code>, <code class="language-plaintext highlighter-rouge">float</code> directly from command line.</li>
+  <li>Fallbacks for values: static default ➡️  env var ➡️  command line.</li>
+  <li>Uses <code class="language-plaintext highlighter-rouge">parseInt</code> for int, <code class="language-plaintext highlighter-rouge">parseFloat</code> for float, <code class="language-plaintext highlighter-rouge">parseEnum</code> for enum, etc.</li>
+</ul>
+
+<div class="language-nim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="n">std</span><span class="o">/</span><span class="n">strutils</span>
+<span class="k">import</span> <span class="n">cliche</span>
+<span class="c"># Use https://nim-lang.github.io/Nim/os.html#commandLineParams</span>
+<span class="k">type</span> <span class="n">Food</span> <span class="o">=</span> <span class="k">enum</span> <span class="n">PIZZA</span><span class="p">,</span> <span class="n">TACO</span>  <span class="c"># Enum from CLI.</span>
+<span class="c"># let real = commandLineParams()</span>
+<span class="k">let</span> <span class="n">fake</span> <span class="o">=</span> <span class="o">@[</span><span class="s">"--a=1"</span><span class="p">,</span> <span class="s">"--v_1=9.9"</span><span class="p">,</span> <span class="s">"--v2=1"</span><span class="p">,</span> <span class="s">"--v3=2"</span><span class="p">,</span> <span class="s">"--v4=X"</span><span class="p">,</span> <span class="s">"--v5=t"</span><span class="p">,</span> <span class="s">"--v6=5"</span><span class="p">,</span> <span class="s">"--v7=true"</span><span class="p">,</span> <span class="s">"--food=PIZZA"</span><span class="o">]</span>
+<span class="n">fake</span><span class="p">.</span><span class="n">getOpt</span> <span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="kt">int</span><span class="p">.</span><span class="n">high</span><span class="p">,</span> <span class="n">v_1</span><span class="p">:</span> <span class="mf">3.14</span><span class="p">,</span> <span class="n">v2</span><span class="p">:</span> <span class="mi">9'u64</span><span class="p">,</span> <span class="n">v3</span><span class="p">:</span> <span class="o">-</span><span class="mi">9</span><span class="il">'i64</span><span class="p">,</span> <span class="n">v4</span><span class="p">:</span> <span class="s">"a"</span><span class="p">,</span> <span class="n">v5</span><span class="p">:</span> <span class="sc">'4'</span><span class="p">,</span> <span class="n">v6</span><span class="p">:</span> <span class="mf">9.</span><span class="n">Positive</span><span class="p">,</span> <span class="n">v7</span><span class="p">:</span> <span class="kp">false</span><span class="p">,</span> <span class="n">missing</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span> <span class="n">food</span><span class="p">:</span> <span class="n">TACO</span><span class="p">)</span>
+<span class="n">doAssert</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">1</span>  <span class="c"># int</span>
+<span class="n">doAssert</span> <span class="n">v_1</span> <span class="o">==</span> <span class="mf">9.9</span>  <span class="c"># float</span>
+<span class="n">doAssert</span> <span class="n">v2</span> <span class="o">==</span> <span class="mi">1'u64</span>  <span class="c"># uint64</span>
+<span class="n">doAssert</span> <span class="n">v3</span> <span class="o">==</span> <span class="mi">2</span><span class="il">'i64</span>  <span class="c"># int64</span>
+<span class="n">doAssert</span> <span class="n">v4</span> <span class="o">==</span> <span class="s">"X"</span>  <span class="c"># string</span>
+<span class="n">doAssert</span> <span class="n">v5</span> <span class="o">==</span> <span class="sc">'t'</span>  <span class="c"># char</span>
+<span class="n">doAssert</span> <span class="n">v6</span> <span class="o">==</span> <span class="mf">5.</span><span class="n">Positive</span>  <span class="c"># Positive</span>
+<span class="n">doAssert</span> <span class="n">v7</span> <span class="o">==</span> <span class="kp">true</span>  <span class="c"># bool</span>
+<span class="n">doAssert</span> <span class="n">missing</span> <span class="o">==</span> <span class="mi">42</span> <span class="c"># missing is not in fake, fallback to default value 42.</span>
+<span class="n">doAssert</span> <span class="n">food</span> <span class="ow">is</span> <span class="n">Food</span> <span class="ow">and</span> <span class="n">food</span> <span class="o">==</span> <span class="n">PIZZA</span>  <span class="c"># food is Food.PIZZA</span>
+</code></pre></div></div>
+
+<ul>
+  <li><a href="https://github.com/juancarlospaco/cliche">https://github.com/juancarlospaco/cliche</a></li>
+  <li><a href="https://juancarlospaco.github.io/cliche">https://juancarlospaco.github.io/cliche</a></li>
+</ul>
+
+<h2 id="webrtc-for-nim"><a href="https://juancarlospaco.github.io/nodejs/nodejs/jswebrtc">WebRTC for Nim</a></h2>
+
+<h4 id="author-juan-carlos-1">Author: <a href="https://github.com/juancarlospaco">Juan Carlos</a></h4>
+
+<p>New WebRTC for Nim (Web Real-Time Communications) just landed:</p>
+
+<ul>
+  <li><a href="https://juancarlospaco.github.io/nodejs/nodejs/jswebrtc">https://juancarlospaco.github.io/nodejs/nodejs/jswebrtc</a></li>
+  <li><a href="https://github.com/juancarlospaco/nodejs">https://github.com/juancarlospaco/nodejs</a></li>
+</ul>
+
+<p>From stdlib only uses JsObject, Blob, Node, Future types.</p>
+
+<h2 id="nimrun-action"><a href="https://github.com/juancarlospaco/nimrun-action#nimrun-action">Nimrun Action</a></h2>
+
+<h4 id="author-juan-carlos-2">Author: <a href="https://github.com/juancarlospaco">Juan Carlos</a></h4>
+
+<p><a href="https://github.com/features/actions">GitHub Action</a> to compile and run Nim source code <a href="https://github.com/juancarlospaco/nimrun-action/issues/3#issuecomment-1351871284">from GitHub issue comments code blocks</a>.</p>
+
+<p style="text-align: center;">
+  <video src="https://user-images.githubusercontent.com/1189414/207674682-c971f842-b4ef-42a3-81b2-62e1c378d5a4.mp4" controls="controls" muted="muted" style="max-height:640px;max-width:800px">
+  </video>
+</p>
+
+<p style="text-align: center;">
+  <img width="auto" height="600" src="http://localhost:4000/assets/thismonthwithnim/2023-01/nimrun-action-screenshot.png" />
+</p>
+
+<h2 id="p5nim"><a href="https://github.com/pietroppeter/p5nim">p5nim</a></h2>
+
+<h4 id="author-pietroppeter">Author: <a href="https://github.com/pietroppeter">pietroppeter</a></h4>
+
+<p><a href="https://github.com/pietroppeter/p5nim">p5nim</a> is a wrapper for <a href="https://p5js.org">p5js</a> nim library.
+I have picked up the old bindings <a href="https://github.com/Foldover/nim-p5/">https://github.com/Foldover/nim-p5/</a> which were not working with a more recent nim, fixed them and starting to improve them.
+In particular I make it easy to call p5js with <a href="https://github.com/pietroppeter/nimib/">nimib</a>.
+I have also started to add a wrapper for p5sound (additional library to use sound).</p>
+
+<p>p5js is a great library to create visualization, generative art, games and generally speaking <a href="https://en.wikipedia.org/wiki/Creative_coding">creative coding</a>.
+It has a specific focus on making coding accessible and inclusive for artists, designers, educators, beginners, and anyone else! Great learning material has been published: <a href="https://thecodingtrain.com/">the coding train</a>, <a href="https://natureofcode.com/">the nature of code</a>.
+The community around p5js is very active (you can look for #p5js tag on mastodon, twitter, …) and welcoming with examples often sharing the source on <a href="https://openprocessing.org/">openprocessing</a>.</p>
+
+<p>The goal of p5nim is to continue improving the wrapper and provide examples of p5js code ported to p5nim.
+You are much welcome to contribute new examples! The website is still a bit clunky but it will be improved.
+It is now available to install on nimble with <code class="language-plaintext highlighter-rouge">nimble install p5nim</code>.
+Here is a very nice example of animated art (<a href="https://pietroppeter.github.io/p5nim/okazz_220919a.html">live+source</a>):</p>
+
+<p style="text-align: center;">
+  <img width="auto" height="300" src="https://user-images.githubusercontent.com/4997234/210152759-b6feeeee-f7bf-4fe5-9618-bc24459bc146.gif" />
+</p>
+
+<hr />
+
+<h2 id="want-to-see-your-project-here-next-month">Want to see your project here next month?</h2>
+
+<p><a href="https://github.com/beef331/website#adding-your-project-to-month-with-nim">Follow this</a>
+to add your project to the next month’s blog post.</p>
+
+        </div>
+      </div>
+    </div>
+    <footer>
+  <section class="content">
+    <div class="pure-g">
+      <div class="copyright pure-u-2-3">
+        <p>
+          Unless otherwise stated, the content of this page is
+          licensed under the
+          <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0</a>
+          license.
+          Code displayed on this website is MIT licensed.
+        </p>
+        <p>
+          This website is available on
+          <a href="https://github.com/nim-lang/website">GitHub</a>
+          and contributions are welcome.
+          Original website design by
+          <a href="https://github.com/dom96">Dominik Picheta</a> and
+          <a href="https://github.com/Calinou">Hugo Locurcio</a>.
+          Logo by <a href="https://github.com/josephwecker">Joseph Wecker</a>.
+        </p>
+      </div>
+      <div class="pure-u-1-3 right-center">
+        <a href="https://m.do.co/c/637ab907c7f4"><img src="/assets/img/do.png"/></a>
+      </div>
+    </div>
+  </section>
+
+</footer>
+<script>
+    (function(){
+      function setTracking(a) {
+        var url = a.href;
+        a.onclick = function() {
+          if (typeof(ga) !== "undefined") {
+            ga('send', 'event', 'outbound', 'click', url, {
+              'transport': 'beacon',
+              'hitCallback': function(){document.location = url;}
+            });
+          }
+        };
+      }
+
+      var a = document.getElementsByTagName("a");
+      for (var i = 0; i < a.length; ++i) {
+        if (a[i].hostname != location.hostname &&
+            a[i].getAttribute("target") !== "_blank"
+        ) {
+          setTracking(a[i])
+        }
+      }
+    })();
+</script>
+
+  </div>
+  </body>
+</html>

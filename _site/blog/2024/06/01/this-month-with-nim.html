@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <meta name="charset" content="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The Nim programming language is a concise, fast programming language that compiles to C, C++ and JavaScript.">
+  <meta charset="utf-8">
+  <link rel="icon" type="image/png" href="/assets/img/logo_bw.png" />
+
+  
+  <title>This Month with Nim: October 2023 to June 2024 (It is a long month) - Nim Blog</title>
+  
+  <link rel="stylesheet" href="/assets/css/pure.min.css">
+  <link rel="stylesheet" href="/assets/css/pure-grids-responsive.min.css">
+  <link href="https://use.fontawesome.com/releases/v5.0.2/css/all.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+  
+  <link rel="stylesheet" href="/assets/css/highlight/github.css">
+  
+
+  <link rel="stylesheet" href="/assets/css/google-fonts.css">
+  <link rel="stylesheet" href="/assets/css/main.css?t=1721738524015683587">
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-48159761-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+
+  <script defer data-domain="nim-lang.org" src="https://plausible.io/js/plausible.js"></script>
+
+  <meta name="twitter:title" content="This Month with Nim: October 2023 to June 2024 (It is a long month)">
+
+  
+  <meta name="twitter:description" content="It has been a long time since one of these!">
+  <meta property="og:description" content="It has been a long time since one of these!">
+  
+
+  <meta name="twitter:site" content="@nim_lang">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://nim-lang.org/assets/img/twitter_banner.png">
+
+  <meta property="og:title" content="This Month with Nim: October 2023 to June 2024 (It is a long month)" />
+  <meta property="og:site_name" content="Nim Programming Language" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://nim-lang.org/assets/img/twitter_banner.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1000" />
+  <meta property="og:image:height" content="500" />
+  <meta property="og:image:alt" content="Nim Programming Language" />
+</head>
+
+  <body class="site">
+    <header>
+  <nav class="pure-menu pure-menu-horizontal pure-menu-scrollable">
+    <div class="nav-content">
+      <a href="/" class="pure-menu-heading pure-menu-link site-logo-container">
+        <img class="site-logo" src="/assets/img/logo.svg" height="28" alt="Nim">
+      </a>
+      <ul class="pure-menu-list">
+        
+        <li class="pure-menu-item">
+          <a href="/blog.html"
+             class="pure-menu-link current">
+            Blog
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/features.html"
+             class="pure-menu-link ">
+            Features
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/install.html"
+             class="pure-menu-link ">
+            Download
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/documentation.html"
+             class="pure-menu-link ">
+            Documentation
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="https://forum.nim-lang.org"
+             class="pure-menu-link ">
+            Forum
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a href="/donate.html"
+             class="pure-menu-link ">
+            Donate
+          </a>
+        </li>
+        
+        <li class="pure-menu-item">
+          <a class="pure-menu-link" href="https://github.com/nim-lang/Nim">Source</a>
+        </li>
+      </ul>
+    </div>
+    <div class="menu-fade"></div>
+  </nav>
+</header>
+
+    <div class="site-content post-page">
+      <div class="content">
+        <div class="width-reduced">
+          <h1 class="post-title">
+            This Month with Nim: October 2023 to June 2024 (It is a long month)
+          </h1>
+          <h3 class="post-meta">
+            <span>
+              <i class="far fa-calendar-alt" aria-hidden="true"></i>
+              01 June 2024
+            </span>
+            
+            <span>
+              <i class="fa fa-user-circle" aria-hidden="true"></i>
+              The Nim Community
+            </span>
+            
+          </h3>
+          <h2 id="oolib-upgrade"><a href="https://github.com/Glasses-Neo/OOlib">Oolib Upgrade</a></h2>
+
+<h4 id="author-neo">Author: <a href="https://github.com/glassesneo">Neo</a></h4>
+
+<p>New super cool features here!</p>
+
+<h3 id="multiple-constructor">Multiple constructor</h3>
+
+<div class="language-nim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">class</span> <span class="n">Gun</span><span class="p">:</span>
+  <span class="k">var</span>
+    <span class="n">offence</span><span class="p">:</span> <span class="kt">int</span>
+    <span class="n">capacity</span> <span class="o">=</span> <span class="mi">6</span>
+    <span class="n">price</span><span class="p">:</span> <span class="kt">int</span>
+
+  <span class="k">proc </span><span class="nf">`new`</span><span class="p">(</span><span class="n">offence</span><span class="p">:</span> <span class="kt">int</span><span class="p">)</span> <span class="o">=</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">offence</span> <span class="o">=</span> <span class="n">offence</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">capacity</span> <span class="o">=</span> <span class="mi">8</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">price</span> <span class="o">=</span> <span class="mi">300</span>
+
+  <span class="k">proc </span><span class="nf">`new`</span><span class="p">(</span><span class="n">capacity</span><span class="p">:</span> <span class="kt">int</span><span class="p">)</span> <span class="o">=</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">offence</span> <span class="o">=</span> <span class="mi">14</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">capacity</span> <span class="o">=</span> <span class="n">capacity</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">price</span> <span class="o">=</span> <span class="mi">200</span>
+
+<span class="c"># This `new()` is made from the type definition</span>
+<span class="k">let</span> <span class="err">_ = Gun.new(offence = 5, price = 6)</span>
+
+<span class="c"># 2nd one</span>
+<span class="k">let</span> <span class="err">_ = Gun.new(offence = 12)</span>
+
+<span class="c"># 3rd one</span>
+<span class="k">let</span> <span class="err">_ = Gun.new(capacity = 10)</span>
+
+<span class="n">class</span> <span class="n">Sword</span><span class="p">:</span>
+  <span class="k">var</span>
+    <span class="n">offence</span><span class="p">:</span> <span class="kt">int</span>
+    <span class="n">price</span> <span class="p">{.</span><span class="n">initial</span><span class="p">.}</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="c"># made from the type definition</span>
+<span class="k">let</span> <span class="err">_ = Sword.new(8)</span>
+</code></pre></div></div>
+
+<h3 id="construct"><code class="language-plaintext highlighter-rouge">{.construct.}</code></h3>
+
+<p>a type definition with {.construct.} are made into a class. Now that we can define a class without using <code class="language-plaintext highlighter-rouge">class</code>!</p>
+
+<div class="language-nim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">type</span> <span class="n">Shield</span> <span class="p">{.</span><span class="n">construct</span><span class="p">.}</span> <span class="o">=</span> <span class="k">ref</span> <span class="k">object</span>
+  <span class="n">defence</span><span class="o">*</span><span class="p">:</span> <span class="kt">int</span>
+  <span class="n">price</span> <span class="p">{.</span><span class="n">initial</span><span class="p">.}:</span> <span class="kt">int</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="c"># This new() was made by `{.construct.}` pragma</span>
+<span class="k">let</span> <span class="err">_ = Shield.new(4)</span>
+</code></pre></div></div>
+
+<h3 id="multiple-implementation">Multiple implementation</h3>
+
+<p>Now we can use multiple implementation!</p>
+
+<div class="language-nim highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">protocol</span> <span class="n">Readable</span><span class="p">:</span>
+  <span class="k">var</span> <span class="n">text</span><span class="p">:</span> <span class="kt">string</span>
+
+<span class="n">protocol</span> <span class="n">Writable</span><span class="p">:</span>
+  <span class="k">var</span> <span class="n">text</span><span class="p">:</span> <span class="kt">string</span>
+  <span class="k">proc </span><span class="nf">`text=`</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="kt">string</span><span class="p">)</span>
+
+<span class="n">protocol</span> <span class="n">Product</span><span class="p">:</span>
+  <span class="k">var</span> <span class="n">price</span><span class="p">:</span> <span class="kt">int</span>
+
+<span class="k">type</span> <span class="n">Writer</span><span class="o">*</span> <span class="p">{.</span><span class="n">protocoled</span><span class="p">.}</span> <span class="o">=</span> <span class="k">tuple</span>
+  <span class="n">write</span><span class="p">:</span> <span class="k">proc</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="kt">string</span><span class="p">)</span>
+
+<span class="n">class</span> <span class="n">Book</span> <span class="n">impl</span> <span class="p">(</span><span class="n">Readable</span><span class="p">,</span> <span class="n">Product</span><span class="p">):</span>
+  <span class="k">var</span>
+    <span class="n">text</span><span class="p">:</span> <span class="kt">string</span> <span class="o">=</span> <span class="s">""</span>
+    <span class="n">price</span><span class="p">:</span> <span class="kt">int</span>
+
+<span class="n">class</span> <span class="n">Diary</span> <span class="n">impl</span> <span class="p">(</span><span class="n">Readable</span><span class="p">,</span> <span class="n">Writable</span><span class="p">,</span> <span class="n">Product</span><span class="p">):</span>
+  <span class="k">var</span> <span class="n">text</span> <span class="p">{.</span><span class="n">initial</span><span class="p">.}:</span> <span class="kt">string</span> <span class="o">=</span> <span class="s">""</span>
+  <span class="k">var</span> <span class="n">price</span><span class="p">:</span> <span class="kt">int</span>
+  <span class="k">proc </span><span class="nf">`text=`</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="kt">string</span><span class="p">)</span> <span class="o">=</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">value</span>
+
+<span class="n">class</span> <span class="n">HTMLWriter</span> <span class="n">impl</span> <span class="n">Writer</span><span class="p">:</span>
+  <span class="k">var</span> <span class="n">writable</span><span class="p">:</span> <span class="n">Writable</span>
+  <span class="k">proc </span><span class="nf">write</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="kt">string</span><span class="p">)</span> <span class="o">=</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">writable</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">text</span>
+
+<span class="k">let</span> <span class="n">book</span> <span class="o">=</span> <span class="n">Book</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="n">price</span> <span class="o">=</span> <span class="mi">500</span><span class="p">)</span>
+
+<span class="k">let</span> <span class="err">_ = book.toProtocol()</span>
+
+<span class="k">let</span> <span class="n">diary</span> <span class="o">=</span> <span class="n">Diary</span><span class="p">.</span><span class="n">new</span><span class="p">(</span><span class="n">price</span> <span class="o">=</span> <span class="mi">300</span><span class="p">)</span>
+
+<span class="k">let</span> <span class="err">_ = diary.toProtocol()</span>
+</code></pre></div></div>
+
+<p>Also, the features below were removed:</p>
+<ul>
+  <li>Class data constant</li>
+  <li>Inheritance class, super keyword and {.open.}</li>
+  <li>Alias class</li>
+  <li>{.pClass.}, {.pProtocol.}</li>
+  <li>{.noNewDef.} for class</li>
+</ul>
+
+<h2 id="nim-blinky-with-apache-nuttx-rtos-on-ox64-bl808-risc-v-sbc"><a href="https://lupyuen.codeberg.page/articles/nim.html">Nim Blinky with Apache NuttX RTOS on Ox64 BL808 RISC-V SBC</a></h2>
+
+<h4 id="author-lup-yuan-lee">Author: <a href="https://github.com/lupyuen">Lup Yuan Lee</a></h4>
+
+<p>Running Apache NuttX RTOS (Real-Time Operating System) on Single-Board Computers with plenty of RAM.
+Like Pine64 Ox64 BL808 SBC with 64 MB RAM!</p>
+
+<p>In <a href="https://lupyuen.codeberg.page/articles/nim.html">this article</a>, we create a Blinky LED app with Nim on NuttX.</p>
+
+<p>Garbage-Collected Languages (like Nim) require a bit more RAM than Low-Level Languages (like C).
+Perfect for our roomy (and vroomy) single board computer!</p>
+
+<p>We test NuttX + Nim Blinky on QEMU Emulator for 64-bit RISC-V (minus the blinkenlight).
+Then we run NuttX + Nim Blinky on the Ox64 BL808 RISC-V SBC (with a real LED).</p>
+
+<h2 id="happyx-ui">happyx-ui</h2>
+
+<h4 id="author-ethosa">Author: <a href="https://github.com/Ethosa">Ethosa</a></h4>
+
+<p>UI library for the HappyX web framework, inspired by Jetpack Compose.</p>
+
+<p>A small code example follows:</p>
+
+<p style="text-align: center;">
+  <img width="auto" height="600" src="http://localhost:4000/assets/thismonthwithnim/2024-06/happyx-ui-code.png" />
+</p>
+
+<p style="text-align: center;">
+  <img width="auto" height="600" src="http://localhost:4000/assets/thismonthwithnim/2024-06/happyx-ui.png" />
+</p>
+<p>A live demo can be found <a href="https://hapticx.github.io/happyx-ui/#/">here</a>.</p>
+
+<hr />
+
+<h2 id="want-to-see-your-project-here-next-month">Want to see your project here next month?</h2>
+
+<p><a href="https://github.com/beef331/website#adding-your-project-to-month-with-nim">Follow this</a>
+to add your project to the next month’s blog post.</p>
+
+        </div>
+      </div>
+    </div>
+    <footer>
+  <section class="content">
+    <div class="pure-g">
+      <div class="copyright pure-u-2-3">
+        <p>
+          Unless otherwise stated, the content of this page is
+          licensed under the
+          <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0</a>
+          license.
+          Code displayed on this website is MIT licensed.
+        </p>
+        <p>
+          This website is available on
+          <a href="https://github.com/nim-lang/website">GitHub</a>
+          and contributions are welcome.
+          Original website design by
+          <a href="https://github.com/dom96">Dominik Picheta</a> and
+          <a href="https://github.com/Calinou">Hugo Locurcio</a>.
+          Logo by <a href="https://github.com/josephwecker">Joseph Wecker</a>.
+        </p>
+      </div>
+      <div class="pure-u-1-3 right-center">
+        <a href="https://m.do.co/c/637ab907c7f4"><img src="/assets/img/do.png"/></a>
+      </div>
+    </div>
+  </section>
+
+</footer>
+<script>
+    (function(){
+      function setTracking(a) {
+        var url = a.href;
+        a.onclick = function() {
+          if (typeof(ga) !== "undefined") {
+            ga('send', 'event', 'outbound', 'click', url, {
+              'transport': 'beacon',
+              'hitCallback': function(){document.location = url;}
+            });
+          }
+        };
+      }
+
+      var a = document.getElementsByTagName("a");
+      for (var i = 0; i < a.length; ++i) {
+        if (a[i].hostname != location.hostname &&
+            a[i].getAttribute("target") !== "_blank"
+        ) {
+          setTracking(a[i])
+        }
+      }
+    })();
+</script>
+
+  </div>
+  </body>
+</html>
