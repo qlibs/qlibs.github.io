@@ -1,52 +1,49 @@
-<footer>
-  <section class="content">
-    <div class="pure-g">
-      <div class="copyright pure-u-2-3">
-        <p>
-          Unless otherwise stated, the content of this page is
-          licensed under the
-          <a href="https://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0</a>
-          license.
-          Code displayed on this website is MIT licensed.
-        </p>
-        <p>
-          This website is available on
-          <a href="https://github.com/nim-lang/website">GitHub</a>
-          and contributions are welcome.
-          Original website design by
-          <a href="https://github.com/dom96">Dominik Picheta</a> and
-          <a href="https://github.com/Calinou">Hugo Locurcio</a>.
-          Logo by <a href="https://github.com/josephwecker">Joseph Wecker</a>.
-        </p>
-      </div>
-      <div class="pure-u-1-3 right-center">
-        <a href="https://m.do.co/c/637ab907c7f4"><img src="{{ site.baseurl }}/assets/img/do.png"/></a>
-      </div>
-    </div>
-  </section>
+<!-- The Footer -->
 
+<footer
+  aria-label="Site Info"
+  class="
+    d-flex flex-column justify-content-center text-muted
+    flex-lg-row justify-content-lg-between align-items-lg-center pb-lg-3
+  "
+>
+  <p>
+    {{- '©' }}
+    <time>{{ 'now' | date: '%Y' }}</time>
+
+    {% if site.social.links %}
+      <a href="{{ site.social.links[0] }}">{{ site.social.name }}</a>.
+    {% else %}
+      <em class="fst-normal">{{ site.social.name }}</em>.
+    {% endif %}
+
+    {% if site.data.locales[include.lang].copyright.brief %}
+      <span
+        data-bs-toggle="tooltip"
+        data-bs-placement="top"
+        title="{{ site.data.locales[include.lang].copyright.verbose }}"
+      >
+        {{- site.data.locales[include.lang].copyright.brief -}}
+      </span>
+    {% endif %}
+  </p>
+
+  <p>
+    {%- capture _platform -%}
+      <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a>
+    {%- endcapture -%}
+
+    {%- capture _theme -%}
+      <a
+        data-bs-toggle="tooltip"
+        data-bs-placement="top"
+        title="v{{ theme.version }}"
+        href="https://github.com/cotes2020/jekyll-theme-chirpy"
+        target="_blank"
+        rel="noopener"
+      >Chirpy</a>
+    {%- endcapture -%}
+
+    {{ site.data.locales[include.lang].meta | replace: ':PLATFORM', _platform | replace: ':THEME', _theme }}
+  </p>
 </footer>
-<script>
-    (function(){
-      function setTracking(a) {
-        var url = a.href;
-        a.onclick = function() {
-          if (typeof(ga) !== "undefined") {
-            ga('send', 'event', 'outbound', 'click', url, {
-              'transport': 'beacon',
-              'hitCallback': function(){document.location = url;}
-            });
-          }
-        };
-      }
-
-      var a = document.getElementsByTagName("a");
-      for (var i = 0; i < a.length; ++i) {
-        if (a[i].hostname != location.hostname &&
-            a[i].getAttribute("target") !== "_blank"
-        ) {
-          setTracking(a[i])
-        }
-      }
-    })();
-</script>
