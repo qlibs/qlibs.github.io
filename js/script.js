@@ -37,6 +37,7 @@ function genRepo(user) {
                         var repo_forks = request[i].forks;
 
                         if (repo_name.includes("github.io")) continue;
+                        if (repo_name.includes("qlibs")) continue;
 
                         // replaces null values to be better represented when displayed
                         if (repo_language == null) {
