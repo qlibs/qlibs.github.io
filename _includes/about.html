@@ -4,8 +4,33 @@
             <div class="col-lg-8 col-lg-offset-2">
                 <h2>About</h2>
                 <hr />
-                <p>Qlibs++ is set of modern C++ libraries.</p>
-                <hr />
+                <pre align="left">
+Qlibs++ - Modern C++ libraries
+
+  Mission (all libraries)
+
+    Quality
+      - Compile-time self testing upon include (can be disabled with -DNTEST)
+      - Compiles cleanly with (-Wall
+                               -Wextra
+                               -Werror
+                               -pedantic
+                               -pedantic-errors
+                               -fno-exceptions
+                               -fno-rtti
+                               -fsantize=memory
+                               -fsanitize=undefined)
+
+    Performance
+      - No virtual, no RTTI, no exceptions
+      - Optimized and Benchmarked (x86-64 focused)
+      - Focused on fast compilation times
+
+    Simplicty
+      - Single header (including documentation and tests)
+      - Minimal dependencies (either none or STL)
+      - Minimal API
+                </pre>
             </div>
         </div>
     </section>
