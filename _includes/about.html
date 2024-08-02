@@ -10,26 +10,24 @@ Qlibs++ - Modern C++ libraries
   Mission
 
     Quality
-      - Compile-time self testing upon include (can be disabled with -DNTEST)
-      - Compiles cleanly with (-Wall
-                               -Wextra
-                               -Werror
-                               -pedantic
-                               -pedantic-errors
-                               -fno-exceptions
-                               -fno-rtti
-                               -fsantize=memory
-                               -fsanitize=undefined)
+      - C++20+ (gcc, clang, msvc*)
+      - Compile-time self testing (can be disabled with -DNTEST)
+      - Compiles cleanly with `-Wall -Wextra -pedantic -fsantize=memory/undefined | /WX /W4`
+      - Focused on declarative interfaces (easy to use hard to misuse) and composability
 
     Performance
-      - No virtual, no RTTI, no exceptions
-      - Optimized and Benchmarked (x86-64 focused)
+      - No virtual, No RTTI, No exceptions
+      - Compile-time driven optimizations
+      - x86-64* driven optimizations and benchmarks
       - Focused on fast compilation times
 
-    Simplicty
-      - Single header (including documentation and tests)
-      - Minimal dependencies (either none or STL)
-      - Minimal API
+    Simplicity
+      - Single header (including documentation and tests) 
+      - Single purpose (unix philosophy)
+      - Minimal dependencies (none or STL*)
+      - Minimal API (available on compiler-explorer - https://compiler-explorer.com)
+
+  * Selected libraries
 
 ---
 
