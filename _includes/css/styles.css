@@ -86,14 +86,19 @@ body {
 
 /*  Modify code bolow to modify to adjust styling for the repositories. The above css is for other elements */
 
+.repo-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Two columns with equal width */
+  gap: 0px; /* Adjust the gap between items as needed */
+}
+
 
 .repo-item {
-    border-radius: 10px;
-    padding: 20px;
-    margin: 20px;
-    background-color: #202121;
-    overflow: auto;
-    overflow-wrap: break-word;
+  height: 83%;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
+  background-color: #202121;
 }
 
 .description {
