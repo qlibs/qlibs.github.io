@@ -12,6 +12,12 @@
 
 body {
     width: 100%;
+    color: #fff;
+    background-color: {{ site.color.primary-dark }};
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
 }
 
 /* css for start page asking for username */
@@ -100,5 +106,6 @@ body {
     margin-right: 20px;
     color: white;
 }
-
-/* End code to modify */
+.intro {
+    padding: 300px 0;
+}

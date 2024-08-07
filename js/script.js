@@ -38,6 +38,7 @@ function genRepo(user) {
 
                         if (repo_name.includes("github.io")) continue;
                         if (repo_name.includes("qlibs")) continue;
+                        if (repo_name.includes(".github")) continue;
 
                         // replaces null values to be better represented when displayed
                         if (repo_language == null) {
