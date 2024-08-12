@@ -106,12 +106,6 @@ body {
   background-color: #202121;
 }
 
-@media (max-width: 768px) {
-  .repo-item {
-    width: 70%;
-  }
-}
-
 .description {
     color: white;
 }
