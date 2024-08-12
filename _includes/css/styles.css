@@ -88,8 +88,14 @@ body {
 
 .repo-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Two columns with equal width */
-  gap: 0px; /* Adjust the gap between items as needed */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0px;
+}
+
+@media (max-width: 768px) {
+  .repo-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 
