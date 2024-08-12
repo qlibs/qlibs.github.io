@@ -94,9 +94,7 @@ body {
 
 @media (max-width: 768px) {
   .repo-container {
-    width: 90%;
-    max-width: 90%;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 
