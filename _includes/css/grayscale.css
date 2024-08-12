@@ -144,6 +144,11 @@ a:focus {
   .intro-text-desc {
     font-size: 0px;
   }
+
+  .intro-pos {
+    position: relative;
+    top: 50px;
+  }
 }
 
 .intro .intro-body {
