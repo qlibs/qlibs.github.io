@@ -132,15 +132,7 @@ a:focus {
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
-    box-sizing: border-box;
 }
-
-.container img {
-  width: 100%; /* Makes the image fill its container */
-  height: auto; /* Maintains aspect ratio */
-  display: block; /* Removes any extra space caused by inline-block */
-}
-
 
 .intro .intro-body {
     display: table-cell;
