@@ -138,7 +138,11 @@ a:focus {
   .intro {
     background: url(/img/bg.jpg) no-repeat center scroll;
     position: relative;
-    top: -100px;
+    top: -75px;
+  }
+
+  .intro-text-desc {
+    font-size: 0px;
   }
 }
 
