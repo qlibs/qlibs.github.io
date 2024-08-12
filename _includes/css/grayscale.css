@@ -136,7 +136,8 @@ a:focus {
 
 @media(max-width:767px) {
   .intro {
-    background: url(/img/bg.jpg) no-repeat center scroll;
+    position: relative;
+    top: -50px;
   }
 }
 
