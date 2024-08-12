@@ -98,14 +98,18 @@ body {
   }
 }
 
-
 .repo-item {
-  width: 80%;
   height: 83%;
   border-radius: 10px;
   padding: 20px;
   margin: 20px;
   background-color: #202121;
+}
+
+@media (max-width: 768px) {
+  .repo-item {
+    width: 70%;
+  }
 }
 
 .description {
