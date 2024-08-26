@@ -370,3 +370,12 @@ img::-moz-selection {
 body {
     webkit-tap-highlight-color: rgba(255,255,255,.2);
 }
+
+#hide-on-mobile {
+}
+
+@media (max-width: 767px) {
+  #hide-on-mobile {
+    display: none;
+  }
+}
