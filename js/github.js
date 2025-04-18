@@ -46,7 +46,7 @@ function genRepo(user) {
                         }
 
                         // Puts repo information into div
-                        $("#repo-box").append("<a href='" + repo_url + "' target='_blank'><div class='repo-item'><h1 class='title'>" +
+                        $("#repo-box").append("<a href='" + repo_url + "'><div class='repo-item'><h1 class='title'>" +
                             "" +
                             repo_name + "</h1><p class='description'>" +
                             repo_description + "</p>" +
