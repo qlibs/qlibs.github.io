@@ -3,60 +3,62 @@
 //   Copyright (c) 2022 Seyon Rajagopal
 // -------------------------------------------
 
-
-// To use a form instead of a specific user comment out the following 2 lines of code:
-
-window.onload = genRepo('qlibs');
-
-
-function genRepo(user) {
-    const testuser = /^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i;
-
-    if (testuser.test(user) == false || user == "" || user == null) {
-        $("#repo-box").append("<div class='error-box'><h1 class='error-msg'> Sorry the GitHub username appears to be invalid </h1></div>");
+async function latest_release(repo_name) {
+  try {
+    const response = await fetch('https://api.github.com/repos/qlibs/' + repo_name + '/releases');
+    if (!response.ok) {
+      console.error('Failed to fetch releases:', response.statusText);
+      return '';
     }
 
-    else {
-
-        var requestURL = 'https://api.github.com/users/' + user + '/repos';
-        var request = $.get(requestURL, function () {
-        })
-            .done(function () {
-                request = request.responseJSON;
-                if (!Array.isArray(request) || !request.length) {
-                    $("#repo-box").append("<div class='error-box'><h1 class='error-msg'> Sorry the GitHub username entered has no repos or does't exist </h1></div>");
-                }
-                else {
-                    for (i = 0; i < request.length; i++) {
-                    console.log(request[i]);
-                        var repo_url = request[i].html_url;
-                        var username = request[i].owner.login;
-                        var repo_name = request[i].name;
-                        var repo_description = request[i].description;
-                        var repo_language = request[i].language;
-                        var repo_stars = request[i].stargazers_count;
-                        var repo_forks = request[i].forks;
-
-                        if (repo_name.includes("github.io")) continue;
-                        if (repo_name.includes("qlibs")) continue;
-                        if (repo_name.includes(".github")) continue;
-
-                        if (repo_language == null) {
-                            repo_language = "-";
-                        }
-
-                        $("#repo-box").append("<a href='" + repo_url + "'><div class='repo-item'><h1 class='title'>" +
-                            "" +
-                            repo_name + "</h1><p class='description'>" +
-                            repo_description +
-                            "<br/><img src='https://img.shields.io/github/v/release/qlibs/" + repo_name + "'></img>" +
-                            "  <div class='star'><span class='img' uk-icon='star' class='uk-icon'></span>" +
-                            repo_stars + "  </div> <div class='fork'><span class='img' uk-icon='git-fork' class='uk-icon'></span>" +
-                            repo_forks + "</div></div></div>" +
-                            "</p>"
-                          );
-                    }
-                }
-            });
+    const releases = await response.json();
+    if (Array.isArray(releases) && releases.length > 0) {
+    console.log(releases);
+      return releases[0].tag_name || '';
+    } else {
+      return '';
     }
+  } catch (error) {
+    console.error('Error fetching release data:', error);
+    return '';
+  }
+}
+
+async function latest_release(repo_name) {
+  const response = await fetch(`https://api.github.com/repos/qlibs/${repo_name}/releases/latest`);
+  const data = await response.json();
+  return data.tag_name;
+}
+
+window.onload = function () {
+  var request = $.get('https://api.github.com/users/qlibs/repos', function () { })
+    .done(function () {
+        request = request.responseJSON;
+        if (!Array.isArray(request) || !request.length) {
+            $("#repo-box").append("<div class='error-box'><h1 class='error-msg'> Sorry the GitHub username entered has no repos or does't exist </h1></div>");
+        }
+        else {
+          for (i = 0; i < request.length; i++) {
+            const repo_name = request[i].name;
+            if (repo_name.includes("github.io")) continue;
+            if (repo_name.includes("qlibs")) continue;
+            if (repo_name.includes(".github")) continue;
+            const repo_url = request[i].html_url;
+            const repo_description = request[i].description;
+            const repo_stars = request[i].stargazers_count;
+            const repo_forks = request[i].forks;
+            latest_release(repo_name).then(repo_release => {
+              $("#repo-box").append("<a href='" + repo_url + "'><div class='repo-item'><h1 class='title'>" +
+                  "" +
+                  repo_name + "</h1><div style='color:darkgray'> ("+ repo_release +")</div> <p class='description'>" +
+                  repo_description +
+                  "  <div class='star'><span class='img' uk-icon='star' class='uk-icon'></span>" +
+                  repo_stars + "  </div> <div class='fork'><span class='img' uk-icon='git-fork' class='uk-icon'></span>" +
+                  repo_forks + "</div></div></div>" +
+                  "</p>"
+                );
+            })
+          }
+        }
+    });
 }
