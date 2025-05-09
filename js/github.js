@@ -4,27 +4,6 @@
 // -------------------------------------------
 
 async function latest_release(repo_name) {
-  try {
-    const response = await fetch('https://api.github.com/repos/qlibs/' + repo_name + '/releases');
-    if (!response.ok) {
-      console.error('Failed to fetch releases:', response.statusText);
-      return '';
-    }
-
-    const releases = await response.json();
-    if (Array.isArray(releases) && releases.length > 0) {
-    console.log(releases);
-      return releases[0].tag_name || '';
-    } else {
-      return '';
-    }
-  } catch (error) {
-    console.error('Error fetching release data:', error);
-    return '';
-  }
-}
-
-async function latest_release(repo_name) {
   const response = await fetch(`https://api.github.com/repos/qlibs/${repo_name}/releases/latest`);
   const data = await response.json();
   return data.tag_name;
@@ -50,10 +29,10 @@ window.onload = function () {
             latest_release(repo_name).then(repo_release => {
               $("#repo-box").append("<a href='" + repo_url + "'><div class='repo-item'><h1 class='title'>" +
                   "" +
-                  repo_name + "</h1><div style='color:darkgray'> ("+ repo_release +")</div> <p class='description'>" +
+                  repo_name + "</h1> <div style='color:darkgray'> (" + repo_release + ") </div><p class='description'>" +
                   repo_description +
-                  "  <div class='star'><span class='img' uk-icon='star' class='uk-icon'></span>" +
-                  repo_stars + "  </div> <div class='fork'><span class='img' uk-icon='git-fork' class='uk-icon'></span>" +
+                  "<div class='star'><span class='img' uk-icon='star' class='uk-icon'></span>" +
+                  repo_stars + "</div><div class='fork'><span class='img' uk-icon='git-fork' class='uk-icon'></span>" +
                   repo_forks + "</div></div></div>" +
                   "</p>"
                 );
