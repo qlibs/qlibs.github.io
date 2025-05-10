@@ -27,15 +27,13 @@ window.onload = function () {
             const repo_stars = request[i].stargazers_count;
             const repo_forks = request[i].forks;
             latest_release(repo_name).then(repo_release => {
-              $("#repo-box").append("<a href='" + repo_url + "'><div class='repo-item'><h1 class='title'>" +
-                  "" +
-                  repo_name + "</h1> <div style='color:darkgray'> (" + repo_release + ") </div><p class='description'>" +
-                  repo_description +
-                  "<div class='star'><span class='img' uk-icon='star' class='uk-icon'></span>" +
-                  repo_stars + "</div><div class='fork'><span class='img' uk-icon='git-fork' class='uk-icon'></span>" +
-                  repo_forks + "</div></div></div>" +
-                  "</p>"
-                );
+              $("#repo-box").append(
+                "<a href='" + repo_url + "'><div class='repo-item'><h1 class='title'>" + repo_name + "</h1>" +
+                "<p class='description'>" + repo_description +
+                  "<div class='star'><span class='img' uk-icon='star' class='uk-icon'></span>" + repo_stars + "</div>" +
+                  "<div class='fork'><span class='img' uk-icon='git-fork' class='uk-icon'></span>" + (repo_release === undefined ? "-" : repo_release) + "</div>" +
+                "</div></div></p>"
+              );
             })
           }
         }
